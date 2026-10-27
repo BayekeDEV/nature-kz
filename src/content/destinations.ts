@@ -1,0 +1,687 @@
+import type { Destination, ImageRole, MediaRecord } from "@/lib/types";
+import { sources as s } from "@/content/sources";
+
+/**
+ * The editorial dataset for all destinations.
+ *
+ * Content rules (see docs/CONTENT-CHECKLIST.md):
+ * - Stable facts only, each section linked to the sources that support it.
+ * - Changeable details (fees, access, permits) are described as "check the
+ *   official site", never as current facts.
+ * - Legends are labelled as legends.
+ */
+
+const CC_BY_SA_4 = { license: "CC BY-SA 4.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0/" };
+const CC_BY_SA_3 = { license: "CC BY-SA 3.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/3.0/" };
+const CC_BY_3 = { license: "CC BY 3.0", licenseUrl: "https://creativecommons.org/licenses/by/3.0/" };
+const CC_BY_2 = { license: "CC BY 2.0", licenseUrl: "https://creativecommons.org/licenses/by/2.0/" };
+const CC0 = { license: "CC0 1.0 (public domain dedication)", licenseUrl: "https://creativecommons.org/publicdomain/zero/1.0/" };
+const PD = { license: "Public domain (released by the author)" };
+
+type MediaInput = Omit<MediaRecord, "src" | "focal" | "credit"> & {
+  focal?: MediaRecord["focal"];
+  credit: Omit<MediaRecord["credit"], "via"> & { via?: string };
+};
+
+function media(slug: string, items: MediaInput[]): MediaRecord[] {
+  return items.map((item) => ({
+    ...item,
+    src: imagePath(slug, item.role),
+    focal: item.focal ?? { desktop: "50% 50%", mobile: "50% 50%" },
+    credit: { via: "Wikimedia Commons", ...item.credit },
+  }));
+}
+
+export function imagePath(slug: string, role: ImageRole) {
+  return `/images/destinations/${slug}/${role}.jpg`;
+}
+
+export const destinations: Destination[] = [
+  {
+    id: "dst-bozzhyra",
+    slug: "bozzhyra",
+    name: "Bozzhyra",
+    region: "Mangystau Region, western Kazakhstan",
+    category: "canyons-rocks",
+    landscape: "Chalk escarpment",
+    summary:
+      "White chalk towers and terraced slopes on the western edge of the Ustyurt Plateau, far from towns and mobile coverage.",
+    intro:
+      "On the western edge of the Ustyurt Plateau, pale chalk towers rise above a wide desert floor. Bozzhyra is remote, quiet and shaped almost entirely by wind and water.",
+    keywords: ["Ustyurt", "plateau", "chalk", "desert", "Mangystau", "fangs", "Karakiya"],
+    quickFacts: [
+      { label: "Landscape", value: "Chalk escarpment and isolated towers" },
+      { label: "Location", value: "Karakiya District, Mangystau Region" },
+      { label: "Protected status", value: "Not part of the Ustyurt Nature Reserve (regional statement, January 2025)" },
+      { label: "Visit style", value: "Self-sufficient trips by vehicle, usually combined with walking" },
+    ],
+    special: {
+      heading: "What makes it special",
+      paragraphs: [
+        "Bozzhyra is one of the escarpment sections of the Ustyurt Plateau, where the edge of the tableland breaks into white cliffs, terraces and free-standing towers. Seen from the rim, the formations stand above a flat, pale valley floor that stretches toward the horizon. Two pointed outcrops, often called the “fangs”, have become the best-known view of the area.",
+        "What gives the place its character is scale and emptiness rather than any single landmark. There is no town nearby: the official tourism portal places the tract about 300 km from Aktau, the regional centre, and notes that there is no mobile connection or internet.",
+      ],
+      sourceIds: [s.ktBozzhyra.id, s.astanaTimesBozzhyra.id],
+    },
+    history: {
+      heading: "Landscape and history",
+      paragraphs: [
+        "The cliffs are made of layered chalk. Chalk forms from the accumulated remains of microscopic marine organisms, so these bright layers are the record of an ancient sea floor; The Astana Times describes them as Cretaceous. Wind, occasional rain and temperature swings have since cut the plateau edge into the towers and gullies seen today.",
+        "Bozzhyra has also been the subject of a public debate about protection. A hotel and theme-park project proposed in 2021 met strong objections, and in December 2024 the regional governor announced that the planned hotel had been cancelled. In January 2025, regional authorities stated that the tract would not be added to the Ustyurt Nature Reserve. The official tourism portal lists Bozzhyra among the region's sites in the national “Sacred Geography of Kazakhstan” project.",
+      ],
+      sourceIds: [s.astanaTimesBozzhyra.id, s.kursivBozzhyra.id, s.ktBozzhyra.id],
+    },
+    planning: {
+      heading: "Planning your visit",
+      paragraphs: [
+        "Bozzhyra is a remote desert area rather than a managed visitor site. Plan for long distances on unpaved tracks, no mobile signal and no shops or water on site. Download offline maps before leaving, as the official tourism portal recommends, and travel with someone who knows the area.",
+        "The plateau is exposed. Strong winds can rise suddenly and there is little natural shelter, so check the forecast and carry layers, sun protection and plenty of water. The chalk slopes can be loose and slippery; take care near cliff edges and on steep descents.",
+        "Because the tract is not part of a nature reserve, there is no single visitor office publishing access rules. Check current conditions and any regional guidance through official Mangystau tourism channels before you go.",
+      ],
+      sourceIds: [s.ktBozzhyra.id, s.astanaTimesBozzhyra.id, s.kursivBozzhyra.id],
+    },
+    coordinates: {
+      lat: 43.41397,
+      lon: 54.07343,
+      represents: "Reference point for the Bozzhyra tract given by Kazakhstan.travel",
+      sourceId: s.ktBozzhyra.id,
+    },
+    mapSearchQuery: "Bozzhyra, Mangystau Region, Kazakhstan",
+    relatedSlugs: ["charyn-canyon", "singing-dune"],
+    theme: { accent: "#B0925A", deep: "#5E5038", wash: "#EFE9DD" },
+    heroPlacement: "left",
+    media: media("bozzhyra", [
+      {
+        role: "hero",
+        alt: "Tall white chalk towers rising from a pale escarpment above a wide, flat desert valley in Bozzhyra",
+        caption: "Chalk towers above the valley floor at Bozzhyra.",
+        width: 3200,
+        height: 2400,
+        focal: { desktop: "62% 52%", mobile: "66% 50%" },
+        credit: { author: "Berik Aday", ...CC_BY_SA_4, sourceUrl: "https://commons.wikimedia.org/wiki/File:Bozzhyra_valley,_Mangistau_region,_Kazakhstan.jpg" },
+      },
+      {
+        role: "gallery-01",
+        alt: "Two isolated white rock towers standing on a chalk ridge in Bozzhyra, with a hazy plateau behind",
+        caption: "Two free-standing towers on a chalk ridge.",
+        width: 2400,
+        height: 1800,
+        credit: { author: "Berik Aday", ...CC_BY_SA_4, sourceUrl: "https://commons.wikimedia.org/wiki/File:Bozzhyra_valley,_Mangistau,_Kazakhstan.jpg" },
+      },
+      {
+        role: "gallery-02",
+        alt: "View from a high viewpoint over flat-topped white mesas and pointed towers in Bozzhyra, with green steppe in the foreground",
+        caption: "The view from an upper viewpoint over the tract.",
+        width: 2400,
+        height: 1800,
+        credit: { author: "IvarT", ...CC0, sourceUrl: "https://commons.wikimedia.org/wiki/File:Bozzhyra_upper_observation_deck.jpg" },
+      },
+      {
+        role: "gallery-03",
+        alt: "A white chalk spire on a sloping ridge in Bozzhyra under a clear blue sky, with grey rocky ground in the foreground",
+        caption: "A chalk spire on a sloping ridge, photographed in May 2024.",
+        width: 2400,
+        height: 1600,
+        credit: { author: "Sergio Agostinelli", ...CC_BY_2, sourceUrl: "https://commons.wikimedia.org/wiki/File:Bozzhyra_Valley_in_Karakiya,_Mangystau,_Kazakhstan_(May_2024).jpg", via: "Wikimedia Commons (from Flickr)" },
+      },
+    ]),
+    sources: [s.ktBozzhyra, s.kursivBozzhyra, s.astanaTimesBozzhyra],
+    status: "verified",
+    verifiedOn: "2026-10-27",
+  },
+  {
+    id: "dst-kolsai-lakes",
+    slug: "kolsai-lakes",
+    name: "Kolsai Lakes",
+    region: "Almaty Region, northern Tian Shan",
+    category: "lakes",
+    landscape: "Mountain lake chain",
+    summary:
+      "A chain of three mountain lakes in a spruce-forested valley above the village of Saty, protected as a national park.",
+    intro:
+      "Three lakes climb a forested valley of the northern Tian Shan. Dark spruce slopes, clear water and changing mountain weather make Kolsai one of the region's classic walking landscapes.",
+    keywords: ["Kolsay", "Kolsai Koldery", "Saty", "Tian Shan", "spruce", "forest", "national park", "hiking"],
+    quickFacts: [
+      { label: "Landscape", value: "Three lakes in a forested mountain valley" },
+      { label: "Location", value: "Almaty Region, above the village of Saty" },
+      { label: "Protected area", value: "Kolsai Lakes State National Nature Park (est. 2007)" },
+      { label: "Visit style", value: "Lakeside walks and marked hiking routes" },
+    ],
+    special: {
+      heading: "What makes it special",
+      paragraphs: [
+        "The Kolsai Lakes are a chain of three lakes set one above another in a steep valley of the northern Tian Shan. The park's own website calls them a pearl of the northern Tian Shan. Each step up the valley feels a little wilder, with fewer people and a larger share of forest and open alpine slopes.",
+        "Spruce forest covers the middle slopes of the surrounding gorges, and its dark green frames the water. On calm days the lakes reflect the forest almost perfectly; when weather moves in, cloud can settle low over the valley within minutes. The combination of forest, water and mountain walls in a relatively compact area is what draws walkers and photographers here, and it is also why the area is protected.",
+      ],
+      sourceIds: [s.kolsaiPark.id, s.wikiKolsai.id],
+    },
+    history: {
+      heading: "Landscape and history",
+      paragraphs: [
+        "The lakes are numbered from the lowest upward, and the chain is reached from the village of Saty, where the park's routes begin. Reference sources describe the lower lake as accessible by road and the middle lake as the largest of the three, with the upper lake surrounded by spruce and alpine meadow below the high passes.",
+        "The area became the Kolsai Lakes State National Nature Park in 2007. The park protects the lakes together with their forests and the wildlife of the valleys, and it also includes Lake Kaindy in a neighbouring gorge. It is managed under Kazakhstan's forestry and wildlife authority, which runs the country's national parks.",
+        "We have not found an official, citable explanation of how the Kolsai lakes formed, so this guide does not offer one.",
+      ],
+      sourceIds: [s.kolsaiPark.id, s.wikiKolsai.id],
+    },
+    planning: {
+      heading: "Planning your visit",
+      paragraphs: [
+        "The park sells entry tickets through its official website and also takes payment at checkpoints. Tariffs, opening hours and route rules can change from season to season, so check the official site shortly before your trip rather than relying on older articles.",
+        "Weather in the valley is changeable, and conditions on the higher routes can differ sharply from those at the lower lake, especially early and late in the season. Bring warm layers and rain protection, stay on marked routes, and turn back if conditions deteriorate.",
+        "Mobile coverage is limited in the mountains. Tell someone your plans if you walk beyond the lower lake, and carry what you need for the day.",
+      ],
+      sourceIds: [s.kolsaiPark.id],
+    },
+    coordinates: {
+      lat: 42.9349,
+      lon: 78.3262,
+      represents: "Reference point for the Kolsai lake chain used by Wikipedia (not the lower-lake car park or a trailhead)",
+      sourceId: s.wikiRuKolsai.id,
+    },
+    mapSearchQuery: "Kolsai Lakes, Saty, Almaty Region, Kazakhstan",
+    relatedSlugs: ["kaindy-lake", "big-almaty-lake", "charyn-canyon"],
+    theme: { accent: "#3F7A5A", deep: "#1F4331", wash: "#E3EBE3" },
+    heroPlacement: "left",
+    media: media("kolsai-lakes", [
+      {
+        role: "hero",
+        alt: "A long, dark lake winding between steep spruce-covered mountain slopes in the Kolsai valley, under heavy cloud",
+        caption: "A Kolsai lake between forested slopes, June 2024.",
+        width: 3200,
+        height: 2400,
+        focal: { desktop: "50% 62%", mobile: "56% 62%" },
+        credit: { author: "Katariyakartikey", ...CC0, sourceUrl: "https://commons.wikimedia.org/wiki/File:Kolsai_lake.jpg" },
+      },
+      {
+        role: "gallery-01",
+        alt: "Emerald lake water curving below a forested mountainside at Kolsai, with walkers and horses on a lakeside path",
+        caption: "Emerald water along the lakeshore path.",
+        width: 2400,
+        height: 1637,
+        credit: { author: "Nұrlan Rakhymzhanov (Kazakh Wikipedia)", ...CC0, sourceUrl: "https://commons.wikimedia.org/wiki/File:Kolsay_Lake.jpeg" },
+      },
+      {
+        role: "gallery-02",
+        alt: "A grey-blue lake below layered green mountain ridges under low cloud, seen from a forested slope",
+        caption: "The first (lower) Kolsai lake, as identified in the photographer's file title, June 2023.",
+        width: 2400,
+        height: 1800,
+        credit: { author: "Lfvelynis", ...CC_BY_SA_4, sourceUrl: "https://commons.wikimedia.org/wiki/File:First_Kolsay_lake_2023.jpg" },
+      },
+      {
+        role: "gallery-03",
+        alt: "Rippled blue water in the foreground with spruce-covered mountains and a distant peak at Kolsai under a partly cloudy sky",
+        caption: "Wind on the water in early summer, 2022.",
+        width: 2400,
+        height: 1800,
+        credit: { author: "Nazkens", ...CC_BY_SA_4, sourceUrl: "https://commons.wikimedia.org/wiki/File:Kolsay_lakes_-_june_2022.jpg" },
+      },
+    ]),
+    sources: [s.kolsaiPark, s.wikiKolsai, s.wikiRuKolsai],
+    status: "verified",
+    verifiedOn: "2026-10-27",
+  },
+  {
+    id: "dst-charyn-canyon",
+    slug: "charyn-canyon",
+    name: "Charyn Canyon",
+    region: "Almaty Region, south-east Kazakhstan",
+    category: "canyons-rocks",
+    landscape: "Sedimentary canyon",
+    summary:
+      "Red and ochre rock walls carved along the Charyn River, including the side canyon known as the Valley of Castles.",
+    intro:
+      "Along the Charyn River, layered red rock has been worn into towers, walls and narrow corridors. The Valley of Castles is the best-known section of a much larger protected canyon system.",
+    keywords: ["Sharyn", "Valley of Castles", "river", "sandstone", "ash grove", "national park", "red rock"],
+    quickFacts: [
+      { label: "Landscape", value: "River canyon in layered sedimentary rock" },
+      { label: "Location", value: "Almaty Region, about 200 km east of Almaty" },
+      { label: "Protected area", value: "Charyn State National Nature Park (est. 2004)" },
+      { label: "Visit style", value: "Rim viewpoints and walks into side canyons" },
+    ],
+    special: {
+      heading: "What makes it special",
+      paragraphs: [
+        "Charyn is a canyon system cut by the Charyn River through the dry foothills north of the Tian Shan. Its walls show bands of sedimentary rock — clays, marl, gritstone and sandstone — in reds, oranges and greys. Where softer layers have washed away, harder rock remains as towers and ridges.",
+        "The most visited part is the Valley of Castles, a side canyon whose rock shapes are named for their resemblance to fortress walls and turrets. From the rim you look down into a maze of formations; from the canyon floor the walls close in and the scale becomes clear. The contrast between bare red rock and the green strip of trees along the river is one of the canyon's defining views.",
+      ],
+      sourceIds: [s.wikiCharynPark.id, s.qgCharyn.id, s.wikiCharynCanyon.id],
+    },
+    history: {
+      heading: "Landscape and history",
+      paragraphs: [
+        "The canyon's shapes are the result of erosion: running water and wind remove weaker layers faster than more resistant ones, leaving the columns and ledges that give the Valley of Castles its name. Published estimates of the canyon's length, depth and age vary widely between sources, so this guide does not repeat them.",
+        "Charyn State National Nature Park was established by government decree on 23 February 2004, and its territory was expanded in 2009. Besides the canyon, the park protects a relict grove of Sogdian ash (Fraxinus sogdiana) along the river, which had already been declared a natural monument in 1964. The grove is a remnant of ash forest that was once far more widespread along the northern Tian Shan.",
+      ],
+      sourceIds: [s.qgCharyn.id, s.wikiCharynPark.id],
+    },
+    planning: {
+      heading: "Planning your visit",
+      paragraphs: [
+        "Charyn is a national park, so entry and route rules are set by the park administration. Its official website was not reachable when this guide was researched, which is a good reason to confirm current fees, open sections and any closures through official Kazakhstan tourism channels before you travel.",
+        "The canyon is hot, dry and exposed in summer, with little shade on the rim. Carry more water than you expect to need, wear sun protection and avoid the hottest part of the day for longer walks. Keep back from crumbling edges, which can be undercut, and stay out of narrow side gullies when heavy rain is possible.",
+        "Spring and autumn are generally more comfortable for walking, but conditions vary from year to year.",
+      ],
+      sourceIds: [s.wikiCharynPark.id],
+    },
+    coordinates: {
+      lat: 43.3581,
+      lon: 79.0925,
+      represents: "Reference point for Charyn Canyon used by Wikipedia, near the Valley of Castles",
+      sourceId: s.wikiCharynCanyon.id,
+    },
+    mapSearchQuery: "Valley of Castles, Charyn Canyon, Kazakhstan",
+    relatedSlugs: ["bozzhyra", "kolsai-lakes", "singing-dune"],
+    theme: { accent: "#B05E3A", deep: "#6B2F18", wash: "#F2E4D9" },
+    heroPlacement: "left",
+    media: media("charyn-canyon", [
+      {
+        role: "hero",
+        alt: "A dirt track winding through the floor of Charyn Canyon between red and ochre rock towers, with dry hills beyond",
+        caption: "A track through the canyon floor among red rock towers, September 2023.",
+        width: 3200,
+        height: 2051,
+        focal: { desktop: "50% 62%", mobile: "46% 58%" },
+        credit: { author: "Bgag", ...CC0, sourceUrl: "https://commons.wikimedia.org/wiki/File:Charyn_Canyon,_Kazakhstan_03.jpg" },
+      },
+      {
+        role: "gallery-01",
+        alt: "Rows of red sandstone pillars and walls in Charyn Canyon seen from above, with grey mountains on the horizon",
+        caption: "Pillars and walls in the Valley of Castles area.",
+        width: 2400,
+        height: 1600,
+        credit: { author: "Adam Harangozó", ...CC_BY_SA_4, sourceUrl: "https://commons.wikimedia.org/wiki/File:Charyn_Canyon_07.jpg" },
+      },
+      {
+        role: "gallery-02",
+        alt: "The Charyn River flowing through a green strip of trees at the bottom of layered canyon walls, with visitors on a rocky ledge",
+        caption: "The Charyn River and its green riverbank below the canyon walls.",
+        width: 2400,
+        height: 1600,
+        credit: { author: "Adam Harangozó", ...CC_BY_SA_4, sourceUrl: "https://commons.wikimedia.org/wiki/File:Charyn_Canyon_01.jpg" },
+      },
+      {
+        role: "gallery-03",
+        alt: "Close view of eroded red rock turrets and a large fallen boulder in Charyn Canyon against a pale sky",
+        caption: "Eroded turrets and fallen blocks inside the canyon.",
+        width: 2400,
+        height: 1600,
+        credit: { author: "Adam Harangozó", ...CC_BY_SA_4, sourceUrl: "https://commons.wikimedia.org/wiki/File:Charyn_Canyon_27.jpg" },
+      },
+    ]),
+    sources: [s.wikiCharynPark, s.wikiCharynCanyon, s.qgCharyn],
+    status: "verified",
+    verifiedOn: "2026-10-27",
+  },
+  {
+    id: "dst-kaindy-lake",
+    slug: "kaindy-lake",
+    name: "Kaindy Lake",
+    region: "Almaty Region, northern Tian Shan",
+    category: "lakes",
+    landscape: "Landslide-dammed lake",
+    summary:
+      "A young turquoise lake where the trunks of a drowned spruce forest still rise from the water, formed after the 1911 earthquake.",
+    intro:
+      "Bare spruce trunks rise straight out of turquoise water. Kaindy Lake formed when a landslide after the 1911 earthquake dammed a mountain gorge and flooded the forest growing there.",
+    keywords: ["Kayindy", "sunken forest", "submerged forest", "spruce", "earthquake", "1911", "Saty", "turquoise"],
+    quickFacts: [
+      { label: "Landscape", value: "Lake with a submerged spruce forest" },
+      { label: "Location", value: "Almaty Region, in a gorge east of Saty" },
+      { label: "Protected area", value: "Kolsai Lakes State National Nature Park" },
+      { label: "Formed", value: "After the January 1911 earthquake" },
+    ],
+    special: {
+      heading: "What makes it special",
+      paragraphs: [
+        "Kaindy is best known for the tops of spruce trunks that stand above its surface, pale and branchless, while the lake around them is a clear turquoise. According to the official tourism portal, the branches and needles below the waterline are still well preserved.",
+        "The scene is unusual because the lake is so young. A forest was growing in this gorge until the early twentieth century, and the trees died standing when the water rose around them. Today the lake sits among living spruce forest on steep slopes, so the old trunks and the surrounding woodland can be seen side by side. The colour of the water shifts with light and season, which is why photographs of the lake vary so much.",
+      ],
+      sourceIds: [s.ktKaindy.id, s.wikiKaindy.id],
+    },
+    history: {
+      heading: "Landscape and history",
+      paragraphs: [
+        "In January 1911 a powerful earthquake struck the northern Tian Shan; it is known as the Kemin (or Kebin) earthquake. The Kolsai Lakes park describes how it triggered a limestone landslide and ground subsidence that blocked the gorge. Water from the mountain stream collected behind this natural dam and flooded the spruce forest on the valley floor.",
+        "The submerged trees are Schrenk's spruce (Picea schrenkiana), the characteristic conifer of these mountains. The official tourism portal gives the lake's elevation as about 1,900 m. Kaindy lies within the Kolsai Lakes State National Nature Park, in a separate gorge from the Kolsai lake chain.",
+      ],
+      sourceIds: [s.kolsaiPark.id, s.ktKaindy.id, s.wikiKaindy.id],
+    },
+    planning: {
+      heading: "Planning your visit",
+      paragraphs: [
+        "Kaindy is managed by the Kolsai Lakes national park, which takes payment at a checkpoint on the Kaindy route and sells tickets online. Vehicle access and route arrangements on the approach have changed over the years, so check the park's official website for the current rules instead of following older trip reports.",
+        "Expect to walk on uneven mountain ground near the lake; wear proper footwear, as paths can be muddy after rain. The water is cold and the drowned trunks are fragile: admire them from the shore and follow any restrictions posted by the park.",
+        "There is no mobile coverage at the lake, according to the official tourism portal, so plan your return before you set out.",
+      ],
+      sourceIds: [s.kolsaiPark.id, s.ktKaindy.id],
+    },
+    coordinates: {
+      lat: 42.9844,
+      lon: 78.46577,
+      represents: "Reference point for Lake Kaindy given by Kazakhstan.travel",
+      sourceId: s.ktKaindy.id,
+    },
+    mapSearchQuery: "Kaindy Lake, Almaty Region, Kazakhstan",
+    relatedSlugs: ["kolsai-lakes", "big-almaty-lake"],
+    theme: { accent: "#2B8A86", deep: "#134746", wash: "#DCEDEA" },
+    heroPlacement: "left",
+    media: media("kaindy-lake", [
+      {
+        role: "hero",
+        alt: "Turquoise lake water with dozens of bare spruce trunks standing in it, below steep forested slopes at Kaindy",
+        caption: "Kaindy Lake after a hail shower, June 2024.",
+        width: 3200,
+        height: 2400,
+        focal: { desktop: "52% 45%", mobile: "62% 48%" },
+        credit: { author: "Katariyakartikey", ...CC0, sourceUrl: "https://commons.wikimedia.org/wiki/File:Kaindy_lake_after_rain.jpg" },
+      },
+      {
+        role: "gallery-01",
+        alt: "Tall grey tree trunks rising from deep blue water at Kaindy Lake, with spruce forest and a rocky slope behind",
+        caption: "Drowned spruce trunks rising from the lake, May 2023.",
+        width: 2400,
+        height: 1600,
+        credit: { author: "Bok", ...CC_BY_SA_4, sourceUrl: "https://commons.wikimedia.org/wiki/File:%D0%90%D0%BB%D0%BC%D0%B0%D1%82%D0%B8%D0%BD%D1%81%D0%BA%D0%B0%D1%8F_%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C,_%D0%BE%D0%B7%D0%B5%D1%80%D0%BE_%D0%9A%D0%B0%D0%B8%D0%BD%D0%B4%D1%8B,_2023-05-07_01.jpg" },
+      },
+      {
+        role: "gallery-02",
+        alt: "Dense rows of bare trunks standing in still dark water at Kaindy Lake, reflected below a forested ridge",
+        caption: "Trunks reflected in still water.",
+        width: 2400,
+        height: 1600,
+        credit: { author: "RS128", ...CC_BY_SA_4, sourceUrl: "https://commons.wikimedia.org/wiki/File:%D0%9E%D0%B7.%D0%9A%D0%90%D0%98%D0%9D%D0%94%D0%AB.jpg" },
+      },
+      {
+        role: "gallery-03",
+        alt: "Snow falling over Kaindy Lake, with snow-dusted spruce slopes and the lake surface partly frozen",
+        caption: "Snowfall over the lake in November 2022.",
+        width: 2000,
+        height: 1333,
+        credit: { author: "MariSimonova", ...CC_BY_SA_4, sourceUrl: "https://commons.wikimedia.org/wiki/File:%D0%A1%D0%BD%D0%B5%D0%B3%D0%BE%D0%BF%D0%B0%D0%B4_%D0%BD%D0%B0%D0%B4_%D0%BE%D0%B7%D0%B5%D1%80%D0%BE%D0%BC_%D0%9A%D0%B0%D0%B8%D0%BD%D0%B4%D1%8B.jpg" },
+      },
+    ]),
+    sources: [s.ktKaindy, s.kolsaiPark, s.wikiKaindy],
+    status: "verified",
+    verifiedOn: "2026-10-27",
+  },
+  {
+    id: "dst-singing-dune",
+    slug: "singing-dune",
+    name: "Singing Dune",
+    region: "Zhetysu Region, Altyn-Emel National Park",
+    category: "dunes",
+    landscape: "Isolated sand dune",
+    summary:
+      "A long, isolated dune near the Ili River that can produce a low humming sound when dry sand moves down its slopes.",
+    intro:
+      "Between two desert mountain massifs near the Ili River, a single long ridge of pale sand rises from the plain. When dry sand slides, the dune can produce a deep, sustained hum.",
+    keywords: ["Aigaikum", "Altyn-Emel", "Altyn Emel", "sand", "desert", "Ili", "barchan", "Kalkan", "sound"],
+    quickFacts: [
+      { label: "Landscape", value: "Isolated dune ridge in a desert valley" },
+      { label: "Location", value: "Kerbulak District, Zhetysu Region" },
+      { label: "Protected area", value: "Natural monument within Altyn-Emel State National Nature Park" },
+      { label: "Visit style", value: "Park route by vehicle, then a climb on foot" },
+    ],
+    special: {
+      heading: "What makes it special",
+      paragraphs: [
+        "The Singing Dune — known in Kazakh as Aigaikum — is a ridge of sand standing on its own in a wide desert valley, between the Big and Small Kalkan mountains on the right bank of the Ili River. The park gives its length as about 3 km and the height of its southern crest as about 150 m, with a lower northern crest nearby.",
+        "Its name comes from the sound. When dry sand moves — in wind or when it slides down the slope — the dune can give off a long, low tone that the park compares to traditional wind and string instruments, or to a distant aircraft. The sound depends on conditions, so it is not heard on every visit.",
+        "The dune is only one feature of Altyn-Emel, a large national park that also includes the colourful Aktau and Katutau mountains and the Besshatyr burial mounds.",
+      ],
+      sourceIds: [s.altynEmelDune.id, s.ktAltynEmel.id],
+    },
+    history: {
+      heading: "Landscape and history",
+      paragraphs: [
+        "The dune lies at roughly 600–650 m above sea level, and the park notes that the sound is produced not only in wind but also when dry sand slides down the slope. Several explanations have been proposed several explanations for the singing: the speed at which a mass of sand moves, the thickness of the dry surface layer, resonance between dry sand and damper sand beneath, or air compressed between the grains. The park presents these as explanations under discussion, not a settled answer, and so does this guide.",
+        "The dune was declared a natural monument of national significance by government resolution No. 746 of 19 July 2005, and its area of about 240 hectares lies within Altyn-Emel State National Nature Park. The park itself is listed on the official tourism portal as a UNESCO Biosphere Reserve.",
+      ],
+      sourceIds: [s.altynEmelDune.id, s.ktAltynEmel.id],
+    },
+    planning: {
+      heading: "Planning your visit",
+      paragraphs: [
+        "Visits are organised through Altyn-Emel park. The official tourism portal lists marked routes, with the route that includes the dune starting and ending at Basshi village, where the park office is located. Arrangements such as route rules, checkpoints and fees are set by the park and can change, so contact the park before travelling.",
+        "The approach crosses open desert with no mobile coverage, according to the official tourism portal. Climbing the soft sand ridge is tiring; in hot weather the sand surface becomes very warm, and there is no shade. Bring water, sun protection and footwear that copes with sand, and stay off the ridge in strong wind.",
+      ],
+      sourceIds: [s.ktAltynEmel.id, s.altynEmelDune.id],
+    },
+    coordinates: {
+      lat: 43.867084,
+      lon: 78.566923,
+      represents: "Reference point for the Singing Dune used by Wikipedia",
+      sourceId: s.wikiRuSingingDune.id,
+    },
+    mapSearchQuery: "Singing Dune, Altyn-Emel National Park, Kazakhstan",
+    relatedSlugs: ["charyn-canyon", "bozzhyra"],
+    theme: { accent: "#B8924A", deep: "#5E4A24", wash: "#F2EAD6" },
+    heroPlacement: "left",
+    media: media("singing-dune", [
+      {
+        role: "hero",
+        alt: "The smooth, rippled flank of the Singing Dune rising diagonally to a sharp crest under a soft grey-blue sky",
+        caption: "The flank and crest of the Singing Dune, September 2019.",
+        width: 3200,
+        height: 2133,
+        focal: { desktop: "55% 50%", mobile: "70% 50%" },
+        credit: { author: "Marat Rysbekov", ...CC_BY_SA_4, sourceUrl: "https://commons.wikimedia.org/wiki/File:04_%D0%9F%D0%BE%D1%8E%D1%89%D0%B8%D0%B9_%D0%B1%D0%B0%D1%80%D1%85%D0%B0%D0%BD.jpg" },
+      },
+      {
+        role: "gallery-01",
+        alt: "The rounded mass of the Singing Dune seen across a sandy plain with scattered shrubs and dry plant stalks",
+        caption: "The dune seen across the surrounding plain.",
+        width: 2400,
+        height: 1461,
+        credit: { author: "Marat Rysbekov", ...CC_BY_SA_4, sourceUrl: "https://commons.wikimedia.org/wiki/File:02_%D0%9F%D0%BE%D1%8E%D1%89%D0%B8%D0%B9_%D0%B1%D0%B0%D1%80%D1%85%D0%B0%D0%BD.jpg" },
+      },
+      {
+        role: "gallery-02",
+        alt: "An orange-tinted sand dune rising behind yellow desert shrubs under a pale blue sky in Altyn-Emel",
+        caption: "Desert shrubs at the foot of the dune in spring.",
+        width: 2400,
+        height: 1617,
+        credit: { author: "RS128", ...CC_BY_SA_4, sourceUrl: "https://commons.wikimedia.org/wiki/File:%D0%9F%D0%9E%D0%AE%D0%A9%D0%98%D0%99_%D0%91%D0%90%D0%A0%D0%A5%D0%90%D0%9D.jpg" },
+      },
+      {
+        role: "gallery-03",
+        alt: "A sharp golden dune crest with footprints, curving toward distant blue mountains in Altyn-Emel",
+        caption: "Footprints along the crest, with mountains on the horizon.",
+        width: 2400,
+        height: 1800,
+        credit: { author: "Sane4o", ...CC_BY_SA_4, sourceUrl: "https://commons.wikimedia.org/wiki/File:Altyn_Emel_2020_4.jpg" },
+      },
+    ]),
+    sources: [s.altynEmelDune, s.ktAltynEmel, s.wikiRuSingingDune],
+    status: "verified",
+    verifiedOn: "2026-10-27",
+  },
+  {
+    id: "dst-burabay-zhumbaktas",
+    slug: "burabay-zhumbaktas",
+    name: "Burabay — Zhumbaktas",
+    region: "Akmola Region, northern Kazakhstan",
+    category: "canyons-rocks",
+    landscape: "Granite rock in a lake",
+    summary:
+      "A stack of granite slabs rising from Lake Burabay, whose outline seems to change as you move along the shore.",
+    intro:
+      "In a quiet bay of Lake Burabay, a stack of weathered granite slabs rises from the water. Zhumbaktas, the “riddle stone”, seems to change its profile as you move along the shore.",
+    keywords: ["Zhumbaktas", "Burabay", "Borovoe", "Borovoye", "Aulieköl", "Okzhetpes", "Sphinx", "granite", "pine", "Kokshetau"],
+    quickFacts: [
+      { label: "Landscape", value: "Granite rock formation in a forest lake" },
+      { label: "Location", value: "Burabay District, Akmola Region" },
+      { label: "Protected area", value: "Burabay State National Nature Park (est. 2000)" },
+      { label: "Visit style", value: "Shoreline walks and viewpoints" },
+    ],
+    special: {
+      heading: "What makes it special",
+      paragraphs: [
+        "Zhumbaktas is a single rock formation in the northern part of the lake known as Burabay or Borovoe (the park names it Aulieköl). It is built from horizontal layers of granite that the park compares to a pile of mattresses, and it stands in a bay between the Kokshe and Temirtau ridges.",
+        "Its name means “riddle stone”. The park describes how the rock's outline changes with the viewpoint: from the Blue Bay it resembles the profile of a young woman, and as you walk along the shore the profile appears to age. Across the water rises Okzhetpes, a taller rock outcrop that appears in the same stories.",
+        "Burabay is the name of the wider area — the national park, its lakes and pine-covered hills — while Zhumbaktas is one specific formation within it.",
+      ],
+      sourceIds: [s.burabayZhumbaktas.id, s.burabayOkzhetpes.id],
+    },
+    history: {
+      heading: "Landscape and history",
+      paragraphs: [
+        "The park describes Zhumbaktas as a natural creation, not a carved monument. Stacked, rounded forms like this are common where granite weathers slowly along natural cracks.",
+        "Legend links the rock to Okzhetpes, whose name means “the arrow will not reach”. In the version told by the park, a captive Kalmyk girl promised to marry whoever could shoot an arrow to the summit of Okzhetpes; when no arrow reached it, she threw herself from the top, and Zhumbaktas appeared where she fell. Other versions of the story exist, and they should be read as folklore rather than history.",
+        "The Burabay State National Nature Park was established on 12 August 2000 and protects this low-mountain landscape of lakes, rocks and pine forest in northern Kazakhstan.",
+      ],
+      sourceIds: [s.burabayZhumbaktas.id, s.burabayOkzhetpes.id, s.burabayAbout.id],
+    },
+    planning: {
+      heading: "Planning your visit",
+      paragraphs: [
+        "Zhumbaktas is seen from the shores of Lake Burabay. Under the park's visitor rules, you need proof that the park entry fee has been paid, and you should stay on roads and marked routes. Only non-motorised boats are allowed on the park's waters, and only by agreement with the park administration.",
+        "Camping and fires are limited to designated places. These rules are published by the park and can change, so check its official website before your visit, along with current fees.",
+        "Winters in northern Kazakhstan are long and cold, and the lake freezes over, as the winter photograph in the gallery shows.",
+      ],
+      sourceIds: [s.burabayRules.id],
+    },
+    coordinates: {
+      lat: 53.08333,
+      lon: 70.3,
+      represents: "Reference point for Burabay National Park used by Wikipedia — not the exact position of the rock",
+      sourceId: s.wikiBurabay.id,
+    },
+    mapSearchQuery: "Zhumbaktas rock, Lake Burabay, Kazakhstan",
+    relatedSlugs: ["kolsai-lakes", "bozzhyra"],
+    theme: { accent: "#4E7462", deep: "#243B30", wash: "#E2E8E4" },
+    heroPlacement: "right",
+    media: media("burabay-zhumbaktas", [
+      {
+        role: "hero",
+        alt: "The layered granite rock of Zhumbaktas rising from calm lake water, with a pine-covered hill behind it at dusk",
+        caption: "Zhumbaktas in Lake Burabay, June 2023.",
+        width: 3200,
+        height: 1828,
+        focal: { desktop: "30% 55%", mobile: "24% 55%" },
+        credit: { author: "Ivan ideia", ...CC_BY_SA_4, sourceUrl: "https://commons.wikimedia.org/wiki/File:%D0%94%D0%BE%D1%81%D1%82%D0%BE%D0%BF%D1%80%D0%B8%D0%BC%D0%B5%D1%87%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%D1%81%D1%82%D1%8C_%D0%91%D1%83%D1%80%D0%B0%D0%B1%D0%B0%D0%B9.jpg" },
+      },
+      {
+        role: "gallery-01",
+        alt: "Zhumbaktas seen from a distance as a low stack of rock in the middle of a wide lake, with forested hills on the far shore",
+        caption: "Zhumbaktas from across the lake, June 2012.",
+        width: 2400,
+        height: 1594,
+        credit: { author: "Ken and Nyetta", ...CC_BY_2, sourceUrl: "https://commons.wikimedia.org/wiki/File:%22The_Sphinx%22_Rock_Formation_at_Borovoye,_Kazakhstan_(7379961056).jpg", via: "Wikimedia Commons (from Flickr)" },
+      },
+      {
+        role: "gallery-02",
+        alt: "Panorama over a blue lake from a rocky hilltop, with the pointed peak of Okzhetpes and forested mountains beyond",
+        caption: "The lake, Okzhetpes and Zhumbaktas seen from Bolektau rock, June 2021.",
+        width: 2400,
+        height: 1098,
+        credit: { author: "Evgeny Emelyanov", ...CC_BY_SA_4, sourceUrl: "https://commons.wikimedia.org/wiki/File:%D0%91%D0%BE%D1%80%D0%BE%D0%B2%D0%BE%D0%B5_(%D0%91%D1%83%D1%80%D0%B0%D0%B1%D0%B0%D0%B9),_%D0%B2%D0%B8%D0%B4_%D1%81%D0%BE_%D1%81%D0%BA%D0%B0%D0%BB%D1%8B_%D0%91%D0%BE%D0%BB%D0%B5%D0%BA%D1%82%D0%B0%D1%83.jpg" },
+      },
+      {
+        role: "gallery-03",
+        alt: "Zhumbaktas on the frozen, snow-covered lake in winter, with the snowy peak of Okzhetpes rising behind",
+        caption: "Winter at Blue Bay: Zhumbaktas with Okzhetpes behind, March 2021.",
+        width: 2400,
+        height: 1496,
+        credit: { author: "Evgeny Emelyanov", ...CC_BY_SA_4, sourceUrl: "https://commons.wikimedia.org/wiki/File:%D0%97%D0%B8%D0%BC%D0%BD%D0%B8%D0%B9_%D0%93%D0%BE%D0%BB%D1%83%D0%B1%D0%BE%D0%B9_%D0%B7%D0%B0%D0%BB%D0%B8%D0%B2._%D0%96%D1%83%D0%BC%D0%B1%D0%B0%D0%BA%D1%82%D0%B0%D1%81,_%D0%9E%D0%BA%D0%B6%D0%B5%D1%82%D0%BF%D0%B5%D1%81,_%D0%9A%D0%BE%D0%BA%D1%88%D0%B5%D1%82%D0%B0%D1%83._%D0%91%D1%83%D1%80%D0%B0%D0%B1%D0%B0%D0%B9.jpg" },
+      },
+    ]),
+    sources: [s.burabayZhumbaktas, s.burabayOkzhetpes, s.burabayRules, s.burabayAbout, s.wikiBurabay],
+    status: "verified",
+    verifiedOn: "2026-10-27",
+  },
+  {
+    id: "dst-big-almaty-lake",
+    slug: "big-almaty-lake",
+    name: "Big Almaty Lake",
+    region: "Almaty Region, Ile-Alatau mountains",
+    category: "lakes",
+    landscape: "High mountain lake",
+    summary:
+      "A glacial-blue lake in a high basin of the Ile-Alatau mountains above Almaty, protected as a source of the city's drinking water.",
+    intro:
+      "High in the mountains above Almaty, a milky-turquoise lake fills a basin ringed by steep ridges and snow-capped peaks. It is also one of the city's main sources of drinking water.",
+    keywords: ["BAO", "Bolshoe Almatinskoe", "Ile-Alatau", "Trans-Ili Alatau", "turquoise", "reservoir", "Almaty", "mountains"],
+    quickFacts: [
+      { label: "Landscape", value: "High mountain lake in a glacial basin" },
+      { label: "Location", value: "Ile-Alatau range, about 15 km south of central Almaty" },
+      { label: "Protected area", value: "Ile-Alatau State National Nature Park" },
+      { label: "Visit style", value: "Viewpoints above the shore; swimming is not allowed" },
+    ],
+    special: {
+      heading: "What makes it special",
+      paragraphs: [
+        "Big Almaty Lake sits at about 2,511 m in the Ile-Alatau (Trans-Ili Alatau) range, close enough to Almaty to be reached in a day, yet surrounded by a fully alpine landscape. The national park gives its area as 112 hectares, its length as about 1.6 km and its depth as 25 m.",
+        "Its colour is the first thing most visitors notice: a pale, milky turquoise that changes with light and season. Steep slopes and snow-capped peaks surround the basin, including Sovetov Peak to the south-east. Higher up the valley, the domes of the Tien Shan Astronomical Observatory stand above the lake's basin.",
+      ],
+      sourceIds: [s.ileAlatau.id, s.wikiBigAlmaty.id],
+    },
+    history: {
+      heading: "Landscape and history",
+      paragraphs: [
+        "Reference sources describe the lake basin as tectonic in origin, with the lake held in a mountain valley that drains into the Big Almaty River. Today the lake also works as a natural reservoir: it is one of the main sources of drinking water for Almaty, which is why its shore is protected and swimming is prohibited.",
+        "The lake lies within Ile-Alatau State National Nature Park, whose history the park traces back to 1931. The park covers a long stretch of the mountains south of the city, protecting forests, alpine meadows and high valleys as well as this lake.",
+      ],
+      sourceIds: [s.wikiBigAlmaty.id, s.ileAlatau.id],
+    },
+    planning: {
+      heading: "Planning your visit",
+      paragraphs: [
+        "Under the park's published rules, amended in April 2023, visitors must carry proof that the park fee has been paid, stay on roads and marked trails, and use only designated places for stopping, camping and fires. Because the lake supplies drinking water, do not swim, wash anything in the water or leave any litter.",
+        "Road access to the lake, document checks and permitted transport have changed several times in recent years and are reported differently by different sources. Confirm current arrangements with the Ile-Alatau park administration before you go.",
+        "At this altitude the weather turns quickly and nights are cold even in summer. Bring warm layers, and allow time to adjust if you plan to walk higher.",
+      ],
+      sourceIds: [s.ileAlatauRules.id, s.wikiBigAlmaty.id],
+    },
+    coordinates: {
+      lat: 43.0506,
+      lon: 76.985,
+      represents: "Reference point for Big Almaty Lake used by Wikipedia",
+      sourceId: s.wikiBigAlmaty.id,
+    },
+    mapSearchQuery: "Big Almaty Lake, Kazakhstan",
+    relatedSlugs: ["kolsai-lakes", "kaindy-lake"],
+    theme: { accent: "#3A8C9B", deep: "#1B4650", wash: "#E0ECEE" },
+    heroPlacement: "left",
+    media: media("big-almaty-lake", [
+      {
+        role: "hero",
+        alt: "Wide panorama of turquoise Big Almaty Lake below dark mountain ridges and snow-capped peaks under a blue sky",
+        caption: "Big Almaty Lake and the surrounding peaks, September 2015.",
+        width: 5600,
+        height: 1904,
+        focal: { desktop: "50% 55%", mobile: "54% 55%" },
+        credit: { author: "Igors Jefimovs", ...CC_BY_3, sourceUrl: "https://commons.wikimedia.org/wiki/File:Big_Almaty_Lake.jpg" },
+      },
+      {
+        role: "gallery-01",
+        alt: "Big Almaty Lake seen from high above, a blue oval in a valley of reddish-brown slopes with snowy peaks behind",
+        caption: "The lake from the slopes above, September.",
+        width: 2400,
+        height: 1649,
+        credit: { author: "Ilya Rudakov", ...CC_BY_SA_3, sourceUrl: "https://commons.wikimedia.org/wiki/File:Above_the_Big_Almaty_Lake.jpg", via: "Wikimedia Commons (from Panoramio)" },
+      },
+      {
+        role: "gallery-02",
+        alt: "A distant turquoise lake in a broad mountain valley seen from a high rocky pass, with ranges of peaks behind",
+        caption: "The lake basin from a high pass, August 2016.",
+        width: 2400,
+        height: 1600,
+        credit: { author: "BitLord (Russian Wikipedia user)", ...CC_BY_SA_4, sourceUrl: "https://commons.wikimedia.org/wiki/File:Big_Almaty_Lake_from_pass.jpg" },
+      },
+      {
+        role: "gallery-03",
+        alt: "Pale green lake water at the foot of green slopes and a snow-capped peak, seen from a grassy hillside in early summer",
+        caption: "The lake and Sovetov Peak in June 2008.",
+        width: 2272,
+        height: 1704,
+        credit: { author: "Ds02006", ...PD, sourceUrl: "https://commons.wikimedia.org/wiki/File:Big_Almaty_Lake_(Bolshaya_Almatinka)_in_June.jpg" },
+      },
+    ]),
+    sources: [s.ileAlatau, s.ileAlatauRules, s.wikiBigAlmaty],
+    status: "verified",
+    verifiedOn: "2026-10-27",
+  },
+];
