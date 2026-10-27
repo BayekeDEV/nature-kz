@@ -75,7 +75,7 @@ export function KazakhstanMap({ points, title, view = "country", highlightSlug }
       <svg viewBox={`${box.x} ${box.y} ${box.w} ${box.h}`} aria-hidden className="block h-auto w-full overflow-hidden">
         <path
           d={KAZAKHSTAN_OUTLINE_PATH}
-          className="fill-paper-deep stroke-ink/35"
+          className="fill-fg/[0.07] stroke-fg/40"
           strokeWidth={1.2}
           vectorEffect="non-scaling-stroke"
           strokeLinejoin="round"
@@ -85,10 +85,10 @@ export function KazakhstanMap({ points, title, view = "country", highlightSlug }
       {groupSouthEast && southEastCount > 0 && (
         <div
           aria-hidden
-          className="absolute border border-dashed border-ink/55 bg-ink/5"
+          className="absolute border border-dashed border-fg/55 bg-fg/5"
           style={{ ...inset, width: `${(SOUTH_EAST_BOX.w / box.w) * 100}%`, height: `${(SOUTH_EAST_BOX.h / box.h) * 100}%` }}
         >
-          <span className="absolute right-0 bottom-full mb-1 hidden text-[0.75rem] font-medium whitespace-nowrap text-ink sm:block">
+          <span className="absolute right-0 bottom-full mb-1 hidden text-[0.75rem] font-medium whitespace-nowrap text-fg sm:block">
             South-east detail: {southEastCount} destinations
           </span>
         </div>
@@ -97,7 +97,9 @@ export function KazakhstanMap({ points, title, view = "country", highlightSlug }
       <ul>
         {visible.map((point) => {
           const { x, y } = projectToMap(point.coordinates.lat, point.coordinates.lon);
-          const side: LabelSide = view === "south-east" ? (SOUTH_EAST_LABELS[point.slug] ?? "right") : "right";
+          // Labels go left of points in the far east so they never run off the edge.
+          const side: LabelSide =
+            view === "south-east" ? (SOUTH_EAST_LABELS[point.slug] ?? "right") : (x - box.x) / box.w > 0.68 ? "left" : "right";
           return (
             <li key={point.slug} className="absolute" style={toPercent(x, y)}>
               <Link
@@ -107,14 +109,14 @@ export function KazakhstanMap({ points, title, view = "country", highlightSlug }
               >
                 <span
                   aria-hidden
-                  className="grid size-5 place-items-center rounded-full border-2 sm:size-6 border-paper text-[0.7rem] font-semibold text-white shadow-sm transition-transform group-hover:scale-110 group-focus-visible:ring-2 group-focus-visible:ring-ink"
+                  className="grid size-5 place-items-center rounded-full border-2 sm:size-6 border-page text-[0.7rem] font-semibold text-[#14110D] shadow-sm transition-transform group-hover:scale-110 group-focus-visible:ring-2 group-focus-visible:ring-fg"
                   style={{ backgroundColor: point.accent }}
                 >
                   {point.number}
                 </span>
                 <span
                   aria-hidden
-                  className={`absolute text-[0.8rem] leading-tight font-medium whitespace-nowrap text-ink group-hover:underline group-focus-visible:underline sm:text-[0.875rem] ${LABEL_CLASS[side]}`}
+                  className={`absolute text-[0.8rem] leading-tight font-medium whitespace-nowrap text-fg group-hover:underline group-focus-visible:underline sm:text-[0.875rem] ${LABEL_CLASS[side]}`}
                 >
                   {point.name}
                 </span>

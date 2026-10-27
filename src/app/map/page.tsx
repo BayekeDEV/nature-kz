@@ -17,21 +17,21 @@ export default function MapPage() {
   const unplotted = destinations.filter((d) => !d.coordinates);
 
   return (
-    <div className="pt-[var(--header-height)]">
+    <div className="page-glow pt-[var(--header-height)]">
       <header className="page-container pt-16 pb-8 md:pt-24">
-        <p className="eyebrow text-muted">Map</p>
+        <p className="eyebrow text-fg-muted">Map</p>
         <h1 className="mt-4 font-display text-[clamp(2.75rem,2rem+3.5vw,5.5rem)] leading-[0.95] font-medium">Where the destinations are</h1>
-        <p className="mt-6 max-w-[62ch] text-[1.05rem] leading-relaxed text-ink-soft">
+        <p className="mt-6 max-w-[62ch] text-[1.05rem] leading-relaxed text-fg-soft">
           A schematic overview for orientation, not navigation. Each marker is a published reference point for the destination, taken
           from the source listed beside it. It is not a trailhead, car park or approved access route.
         </p>
       </header>
 
       <section aria-label="Schematic map" className="page-container">
-        <div className="border-y border-line bg-paper-deep/60 px-2 py-8 md:px-10 md:py-12">
+        <div className="border-y border-line bg-raised/60 px-2 py-8 md:px-10 md:py-12">
           <MapOverview points={points} />
         </div>
-        <p className="mt-3 text-xs text-muted">
+        <p className="mt-3 text-xs text-fg-muted">
           Country outline simplified from Natural Earth (public domain). Not to be used for navigation.
         </p>
       </section>
@@ -45,7 +45,7 @@ export default function MapPage() {
             const source = d.coordinates ? d.sources.find((s) => s.id === d.coordinates?.sourceId) : undefined;
             return (
               <li key={d.id} className="grid gap-4 py-6 md:grid-cols-[3rem_minmax(0,1.2fr)_minmax(0,1.6fr)_auto] md:items-start md:gap-8">
-                <span className="font-display text-2xl tabular-nums" style={{ color: d.theme.deep }}>
+                <span className="font-display text-2xl tabular-nums" style={{ color: d.theme.accentText }}>
                   {String(index + 1).padStart(2, "0")}
                 </span>
                 <div>
@@ -54,15 +54,15 @@ export default function MapPage() {
                       {d.name}
                     </Link>
                   </h3>
-                  <p className="mt-1 text-[0.95rem] text-muted">{d.region}</p>
+                  <p className="mt-1 text-[0.95rem] text-fg-muted">{d.region}</p>
                 </div>
-                <div className="text-[0.95rem] text-ink-soft">
+                <div className="text-[0.95rem] text-fg-soft">
                   {d.coordinates ? (
                     <>
-                      <p className="font-medium tabular-nums text-ink">{formatCoordinates(d.coordinates)}</p>
+                      <p className="font-medium tabular-nums text-fg">{formatCoordinates(d.coordinates)}</p>
                       <p className="mt-1">{d.coordinates.represents}.</p>
                       {source && (
-                        <p className="mt-1 text-sm text-muted">
+                        <p className="mt-1 text-sm text-fg-muted">
                           Source:{" "}
                           <a href={source.url} target="_blank" rel="noopener" className="underline">
                             {source.publisher}
@@ -91,7 +91,7 @@ export default function MapPage() {
           })}
         </ol>
         {unplotted.length > 0 && (
-          <p className="mt-6 text-sm text-muted">Not plotted: {unplotted.map((d) => d.name).join(", ")}.</p>
+          <p className="mt-6 text-sm text-fg-muted">Not plotted: {unplotted.map((d) => d.name).join(", ")}.</p>
         )}
       </section>
     </div>

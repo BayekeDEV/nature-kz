@@ -32,10 +32,10 @@ export function DestinationImage({ media, sizes, priority = false, className = "
         className={`absolute inset-0 flex items-end bg-accent-wash ${className}`}
         style={{
           backgroundImage:
-            "radial-gradient(120% 80% at 70% 20%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 70%), linear-gradient(160deg, var(--accent-wash), color-mix(in srgb, var(--accent) 30%, var(--accent-wash)))",
+            "radial-gradient(120% 80% at 70% 20%, color-mix(in srgb, var(--t-accent) 24%, transparent), transparent 70%), linear-gradient(160deg, color-mix(in srgb, var(--t-accent) 14%, var(--t-bg)), color-mix(in srgb, var(--t-accent) 30%, var(--t-bg)))",
         }}
       >
-        <span className={`eyebrow m-4 ${tone === "light" ? "text-white/85" : "text-accent-deep"}`}>Photo pending</span>
+        <span className={`eyebrow m-4 ${tone === "light" ? "text-white/85" : "text-accent-fg"}`}>Photo pending</span>
       </div>
     );
   }

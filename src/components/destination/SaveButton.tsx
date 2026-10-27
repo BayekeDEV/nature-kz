@@ -25,7 +25,7 @@ export function SaveButton({ id, name, variant = "dark", className = "" }: Props
         aria-label={label}
         title={saved ? "Saved — select to remove" : "Save destination"}
         disabled={!hydrated}
-        className={`on-dark grid size-11 place-items-center rounded-full bg-black/35 text-white backdrop-blur-sm transition hover:bg-black/55 active:scale-95 disabled:opacity-60 ${className}`}
+        className={`on-photo grid size-11 place-items-center rounded-full bg-black/35 text-white backdrop-blur-sm transition hover:bg-black/55 active:scale-95 disabled:opacity-60 ${className}`}
       >
         <Bookmark className="size-[1.15rem]" fill={saved ? "currentColor" : "none"} strokeWidth={1.6} aria-hidden />
       </button>
@@ -34,8 +34,8 @@ export function SaveButton({ id, name, variant = "dark", className = "" }: Props
 
   const tone =
     variant === "light"
-      ? "on-dark border-white/60 text-white hover:bg-white hover:text-ink"
-      : "border-ink/25 text-ink hover:border-ink hover:bg-ink hover:text-paper";
+      ? "on-photo border-white/60 text-white hover:bg-white hover:text-fg"
+      : "border-fg/25 text-fg hover:border-fg hover:bg-fg hover:text-page";
 
   return (
     <button

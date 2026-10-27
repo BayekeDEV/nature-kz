@@ -6,7 +6,7 @@ import { PhotoHero } from "@/components/destination/PhotoHero";
 import { MapOverview } from "@/components/map/MapOverview";
 import { Reveal } from "@/components/motion/Reveal";
 import { getAllDestinations, getDestinationSummaries, getFeaturedDestination, getMedia } from "@/lib/destinations";
-import { heroFit, themeStyle } from "@/lib/format";
+import { heroFit } from "@/lib/format";
 import { getMapPoints } from "@/lib/map-points";
 
 export default function HomePage() {
@@ -17,49 +17,47 @@ export default function HomePage() {
 
   return (
     <>
-      <div style={themeStyle(featured.theme)}>
-        <PhotoHero
-          media={hero}
-          placement={featured.heroPlacement}
-          credit={
-            <>
-              Photo: {hero.credit.author}, {hero.credit.license}
-            </>
-          }
-          aside={
-            <a
-              href="#introduction"
-              className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-xs tracking-[0.2em] text-white/75 uppercase hover:text-white lg:flex"
-            >
-              Scroll
-              <ArrowDown className="size-4 motion-safe:animate-bounce" strokeWidth={1.5} aria-hidden />
-            </a>
-          }
-        >
-          <p className="eyebrow text-white/85">Featured destination · {featured.region}</p>
-          <h1 className="display-hero mt-5" style={{ "--fit": heroFit(featured.name) } as CSSProperties}>
-            {featured.name}
-          </h1>
-          <p className="mt-6 max-w-[34rem] text-[1.05rem] leading-relaxed text-white/90 md:text-[1.15rem]">{featured.intro}</p>
-          <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4">
-            <Link
-              href={`/destinations/${featured.slug}`}
-              className="inline-flex min-h-12 items-center gap-2 rounded-full bg-paper px-7 text-[0.98rem] font-medium text-ink transition hover:bg-white active:scale-[0.98]"
-            >
-              Explore {featured.name}
-              <ArrowRight className="size-4" aria-hidden />
-            </Link>
-            <Link href="/destinations" className="inline-flex min-h-11 items-center border-b border-white/60 text-[0.98rem] hover:border-white">
-              Discover all destinations
-            </Link>
-          </div>
-        </PhotoHero>
-      </div>
+      <PhotoHero
+        media={hero}
+        placement={featured.heroPlacement}
+        credit={
+          <>
+            Photo: {hero.credit.author}, {hero.credit.license}
+          </>
+        }
+        aside={
+          <a
+            href="#introduction"
+            className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-xs tracking-[0.2em] text-white/75 uppercase hover:text-white lg:flex"
+          >
+            Scroll
+            <ArrowDown className="size-4 motion-safe:animate-bounce" strokeWidth={1.5} aria-hidden />
+          </a>
+        }
+      >
+        <p className="eyebrow text-white/85">Featured destination · {featured.region}</p>
+        <h1 className="display-hero mt-5" style={{ "--fit": heroFit(featured.name) } as CSSProperties}>
+          {featured.name}
+        </h1>
+        <p className="mt-6 max-w-[34rem] text-[1.05rem] leading-relaxed text-white/90 md:text-[1.15rem]">{featured.intro}</p>
+        <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4">
+          <Link
+            href={`/destinations/${featured.slug}`}
+            className="inline-flex min-h-12 items-center gap-2 rounded-full bg-fg px-7 text-[0.98rem] font-medium text-page [text-shadow:none] transition hover:bg-white active:scale-[0.98]"
+          >
+            Explore {featured.name}
+            <ArrowRight className="size-4" aria-hidden />
+          </Link>
+          <Link href="/destinations" className="inline-flex min-h-11 items-center border-b border-white/60 text-[0.98rem] hover:border-white">
+            Discover all destinations
+          </Link>
+        </div>
+      </PhotoHero>
 
-      <section id="introduction" aria-labelledby="intro-heading" className="page-container py-24 md:py-32">
+      <section id="introduction" aria-labelledby="intro-heading" className="page-container pt-12 pb-20 md:pt-16 md:pb-28">
         <Reveal className="grid gap-10 md:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] md:gap-16">
           <div>
-            <p className="eyebrow text-muted">Kazakhstan&rsquo;s landscapes</p>
+            <p className="eyebrow text-fg-muted">Kazakhstan&rsquo;s landscapes</p>
             <h2 id="intro-heading" className="heading-section mt-4">
               From an ancient sea floor to the edge of the Tian Shan
             </h2>
@@ -78,16 +76,16 @@ export default function HomePage() {
         </Reveal>
       </section>
 
-      <section aria-labelledby="collection-heading" className="border-t border-line bg-paper pt-20 pb-24 md:pt-24 md:pb-32">
+      <section aria-labelledby="collection-heading" className="pb-24 md:pb-32">
         <div className="page-container">
           <div className="flex flex-wrap items-end justify-between gap-6">
             <div>
-              <p className="eyebrow text-muted">The collection</p>
+              <p className="eyebrow text-fg-muted">The collection</p>
               <h2 id="collection-heading" className="heading-section mt-4">
                 Seven destinations
               </h2>
             </div>
-            <Link href="/destinations" className="inline-flex min-h-11 items-center gap-2 border-b border-ink/40 font-medium hover:border-ink">
+            <Link href="/destinations" className="inline-flex min-h-11 items-center gap-2 border-b border-fg/40 font-medium hover:border-fg">
               Search the full catalogue
               <ArrowRight className="size-4" aria-hidden />
             </Link>
@@ -99,13 +97,13 @@ export default function HomePage() {
                 <DestinationCard destination={summary} index={index} />
               </Reveal>
             ))}
-            <li className="flex flex-col justify-between gap-8 bg-night p-8 text-white md:p-10 lg:col-span-2">
-              <p className="font-display text-[clamp(1.8rem,1.4rem+1.4vw,2.75rem)] leading-tight">
+            <li className="page-glow flex flex-col justify-between gap-8 border border-line p-8 md:p-10 lg:col-span-2">
+              <p className="font-display text-[clamp(1.8rem,1.4rem+1.4vw,2.75rem)] leading-tight text-fg">
                 Search by name, landscape or region, and filter lakes, canyons and dunes.
               </p>
               <Link
                 href="/destinations"
-                className="on-dark inline-flex min-h-12 w-fit items-center gap-2 rounded-full border border-white/50 px-6 font-medium hover:bg-white hover:text-ink"
+                className="inline-flex min-h-12 w-fit items-center gap-2 rounded-full border border-fg/40 px-6 font-medium hover:border-fg hover:bg-fg hover:text-page"
               >
                 Open the catalogue
                 <ArrowRight className="size-4" aria-hidden />
@@ -115,21 +113,21 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section aria-labelledby="map-heading" className="bg-paper-deep py-24 md:py-32">
+      <section aria-labelledby="map-heading" className="band-raised py-24 md:py-32">
         <div className="page-container grid gap-12 lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] lg:items-center">
           <Reveal>
-            <p className="eyebrow text-muted">Where they are</p>
+            <p className="eyebrow text-fg-muted">Where they are</p>
             <h2 id="map-heading" className="heading-section mt-4">
               Seven places across a vast country
             </h2>
-            <p className="mt-6 max-w-md text-ink-soft">
+            <p className="mt-6 max-w-md text-fg-soft">
               Most of these destinations lie in the south-east, within reach of Almaty. Bozzhyra is far to the west on the Ustyurt
               Plateau, and Burabay is in the north.
             </p>
-            <p className="mt-4 max-w-md text-sm text-muted">
+            <p className="mt-4 max-w-md text-sm text-fg-muted">
               Schematic overview only. Markers show published reference points, not routes, trailheads or access points.
             </p>
-            <Link href="/map" className="mt-8 inline-flex min-h-11 items-center gap-2 border-b border-ink/40 font-medium hover:border-ink">
+            <Link href="/map" className="mt-8 inline-flex min-h-11 items-center gap-2 border-b border-fg/40 font-medium hover:border-fg">
               Open the map overview
               <ArrowRight className="size-4" aria-hidden />
             </Link>
@@ -153,7 +151,7 @@ export default function HomePage() {
               as access, fees and permits.
             </p>
             <p>
-              <Link href="/about#methodology" className="font-medium text-ink underline underline-offset-4 hover:no-underline">
+              <Link href="/about#methodology" className="font-medium text-fg underline underline-offset-4 hover:no-underline">
                 Read how the guides are researched
               </Link>
             </p>

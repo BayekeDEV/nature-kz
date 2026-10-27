@@ -68,13 +68,27 @@ export interface GuideSection {
   sourceIds: string[];
 }
 
+/**
+ * Colour tokens for one destination (or the shared brand theme). Every page
+ * uses the same layout and components; only these values change.
+ * `bg` is also the colour the hero photograph fades into.
+ * Contrast rules are enforced by src/lib/theme.test.ts.
+ */
 export interface DestinationTheme {
-  /** Decorative accent for rules, markers and focus details. */
+  /** Main page background, and the hero's fade-out colour. */
+  bg: string;
+  /** Raised or alternate surface: quick facts, map panel, sources. */
+  surface: string;
+  /** Primary text: headings and key values. */
+  text: string;
+  /** Secondary text: labels, captions, metadata. */
+  muted: string;
+  /** Decorative accent: markers, rules, small details (not body text). */
   accent: string;
-  /** Darker accent that passes contrast for text on the paper background. */
-  deep: string;
-  /** Pale tint for placeholders and quiet panels. */
-  wash: string;
+  /** Accent used for text and links; must stay readable on bg and surface. */
+  accentText: string;
+  /** Dividers and borders. */
+  border: string;
 }
 
 export interface QuickFact {

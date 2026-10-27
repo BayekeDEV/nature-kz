@@ -1,21 +1,21 @@
 # Asset manifest
 
-Snapshot generated from `src/content/destinations.ts` (the source of truth) on 27 October 2026.
-Every file was downloaded from Wikimedia Commons, where its licence and description were checked, and resized for the web (hero max 3200 px wide, BAL panorama 5600 px; gallery max 2400 px). Originals remain available at each source URL.
+Snapshot generated from `src/content/destinations.ts` (the source of truth); last regenerated 27 October 2026 after the Bozzhyra photo update.
+Every file was downloaded from Wikimedia Commons, where its licence and description were checked, and resized for the web (heroes max 3200 px wide, Bozzhyra 4000 px, the Big Almaty Lake panorama 5600 px; gallery photos max 2400 px). Originals remain available at each source URL.
 
 ## Bozzhyra
 
 | Role | Local file | Size (px) | Photographer | Licence | Focal (desktop / mobile) | Source page |
 | --- | --- | --- | --- | --- | --- | --- |
-| hero | `public/images/destinations/bozzhyra/hero.jpg` | 3200×2400 | Berik Aday | CC BY-SA 4.0 | 62% 52% / 66% 50% | [Commons](https://commons.wikimedia.org/wiki/File:Bozzhyra_valley,_Mangistau_region,_Kazakhstan.jpg) |
-| gallery-01 | `public/images/destinations/bozzhyra/gallery-01.jpg` | 2400×1800 | Berik Aday | CC BY-SA 4.0 | 50% 50% / 50% 50% | [Commons](https://commons.wikimedia.org/wiki/File:Bozzhyra_valley,_Mangistau,_Kazakhstan.jpg) |
+| hero | `public/images/destinations/bozzhyra/hero.jpg` | 4000×2175 | Ezra Sheyner | CC BY-SA 4.0 | 34% 58% / 64% 55% | [Commons](https://commons.wikimedia.org/wiki/File:%D0%9A%D0%BB%D1%8B%D0%BA%D0%B8_%D0%91%D0%BE%D1%81%D0%B6%D0%B8%D1%80%D1%8B.jpg) |
+| gallery-01 | `public/images/destinations/bozzhyra/gallery-01.jpg` | 2400×1200 | Maksat79 | CC BY-SA 4.0 | 50% 45% / 62% 45% | [Commons](https://commons.wikimedia.org/wiki/File:%D0%A7%D0%B8%D0%BD%D0%BA%D0%B8_%D0%BF%D0%BB%D0%B0%D1%82%D0%BE_%D0%A3%D1%81%D1%82%D1%8E%D1%80%D1%82._%D0%A3%D1%80%D0%BE%D1%87%D0%B8%D1%89%D0%B5_%D0%91%D0%BE%D0%B7%D0%B6%D1%8B%D1%80%D0%B0.jpg) |
 | gallery-02 | `public/images/destinations/bozzhyra/gallery-02.jpg` | 2400×1800 | IvarT | CC0 1.0 (public domain dedication) | 50% 50% / 50% 50% | [Commons](https://commons.wikimedia.org/wiki/File:Bozzhyra_upper_observation_deck.jpg) |
 | gallery-03 | `public/images/destinations/bozzhyra/gallery-03.jpg` | 2400×1600 | Sergio Agostinelli | CC BY 2.0 | 50% 50% / 50% 50% | [Commons](https://commons.wikimedia.org/wiki/File:Bozzhyra_Valley_in_Karakiya,_Mangystau,_Kazakhstan_(May_2024).jpg) |
 
 Alt text:
 
-- **hero:** Tall white chalk towers rising from a pale escarpment above a wide, flat desert valley in Bozzhyra
-- **gallery-01:** Two isolated white rock towers standing on a chalk ridge in Bozzhyra, with a hazy plateau behind
+- **hero:** White chalk towers rising from a pale, terraced ridge above the wide Bozzhyra valley, seen from a rocky viewpoint under a blue sky
+- **gallery-01:** Two massive chalk towers with sheer cliffs above bright white scree slopes, lit by low sun under a streaked blue sky
 - **gallery-02:** View from a high viewpoint over flat-topped white mesas and pointed towers in Bozzhyra, with green steppe in the foreground
 - **gallery-03:** A white chalk spire on a sloping ridge in Bozzhyra under a clear blue sky, with grey rocky ground in the foreground
 

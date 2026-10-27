@@ -26,8 +26,8 @@ src/components/**     ← UI pieces. Only interactive ones are Client Components
 - **One template for seven guides.** `src/app/destinations/[slug]/page.tsx` renders
   every destination. `generateStaticParams` lists the slugs; unknown slugs call
   `notFound()` and get a 404.
-- **Themes are tokens.** Each destination has three colours (`accent`, `deep`,
-  `wash`) applied as CSS variables. Typography, spacing and layout are shared.
+- **Themes are tokens.** Each destination has a seven-colour theme applied as CSS
+  variables (see "Themes" below). Typography, spacing and layout are shared.
 
 ## Key files
 
@@ -38,14 +38,45 @@ src/components/**     ← UI pieces. Only interactive ones are Client Components
 | `src/lib/saved-store.ts` | Saved destinations behind a `SavedDestinationsStore` interface (localStorage today). Unit-tested. |
 | `src/lib/use-saved-destinations.ts` | React hook using `useSyncExternalStore` (no hydration mismatch). |
 | `src/lib/media.ts` | Checks if a photo file exists; missing photos render "Photo pending". |
-| `src/components/destination/PhotoHero.tsx` | Shared full-screen hero with subtle 2D scroll motion. |
+| `src/components/destination/PhotoHero.tsx` | Shared full-screen hero: overscan drift, text scrim and fade into the theme background. |
+| `src/lib/theme.ts` | Brand theme, theme → CSS variables, contrast maths. |
 | `src/components/map/KazakhstanMap.tsx` | Schematic SVG map with HTML markers at published reference points. |
+
+## Themes
+
+Every page uses the same components; only colours change.
+
+- `src/lib/types.ts` → `DestinationTheme` has seven tokens: `bg` (also the colour
+  the hero photo fades into), `surface`, `text`, `muted`, `accent`, `accentText`
+  and `border`. Each destination stores its own values in `destinations.ts`;
+  shared pages use `BRAND_THEME` in `src/lib/theme.ts`.
+- `src/components/layout/RouteTheme.tsx` wraps the header, page and footer and
+  sets the tokens as CSS variables (`--t-bg`, …) for the current URL. Because it
+  lives in the layout, the background never flashes white between pages and
+  changes colour smoothly.
+- `globals.css` maps those variables to Tailwind colours with `@theme inline`
+  (`bg-page`, `bg-raised`, `text-fg`, `text-fg-soft`, `text-fg-muted`,
+  `border-line`, `text-accent-fg` …). `inline` is required so utilities read the
+  variable where it is set, not a value frozen at `:root`.
+- `src/lib/theme.test.ts` checks WCAG contrast for every theme (body text ≥ 7:1,
+  secondary and accent text ≥ 4.5:1 on both surfaces).
+
+## Page transitions
+
+`src/app/template.tsx` wraps each page in a `div.page-enter`. A template
+re-mounts on every route change, so a 260 ms CSS fade-and-lift plays once per
+page. Links stay ordinary `<Link>`s (Ctrl/Cmd-click, new tabs and back/forward
+work as normal), and changing catalogue filters does not replay the animation.
+The animation uses `backwards` fill so no stacking context lingers afterwards;
+the gallery lightbox is also portalled to `<body>` for the same reason.
 
 ## Motion
 
 - CSS keyframes for the hero text entrance (works without JavaScript).
 - `Reveal` adds a fade-in for sections below the fold; content is visible by default.
 - Motion (`motion/react`) for the hero's scroll-linked drift and menu/lightbox fades.
+  The hero photo sits in an 8% taller layer and drifts at most 7%, so no zoom is
+  needed and no edge is exposed. It stays still on touch and small screens.
 - `prefers-reduced-motion` turns all of this off.
 
 ## Future database (PostgreSQL)

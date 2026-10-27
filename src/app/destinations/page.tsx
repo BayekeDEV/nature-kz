@@ -13,11 +13,11 @@ export default function DestinationsPage() {
   const summaries = getDestinationSummaries();
 
   return (
-    <div className="pt-[var(--header-height)]">
+    <div className="page-glow pt-[var(--header-height)]">
       <header className="page-container pt-16 pb-10 md:pt-24 md:pb-14">
-        <p className="eyebrow text-muted">Catalogue</p>
+        <p className="eyebrow text-fg-muted">Catalogue</p>
         <h1 className="mt-4 font-display text-[clamp(2.75rem,2rem+3.5vw,5.5rem)] leading-[0.95] font-medium">All destinations</h1>
-        <p className="mt-6 max-w-[60ch] text-[1.05rem] leading-relaxed text-ink-soft md:text-[1.125rem]">
+        <p className="mt-6 max-w-[60ch] text-[1.05rem] leading-relaxed text-fg-soft md:text-[1.125rem]">
           Seven places, from chalk escarpments in the far west to mountain lakes in the south-east and granite in the north. Search by
           name, region or landscape, or filter by type.
         </p>
@@ -30,7 +30,7 @@ export default function DestinationsPage() {
             <ul className="grid gap-x-8 gap-y-16 border-t border-line pt-12 md:grid-cols-2 lg:grid-cols-3">
               {summaries.map((summary, index) => (
                 <li key={summary.id}>
-                  <DestinationCard destination={summary} index={index} headingLevel="h2" />
+                  <DestinationCard destination={summary} index={index} headingLevel="h2" eager={index < 3} />
                 </li>
               ))}
             </ul>

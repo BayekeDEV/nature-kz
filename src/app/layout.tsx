@@ -3,7 +3,9 @@ import { Cormorant_Garamond, DM_Sans } from "next/font/google";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { MotionPreferences } from "@/components/motion/MotionPreferences";
-import { getDestinationSlugs } from "@/lib/destinations";
+import { RouteTheme } from "@/components/layout/RouteTheme";
+import { getAllDestinations, getDestinationSlugs } from "@/lib/destinations";
+import { BRAND_THEME } from "@/lib/theme";
 import "./globals.css";
 
 const display = Cormorant_Garamond({
@@ -30,25 +32,28 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#f5f1ea",
+  themeColor: BRAND_THEME.bg,
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
+  const themes = Object.fromEntries(getAllDestinations().map((d) => [d.slug, d.theme]));
   return (
     <html lang="en" className={`${display.variable} ${sans.variable}`}>
-      <body className="flex min-h-svh flex-col">
+      <body>
         <a
           href="#main"
-          className="fixed top-3 left-3 z-[70] -translate-y-24 rounded bg-ink px-4 py-3 text-paper transition-transform focus:translate-y-0"
+          className="fixed top-3 left-3 z-[70] -translate-y-24 rounded bg-fg px-4 py-3 text-page transition-transform focus:translate-y-0"
         >
           Skip to content
         </a>
         <MotionPreferences>
-          <SiteHeader guideSlugs={getDestinationSlugs()} />
-          <main id="main" className="flex-1">
-            {children}
-          </main>
-          <SiteFooter />
+          <RouteTheme themes={themes}>
+            <SiteHeader guideSlugs={getDestinationSlugs()} />
+            <main id="main" className="flex-1">
+              {children}
+            </main>
+            <SiteFooter />
+          </RouteTheme>
         </MotionPreferences>
       </body>
     </html>

@@ -88,25 +88,34 @@ export const destinations: Destination[] = [
     },
     mapSearchQuery: "Bozzhyra, Mangystau Region, Kazakhstan",
     relatedSlugs: ["charyn-canyon", "singing-dune"],
-    theme: { accent: "#B0925A", deep: "#5E5038", wash: "#EFE9DD" },
+    theme: {
+      bg: "#1E1A15",
+      surface: "#28231C",
+      text: "#F0E9DD",
+      muted: "#BDB19F",
+      accent: "#B8955F",
+      accentText: "#D9BC8C",
+      border: "#3E372D",
+    },
     heroPlacement: "left",
     media: media("bozzhyra", [
       {
         role: "hero",
-        alt: "Tall white chalk towers rising from a pale escarpment above a wide, flat desert valley in Bozzhyra",
-        caption: "Chalk towers above the valley floor at Bozzhyra.",
-        width: 3200,
-        height: 2400,
-        focal: { desktop: "62% 52%", mobile: "66% 50%" },
-        credit: { author: "Berik Aday", ...CC_BY_SA_4, sourceUrl: "https://commons.wikimedia.org/wiki/File:Bozzhyra_valley,_Mangistau_region,_Kazakhstan.jpg" },
+        alt: "White chalk towers rising from a pale, terraced ridge above the wide Bozzhyra valley, seen from a rocky viewpoint under a blue sky",
+        caption: "The towers often called the “fangs”, seen from the plateau edge, May 2021.",
+        width: 4000,
+        height: 2175,
+        focal: { desktop: "34% 58%", mobile: "64% 55%" },
+        credit: { author: "Ezra Sheyner", ...CC_BY_SA_4, sourceUrl: "https://commons.wikimedia.org/wiki/File:%D0%9A%D0%BB%D1%8B%D0%BA%D0%B8_%D0%91%D0%BE%D1%81%D0%B6%D0%B8%D1%80%D1%8B.jpg" },
       },
       {
         role: "gallery-01",
-        alt: "Two isolated white rock towers standing on a chalk ridge in Bozzhyra, with a hazy plateau behind",
-        caption: "Two free-standing towers on a chalk ridge.",
+        alt: "Two massive chalk towers with sheer cliffs above bright white scree slopes, lit by low sun under a streaked blue sky",
+        caption: "Chalk towers in low autumn sunlight, November 2023.",
         width: 2400,
-        height: 1800,
-        credit: { author: "Berik Aday", ...CC_BY_SA_4, sourceUrl: "https://commons.wikimedia.org/wiki/File:Bozzhyra_valley,_Mangistau,_Kazakhstan.jpg" },
+        height: 1200,
+        focal: { desktop: "50% 45%", mobile: "62% 45%" },
+        credit: { author: "Maksat79", ...CC_BY_SA_4, sourceUrl: "https://commons.wikimedia.org/wiki/File:%D0%A7%D0%B8%D0%BD%D0%BA%D0%B8_%D0%BF%D0%BB%D0%B0%D1%82%D0%BE_%D0%A3%D1%81%D1%82%D1%8E%D1%80%D1%82._%D0%A3%D1%80%D0%BE%D1%87%D0%B8%D1%89%D0%B5_%D0%91%D0%BE%D0%B7%D0%B6%D1%8B%D1%80%D0%B0.jpg" },
       },
       {
         role: "gallery-02",
@@ -181,7 +190,15 @@ export const destinations: Destination[] = [
     },
     mapSearchQuery: "Kolsai Lakes, Saty, Almaty Region, Kazakhstan",
     relatedSlugs: ["kaindy-lake", "big-almaty-lake", "charyn-canyon"],
-    theme: { accent: "#3F7A5A", deep: "#1F4331", wash: "#E3EBE3" },
+    theme: {
+      bg: "#121D17",
+      surface: "#1A2820",
+      text: "#E7EDE3",
+      muted: "#A9BBAB",
+      accent: "#4F9A76",
+      accentText: "#8FCCA9",
+      border: "#2B3C31",
+    },
     heroPlacement: "left",
     media: media("kolsai-lakes", [
       {
@@ -273,7 +290,15 @@ export const destinations: Destination[] = [
     },
     mapSearchQuery: "Valley of Castles, Charyn Canyon, Kazakhstan",
     relatedSlugs: ["bozzhyra", "kolsai-lakes", "singing-dune"],
-    theme: { accent: "#B05E3A", deep: "#6B2F18", wash: "#F2E4D9" },
+    theme: {
+      bg: "#22160F",
+      surface: "#2E1F15",
+      text: "#F2E5D4",
+      muted: "#C8AE95",
+      accent: "#C46A40",
+      accentText: "#E8A27D",
+      border: "#47301F",
+    },
     heroPlacement: "left",
     media: media("charyn-canyon", [
       {
@@ -365,7 +390,15 @@ export const destinations: Destination[] = [
     },
     mapSearchQuery: "Kaindy Lake, Almaty Region, Kazakhstan",
     relatedSlugs: ["kolsai-lakes", "big-almaty-lake"],
-    theme: { accent: "#2B8A86", deep: "#134746", wash: "#DCEDEA" },
+    theme: {
+      bg: "#0E1F20",
+      surface: "#152C2D",
+      text: "#E1EEEC",
+      muted: "#A3C0BB",
+      accent: "#3FA9A2",
+      accentText: "#81D4CC",
+      border: "#244040",
+    },
     heroPlacement: "left",
     media: media("kaindy-lake", [
       {
@@ -457,7 +490,15 @@ export const destinations: Destination[] = [
     },
     mapSearchQuery: "Singing Dune, Altyn-Emel National Park, Kazakhstan",
     relatedSlugs: ["charyn-canyon", "bozzhyra"],
-    theme: { accent: "#B8924A", deep: "#5E4A24", wash: "#F2EAD6" },
+    theme: {
+      bg: "#231B12",
+      surface: "#2F2519",
+      text: "#F4EBDC",
+      muted: "#CBB99B",
+      accent: "#C9A25A",
+      accentText: "#E4C584",
+      border: "#463829",
+    },
     heroPlacement: "left",
     media: media("singing-dune", [
       {
@@ -551,7 +592,15 @@ export const destinations: Destination[] = [
     },
     mapSearchQuery: "Zhumbaktas rock, Lake Burabay, Kazakhstan",
     relatedSlugs: ["kolsai-lakes", "bozzhyra"],
-    theme: { accent: "#4E7462", deep: "#243B30", wash: "#E2E8E4" },
+    theme: {
+      bg: "#141B1B",
+      surface: "#1C2626",
+      text: "#E5EBE8",
+      muted: "#AAB8B4",
+      accent: "#7398AB",
+      accentText: "#A9C6D5",
+      border: "#2E3B3B",
+    },
     heroPlacement: "right",
     media: media("burabay-zhumbaktas", [
       {
@@ -643,7 +692,15 @@ export const destinations: Destination[] = [
     },
     mapSearchQuery: "Big Almaty Lake, Kazakhstan",
     relatedSlugs: ["kolsai-lakes", "kaindy-lake"],
-    theme: { accent: "#3A8C9B", deep: "#1B4650", wash: "#E0ECEE" },
+    theme: {
+      bg: "#111A21",
+      surface: "#19252F",
+      text: "#E5EDF1",
+      muted: "#A7B8C4",
+      accent: "#4FB3BF",
+      accentText: "#90D7DF",
+      border: "#2A3A46",
+    },
     heroPlacement: "left",
     media: media("big-almaty-lake", [
       {

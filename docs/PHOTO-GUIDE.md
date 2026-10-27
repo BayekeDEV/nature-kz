@@ -95,6 +95,21 @@ photo is used twice.
 
 ## 6. Seeing the change
 
-- `npm run dev`: refresh the page.
+- `npm run dev`: refresh the page. Image URLs carry a `?v=` version based on the
+  file's modification time, so the optimizer never serves a stale cached copy.
 - Production (`npm run build && npm run start`): rebuild, because the site checks
   which photos exist at build time.
+
+## 7. Before you choose a hero, check its quality
+
+The first Bozzhyra hero looked hazy because the photo itself had very little
+tonal range (an overcast, low-contrast shot), and grey overlays made it worse.
+A quick test with the `sharp` library that Next.js already installs:
+
+```bash
+node -e "require('sharp')('public/images/destinations/bozzhyra/hero.jpg').stats().then(s => console.log(s.channels.map(c => c.stdev.toFixed(0))))"
+```
+
+Standard deviations around 20–30 mean a flat, washed-out image; 45 or more
+usually means good natural contrast. Also zoom in to 100% to check detail,
+and avoid photos with watermarks.

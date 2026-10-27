@@ -24,6 +24,7 @@ items below before publishing, and at least once a season.
 | Kolsai Lakes | Which lake the hero photo shows | The Commons description only says "Kolsay lake". Caption avoids naming it. |
 | Kolsai / Kaindy | Map reference points | Taken from Wikipedia (Kolsai) and Kazakhstan.travel (Kaindy). A park-published coordinate would be better. |
 | Burabay — Zhumbaktas | Exact rock coordinate | No verified point for the rock itself; the map uses the park's reference point and says so. |
+| Bozzhyra | Photo set (changed 27 Oct 2026) | Hero is now Ezra Sheyner's "Fangs of Boszhira" and gallery-01 is by Maksat79, both CC BY-SA 4.0. The earlier Berik Aday photos were removed because they were hazy. Both new files are identified as Bozzhyra by their Commons titles and category. Maksat79's file description also mentions the Zhabayushkan sanctuary; that status is **not** stated in the guide until it is verified. |
 | Bozzhyra | Protected status | Based on a January 2025 news report of a regional statement. Watch for any new protection decision. |
 | Singing Dune | Size figures | Taken from the official park page (≈3 km, ≈150 m). Wikipedia gives smaller figures. |
 | Big Almaty Lake | Access, document checks, transport | Reported inconsistently; guide tells readers to confirm with the park. |

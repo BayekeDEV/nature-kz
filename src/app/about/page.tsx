@@ -13,9 +13,9 @@ export default function AboutPage() {
   const credits = getAllPhotoCredits();
 
   return (
-    <div className="pt-[var(--header-height)]">
+    <div className="page-glow pt-[var(--header-height)]">
       <header className="page-container pt-16 pb-12 md:pt-24">
-        <p className="eyebrow text-muted">About</p>
+        <p className="eyebrow text-fg-muted">About</p>
         <h1 className="mt-4 max-w-4xl font-display text-[clamp(2.75rem,2rem+3.5vw,5.5rem)] leading-[0.95] font-medium">
           A careful guide to Kazakhstan&rsquo;s landscapes
         </h1>
@@ -61,10 +61,10 @@ export default function AboutPage() {
             <ul className="mt-8 divide-y divide-line border-y border-line text-[1rem]">
               {destinations.map((d) => (
                 <li key={d.id} className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 py-3">
-                  <Link href={`/destinations/${d.slug}#sources-heading`} className="font-medium text-ink underline-offset-4 hover:underline">
+                  <Link href={`/destinations/${d.slug}#sources-heading`} className="font-medium text-fg underline-offset-4 hover:underline">
                     {d.name}
                   </Link>
-                  <span className="text-sm text-muted">
+                  <span className="text-sm text-fg-muted">
                     {d.sources.length} sources · {d.verifiedOn ? `researched ${formatDate(d.verifiedOn)}` : "draft, not yet verified"}
                   </span>
                 </li>
@@ -78,7 +78,7 @@ export default function AboutPage() {
             <h2 id="credits-heading" className="heading-section">
               Photo credits
             </h2>
-            <p className="mt-4 max-w-sm text-[0.95rem] text-muted">
+            <p className="mt-4 max-w-sm text-[0.95rem] text-fg-muted">
               All photographs come from Wikimedia Commons, where each file&rsquo;s licence and description were checked. Files were
               resized for the web; no other edits were made.
             </p>
@@ -86,8 +86,8 @@ export default function AboutPage() {
           <ul className="divide-y divide-line border-y border-line">
             {credits.map((credit) => (
               <li key={credit.src} className="grid gap-1 py-4 text-[0.95rem] sm:grid-cols-[10rem_1fr] sm:gap-6">
-                <span className="font-medium text-ink">{credit.destination}</span>
-                <span className="text-ink-soft">
+                <span className="font-medium text-fg">{credit.destination}</span>
+                <span className="text-fg-soft">
                   {credit.caption} Photo by {credit.credit.author},{" "}
                   {credit.credit.licenseUrl ? (
                     <a href={credit.credit.licenseUrl} target="_blank" rel="license noopener" className="underline">

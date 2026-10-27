@@ -92,18 +92,15 @@ export function SiteHeader({ guideSlugs }: Props) {
   }, [menuOpen, closeMenu]);
 
   const isActive = (href: string) => pathname === href || pathname.startsWith(`${href}/`);
-  const linkTone = overlay ? "text-white" : "text-ink";
+  const linkTone = overlay ? "text-white" : "text-fg";
 
   return (
     <>
       <header
         className={`fixed inset-x-0 top-0 z-50 transition-[background-color,box-shadow,color] duration-300 ${
-          overlay ? "on-dark bg-transparent" : "bg-paper/95 shadow-[0_1px_0_var(--color-line)] backdrop-blur-md"
+          overlay ? "on-photo bg-transparent" : "bg-page/90 shadow-[0_1px_0_var(--t-border)] backdrop-blur-md"
         }`}
       >
-        {overlay && (
-          <div aria-hidden className="pointer-events-none absolute inset-0 -bottom-10 bg-gradient-to-b from-black/45 to-transparent" />
-        )}
         <div className="page-container relative flex h-[var(--header-height)] items-center justify-between gap-6">
           <Link href="/" className={`font-display text-[1.45rem] font-semibold tracking-[0.12em] ${linkTone}`}>
             NATURE KZ
@@ -166,7 +163,7 @@ export function SiteHeader({ guideSlugs }: Props) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-x-0 top-[var(--header-height)] bottom-0 z-50 overflow-y-auto bg-paper md:hidden"
+            className="fixed inset-x-0 top-[var(--header-height)] bottom-0 z-50 overflow-y-auto bg-page md:hidden"
           >
             <nav aria-label="Mobile" className="page-container flex flex-col pt-6 pb-10">
               {[{ href: "/", label: "Home" }, ...NAV_ITEMS, { href: "/saved", label: "Saved destinations" }].map((item) => (
@@ -175,12 +172,12 @@ export function SiteHeader({ guideSlugs }: Props) {
                   href={item.href}
                   aria-current={pathname === item.href ? "page" : undefined}
                   onClick={() => closeMenu(false)}
-                  className="font-display border-b border-line py-4 text-[2rem] leading-tight text-ink aria-[current=page]:text-accent-deep"
+                  className="font-display border-b border-line py-4 text-[2rem] leading-tight text-fg aria-[current=page]:text-accent-fg"
                 >
                   {item.label}
                 </Link>
               ))}
-              <p className="mt-8 max-w-sm text-[0.95rem] text-muted">Discover Kazakhstan, beyond the familiar.</p>
+              <p className="mt-8 max-w-sm text-[0.95rem] text-fg-muted">Discover Kazakhstan, beyond the familiar.</p>
             </nav>
           </motion.div>
         )}
