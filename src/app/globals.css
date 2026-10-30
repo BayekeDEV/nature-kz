@@ -263,3 +263,22 @@ body {
     transform: none;
   }
 }
+
+/* Atlas: preview card entrance and MapLibre's gesture hint in the site's type. */
+@keyframes atlas-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+}
+
+.atlas-map .maplibregl-cooperative-gesture-screen {
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: 1rem;
+  background: rgb(20 17 13 / 0.7);
+}
+
+.atlas-map .maplibregl-canvas:focus-visible {
+  outline: 2px solid #fbf6ec;
+  outline-offset: -4px;
+}

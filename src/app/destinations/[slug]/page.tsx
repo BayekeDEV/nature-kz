@@ -7,7 +7,7 @@ import { DestinationCard } from "@/components/destination/DestinationCard";
 import { Gallery } from "@/components/destination/Gallery";
 import { PhotoHero } from "@/components/destination/PhotoHero";
 import { SaveButton } from "@/components/destination/SaveButton";
-import { DestinationMap } from "@/components/map/DestinationMap";
+import { StaticAtlas } from "@/components/map/StaticAtlas";
 import { Reveal } from "@/components/motion/Reveal";
 import {
   getAllDestinations,
@@ -21,7 +21,7 @@ import {
 import { CATEGORY_LABELS } from "@/lib/filter";
 import { formatDate, heroFit } from "@/lib/format";
 import { formatCoordinates, osmPointUrl, osmSearchUrl } from "@/lib/map";
-import { getMapPoints } from "@/lib/map-points";
+import { getAtlasPoints } from "@/lib/atlas-points";
 import type { Destination, GuideSection } from "@/lib/types";
 
 export function generateStaticParams() {
@@ -211,7 +211,7 @@ function ContentNotice({ destination }: { destination: Destination }) {
 
 function GeographicContext({ destination }: { destination: Destination }) {
   const { coordinates } = destination;
-  const points = getMapPoints(getAllDestinations());
+  const points = getAtlasPoints(getAllDestinations());
   return (
     <section aria-labelledby="geo-heading" className="py-20 md:py-24">
       <div className="page-container grid gap-12 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:items-center">
@@ -252,10 +252,10 @@ function GeographicContext({ destination }: { destination: Destination }) {
           </div>
         </div>
         <div>
-          <DestinationMap points={points} initialSlug={destination.slug} title={`Map showing where ${destination.name} lies in Kazakhstan`} />
+          <StaticAtlas points={points} highlightSlug={destination.slug} title={`Map showing where ${destination.name} lies in Kazakhstan`} />
           <p className="mt-3 text-sm">
-            <Link href="/map" className="underline underline-offset-4 hover:text-accent-fg">
-              All destinations on the map
+            <Link href={`/map#${destination.slug}`} className="underline underline-offset-4 hover:text-accent-fg">
+              Explore {destination.name} on the interactive atlas
             </Link>
           </p>
         </div>

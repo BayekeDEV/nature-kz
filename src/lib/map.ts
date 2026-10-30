@@ -1,13 +1,4 @@
-import { MAP_PROJECTION as P } from "@/content/kazakhstan-outline";
 import type { Coordinates } from "@/lib/types";
-
-/** Converts latitude/longitude to x/y in the schematic map's viewBox. */
-export function projectToMap(lat: number, lon: number) {
-  return {
-    x: (lon - P.minLon) * P.lonScale * P.unitsPerDegree,
-    y: (P.maxLat - lat) * P.unitsPerDegree,
-  };
-}
 
 export function formatCoordinates({ lat, lon }: Pick<Coordinates, "lat" | "lon">) {
   const ns = lat >= 0 ? "N" : "S";

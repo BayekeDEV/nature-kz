@@ -112,11 +112,16 @@ export default function AboutPage() {
             Map data
           </h2>
           <p className="prose-guide">
-            The country outline on the schematic maps is simplified from{" "}
+            The atlas relief, land cover, borders, lakes and rivers come from{" "}
             <a href="https://www.naturalearthdata.com/" target="_blank" rel="noopener" className="underline">
               Natural Earth
             </a>
-            , which is in the public domain. External map links open OpenStreetMap.
+            , which is in the public domain. Finer relief when zoomed in comes from{" "}
+            <a href="https://registry.opendata.aws/terrain-tiles/" target="_blank" rel="noopener" className="underline">
+              Terrain Tiles
+            </a>{" "}
+            (Mapzen, AWS Open Data): SRTM and GMTED2010 courtesy of the U.S. Geological Survey, ETOPO1 courtesy of NOAA.
+            Map labels use the Open Sans typeface. External map links open OpenStreetMap.
           </p>
         </section>
       </div>

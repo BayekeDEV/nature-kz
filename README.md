@@ -6,7 +6,7 @@ An English-language editorial guide to nine natural destinations in Kazakhstan:
 Bozzhyra and the Aktolagay Plateau in the west, Kolsai Lakes, Charyn Canyon,
 Kaindy Lake, the Singing Dune and Big Almaty Lake in the south-east,
 Burabay — Zhumbaktas in the north and Markakol Lake in the Altai. Sourced guides,
-licensed photography, an interactive schematic map and a browser-only "saved"
+licensed photography, an interactive relief atlas and a browser-only "saved"
 list. No bookings, accounts or API keys.
 
 ## Run it
@@ -35,18 +35,18 @@ No environment variables are needed.
 ## Stack
 
 Next.js 16 (App Router, Cache Components) · React 19 · TypeScript (strict) ·
-Tailwind CSS 4 · Motion 12 · Lucide icons · Vitest 4.
+Tailwind CSS 4 · Motion 12 · Lucide icons · MapLibre GL JS 6 (atlas) · Vitest 4.
 Fonts: Cormorant Garamond (headings) and DM Sans (text) via `next/font`.
 
 ## Routes
 
 | Route | Page |
 | --- | --- |
-| `/` | Homepage with Bozzhyra hero, collection, map preview |
+| `/` | Homepage with Bozzhyra hero, collection, static atlas preview |
 | `/destinations` | Catalogue with search and filters (`?q=…&type=lakes`) |
 | `/destinations/[slug]` | Destination guide (one static page per destination; unknown slugs → 404) |
 | `/saved` | Saved destinations (stored in this browser only) |
-| `/map` | Interactive schematic map (every destination marked) and reference points |
+| `/map` | Interactive relief atlas (every destination marked), destination list and reference points |
 | `/about` | Purpose, methodology, photo credits |
 
 ## Docs
@@ -57,4 +57,5 @@ Fonts: Cormorant Garamond (headings) and DM Sans (text) via `next/font`.
 - [docs/CONTENT-CHECKLIST.md](docs/CONTENT-CHECKLIST.md) — what to re-verify before publishing
 
 Photographs: Wikimedia Commons contributors, under the licences listed in the
-asset manifest. Map outline: Natural Earth (public domain).
+asset manifest. Map relief, land cover and vectors: Natural Earth (public domain);
+finer relief when zoomed in: Terrain Tiles on AWS Open Data (see docs/ARCHITECTURE.md).

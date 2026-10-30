@@ -1,41 +1,45 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { DestinationMap } from "@/components/map/DestinationMap";
+import { AtlasMap } from "@/components/map/AtlasMap";
 import { getAllDestinations } from "@/lib/destinations";
 import { formatCoordinates, osmPointUrl, osmSearchUrl } from "@/lib/map";
-import { getMapPoints } from "@/lib/map-points";
+import { getAtlasPoints } from "@/lib/atlas-points";
 
 export const metadata: Metadata = {
-  title: "Map overview",
-  description: "A schematic overview of where the NATURE KZ destinations lie within Kazakhstan, with every destination marked individually.",
+  title: "Atlas",
+  description: "An interactive relief atlas of Kazakhstan showing where every NATURE KZ destination lies, with links to each guide.",
 };
 
 export default function MapPage() {
   const destinations = getAllDestinations();
-  const points = getMapPoints(destinations);
+  const points = getAtlasPoints(destinations);
   const unplotted = destinations.filter((d) => !d.coordinates);
 
   return (
     <div className="page-glow pt-[var(--header-height)]">
-      <header className="page-container pt-16 pb-8 md:pt-24">
-        <p className="eyebrow text-fg-muted">Map</p>
-        <h1 className="mt-4 font-display text-[clamp(2.75rem,2rem+3.5vw,5.5rem)] leading-[0.95] font-medium">Where the destinations are</h1>
-        <p className="mt-6 max-w-[62ch] text-[1.05rem] leading-relaxed text-fg-soft">
-          A schematic overview for orientation, not navigation. Each marker is a published reference point for the destination, taken
-          from the source listed beside it. It is not a trailhead, car park or approved access route.
+      <header className="page-container pt-12 pb-8 md:pt-16">
+        <p className="eyebrow text-fg-muted">Atlas</p>
+        <h1 className="mt-3 font-display text-[clamp(2.4rem,1.9rem+2.4vw,4.25rem)] leading-[0.98] font-medium">Where the destinations are</h1>
+        <p className="mt-5 max-w-[60ch] text-[1.02rem] leading-relaxed text-fg-soft">
+          From the Caspian shore to the Altai, on real relief and land cover. Hover or focus a marker for a preview, select it to open
+          the guide, or locate a destination from the list.
         </p>
       </header>
 
-      <section aria-label="Schematic map" className="page-container">
-        <DestinationMap points={points} showList title="Map of Kazakhstan showing every destination" />
+      <section aria-label="Interactive atlas" className="page-container">
+        <AtlasMap points={points} title="Relief map of Kazakhstan showing every destination" />
+        <p className="mt-6 max-w-[70ch] text-sm text-fg-muted">
+          Markers sit on each destination&rsquo;s published reference point, listed with its source below. A point is not a trailhead,
+          car park or approved access route.
+        </p>
       </section>
 
-      <section aria-labelledby="list-heading" className="page-container py-20">
-        <h2 id="list-heading" className="heading-section">
-          Reference points
+      <section aria-labelledby="list-heading" className="page-container py-16 md:py-20">
+        <h2 id="list-heading" className="font-display text-[1.6rem] leading-tight">
+          Reference points and sources
         </h2>
-        <ol className="mt-10 divide-y divide-line border-y border-line">
+        <ol className="mt-6 divide-y divide-line border-y border-line">
           {destinations.map((d, index) => {
             const source = d.coordinates ? d.sources.find((s) => s.id === d.coordinates?.sourceId) : undefined;
             return (

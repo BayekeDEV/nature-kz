@@ -3,17 +3,17 @@ import Link from "next/link";
 import { ArrowDown, ArrowRight } from "lucide-react";
 import { DestinationCard } from "@/components/destination/DestinationCard";
 import { PhotoHero } from "@/components/destination/PhotoHero";
-import { DestinationMap } from "@/components/map/DestinationMap";
+import { StaticAtlas } from "@/components/map/StaticAtlas";
 import { Reveal } from "@/components/motion/Reveal";
 import { getAllDestinations, getDestinationSummaries, getFeaturedDestination, getMedia } from "@/lib/destinations";
 import { countWord, heroFit } from "@/lib/format";
-import { getMapPoints } from "@/lib/map-points";
+import { getAtlasPoints } from "@/lib/atlas-points";
 
 export default function HomePage() {
   const featured = getFeaturedDestination();
   const hero = getMedia(featured, "hero");
   const summaries = getDestinationSummaries();
-  const points = getMapPoints(getAllDestinations());
+  const points = getAtlasPoints(getAllDestinations());
 
   return (
     <>
@@ -122,18 +122,18 @@ export default function HomePage() {
             </h2>
             <p className="mt-6 max-w-md text-fg-soft">
               Five lie in the south-east, within reach of Almaty. Bozzhyra and Aktolagay are in the west, Burabay is in the north,
-              and Markakol is in the Altai of the far east. Select a marker or a name to see where each one is.
+              and Markakol is in the Altai of the far east. Select a marker to open its guide.
             </p>
             <p className="mt-4 max-w-md text-sm text-fg-muted">
-              Schematic overview only. Markers show published reference points, not routes, trailheads or access points.
+              Markers show published reference points, not routes, trailheads or access points.
             </p>
             <Link href="/map" className="mt-8 inline-flex min-h-11 items-center gap-2 border-b border-fg/40 font-medium hover:border-fg">
-              Open the map overview
+              Explore the interactive atlas
               <ArrowRight className="size-4" aria-hidden />
             </Link>
           </Reveal>
           <Reveal>
-            <DestinationMap points={points} showList title="Map of Kazakhstan showing every destination" />
+            <StaticAtlas points={points} title="Map of Kazakhstan showing every destination" />
           </Reveal>
         </div>
       </section>
