@@ -149,7 +149,7 @@ export function CatalogueBrowser({ destinations }: Props) {
         <div className="mt-10 border border-dashed border-fg/25 px-6 py-14 text-center md:py-20">
           <h2 className="heading-card">No destinations match {query.q.trim() ? `“${query.q.trim()}”` : "these filters"}</h2>
           <p className="mx-auto mt-3 max-w-md text-fg-soft">
-            Check the spelling, try a broader word such as a region or landscape type, or clear the filters to see all seven
+            Check the spelling, try a broader word such as a region or landscape type, or clear the filters to see all {destinations.length}{" "}
             destinations.
           </p>
           <button

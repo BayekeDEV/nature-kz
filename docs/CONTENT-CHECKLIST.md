@@ -1,6 +1,7 @@
 # Content verification checklist
 
-Research for all seven guides was carried out on **27 October 2026** using the
+Research for the first seven guides was carried out on **27 October 2026**, and for
+Markakol Lake and the Aktolagay Plateau on **30 October 2026**, using the
 sources listed on each guide page (and in `src/content/sources.ts`). Re-check the
 items below before publishing, and at least once a season.
 
@@ -28,6 +29,14 @@ items below before publishing, and at least once a season.
 | Bozzhyra | Protected status | Based on a January 2025 news report of a regional statement. Watch for any new protection decision. |
 | Singing Dune | Size figures | Taken from the official park page (≈3 km, ≈150 m). Wikipedia gives smaller figures. |
 | Big Almaty Lake | Access, document checks, transport | Reported inconsistently; guide tells readers to confirm with the park. |
+| Markakol Lake | Visitor rules and border-zone permits | The official portals list the reserve's office hours and a daily fee but no visitor rules; the regional portal flags a border area without details. The guide tells readers to contact the reserve. Confirm with the reserve administration. |
+| Markakol Lake | Reserve area | Sources differ (71,367 ha on Kazakhstan.travel; 102,979 ha after the 2007 extension on Visit East; 164,408 ha for the UNESCO biosphere reserve). The guide gives no single figure. |
+| Markakol Lake | District name | Kazakhstan.travel says Markakol District; Commons descriptions and older sources say Kurchum District. The guide follows the official portal. |
+| Markakol Lake | Uskuch vs. Markakol lenok | The guide cites both names from their sources without equating them. Confirm with a fisheries or reserve source before stating they are the same fish. |
+| Aktolagay Plateau | Coordinates | Kazakhstan.travel and Visit Aktobe give 47.494, 55.117; Russian Wikipedia gives 47.673, 55.157. The guide uses the official point and says it is only a reference on a 90 km ridge. |
+| Aktolagay Plateau | Age of the rocks | Official sources call it Cretaceous chalk but also list whale vertebrae, which are younger; the guide gives no single age. |
+| Aktolagay Plateau | Photo identification | All four photos are by one Commons contributor (PuzatikVu) and are identified by their titles and descriptions; none carries GPS data. |
+| Big Almaty Lake | Hero photo (changed 30 Oct 2026) | Replaced the 8000 × 2720 px panorama by Igors Jefimovs, which could not fill tall cards or phone heroes without heavy cropping, with a 4000 × 3000 px geotagged photo by Жасминовый Дракон (CC BY-SA 4.0). |
 | All | Fees and online tickets | Not published on the site by design. |
 
 ## How to mark something as draft

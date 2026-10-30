@@ -3,10 +3,11 @@ import { Suspense } from "react";
 import { CatalogueBrowser } from "@/components/catalogue/CatalogueBrowser";
 import { DestinationCard } from "@/components/destination/DestinationCard";
 import { getDestinationSummaries } from "@/lib/destinations";
+import { countWord } from "@/lib/format";
 
 export const metadata: Metadata = {
   title: "All destinations",
-  description: "Search and filter seven natural destinations in Kazakhstan: lakes, canyons and rock formations, and dunes.",
+  description: `Search and filter ${countWord(getDestinationSummaries().length)} natural destinations in Kazakhstan: lakes, canyons and rock formations, and dunes.`,
 };
 
 export default function DestinationsPage() {
@@ -18,8 +19,8 @@ export default function DestinationsPage() {
         <p className="eyebrow text-fg-muted">Catalogue</p>
         <h1 className="mt-4 font-display text-[clamp(2.75rem,2rem+3.5vw,5.5rem)] leading-[0.95] font-medium">All destinations</h1>
         <p className="mt-6 max-w-[60ch] text-[1.05rem] leading-relaxed text-fg-soft md:text-[1.125rem]">
-          Seven places, from chalk escarpments in the far west to mountain lakes in the south-east and granite in the north. Search by
-          name, region or landscape, or filter by type.
+          {countWord(summaries.length, true)} places, from chalk escarpments in the west to the lakes of the Tian Shan and the Altai
+          and granite in the north. Search by name, region or landscape, or filter by type.
         </p>
       </header>
 

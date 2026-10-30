@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getAllDestinations, getAllPhotoCredits } from "@/lib/destinations";
-import { formatDate } from "@/lib/format";
+import { countWord, formatDate } from "@/lib/format";
 
 export const metadata: Metadata = {
   title: "About & methodology",
@@ -28,7 +28,7 @@ export default function AboutPage() {
           </h2>
           <div className="prose-guide">
             <p>
-              NATURE KZ introduces international visitors to seven natural destinations in Kazakhstan through photography and short,
+              NATURE KZ introduces international visitors to {countWord(destinations.length)} natural destinations in Kazakhstan through photography and short,
               sourced guides. It is an independent editorial project: it does not sell tours, take bookings or speak for any park or
               government body.
             </p>

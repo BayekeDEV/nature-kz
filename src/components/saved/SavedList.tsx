@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { DestinationImage } from "@/components/media/DestinationImage";
 import { CATEGORY_LABELS } from "@/lib/filter";
+import { coverSizes, SAVED_THUMB_FRAMES } from "@/lib/image-sizes";
 import { accentVars } from "@/lib/theme";
 import { useSavedDestinations } from "@/lib/use-saved-destinations";
 import type { DestinationSummary } from "@/lib/types";
@@ -58,7 +59,7 @@ export function SavedList({ destinations }: { destinations: DestinationSummary[]
             {saved.map((d) => (
               <li key={d.id} style={accentVars(d.theme)} className="grid grid-cols-[6.5rem_1fr] gap-x-5 gap-y-4 py-6 sm:grid-cols-[10rem_1fr_auto] sm:items-center md:gap-x-8">
                 <div className="relative aspect-[4/3] overflow-hidden bg-accent-wash">
-                  <DestinationImage media={d.hero} sizes="160px" />
+                  <DestinationImage media={d.hero} sizes={coverSizes(d.hero, SAVED_THUMB_FRAMES)} />
                 </div>
                 <div>
                   <p className="eyebrow text-fg-muted">{CATEGORY_LABELS[d.category]}</p>

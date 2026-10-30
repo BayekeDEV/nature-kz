@@ -19,7 +19,7 @@ export interface Source {
   publisher: string;
   url: string;
   /** What kind of authority this is, so readers can weigh it. */
-  kind: "official-park" | "official-tourism" | "government" | "news" | "reference";
+  kind: "official-park" | "official-tourism" | "government" | "international" | "news" | "reference";
   /** ISO date (YYYY-MM-DD) when this source was opened and read for this site. */
   accessedOn: string;
 }

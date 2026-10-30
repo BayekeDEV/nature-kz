@@ -7,6 +7,7 @@ import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react
 import { createPortal } from "react-dom";
 import { DestinationImage } from "@/components/media/DestinationImage";
 import { useHydrated } from "@/lib/use-saved-destinations";
+import { coverSizes, GALLERY_LEAD_FRAMES, GALLERY_TILE_FRAMES } from "@/lib/image-sizes";
 import { themeVars } from "@/lib/theme";
 import type { DestinationTheme, ResolvedMedia } from "@/lib/types";
 
@@ -112,7 +113,7 @@ export function Gallery({ images, destinationName, theme }: Props) {
               >
                 <DestinationImage
                   media={image}
-                  sizes={index === 0 ? "(min-width: 768px) 62vw, 100vw" : "(min-width: 768px) 32vw, 100vw"}
+                  sizes={coverSizes(image, index === 0 ? GALLERY_LEAD_FRAMES : GALLERY_TILE_FRAMES)}
                   className="transition-transform duration-700 ease-[var(--ease-soft)] group-hover:scale-[1.025] group-focus-visible:scale-[1.025] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
                 />
                 <span aria-hidden className="absolute inset-0 ring-1 ring-fg/10 ring-inset" />

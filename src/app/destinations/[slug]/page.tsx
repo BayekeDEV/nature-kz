@@ -7,7 +7,7 @@ import { DestinationCard } from "@/components/destination/DestinationCard";
 import { Gallery } from "@/components/destination/Gallery";
 import { PhotoHero } from "@/components/destination/PhotoHero";
 import { SaveButton } from "@/components/destination/SaveButton";
-import { KazakhstanMap } from "@/components/map/KazakhstanMap";
+import { DestinationMap } from "@/components/map/DestinationMap";
 import { Reveal } from "@/components/motion/Reveal";
 import {
   getAllDestinations,
@@ -195,6 +195,7 @@ const SOURCE_KIND_LABELS = {
   "official-park": "Official park website",
   "official-tourism": "Official tourism portal",
   government: "Government publication",
+  international: "International organisation",
   news: "News report",
   reference: "Reference work",
 } as const;
@@ -250,10 +251,12 @@ function GeographicContext({ destination }: { destination: Destination }) {
             </a>
           </div>
         </div>
-        <div className="overflow-hidden rounded-sm border border-line bg-raised p-4 md:p-8">
-          <KazakhstanMap points={points} highlightSlug={destination.slug} title={`Schematic map showing where ${destination.name} lies in Kazakhstan`} />
-          <p className="mt-3 text-xs text-fg-muted">
-            Schematic overview. Country outline: Natural Earth (public domain). <Link href="/map" className="underline">All destinations on the map</Link>
+        <div>
+          <DestinationMap points={points} initialSlug={destination.slug} title={`Map showing where ${destination.name} lies in Kazakhstan`} />
+          <p className="mt-3 text-sm">
+            <Link href="/map" className="underline underline-offset-4 hover:text-accent-fg">
+              All destinations on the map
+            </Link>
           </p>
         </div>
       </div>

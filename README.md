@@ -2,10 +2,12 @@
 
 *Discover Kazakhstan, beyond the familiar.*
 
-An English-language editorial guide to seven natural destinations in Kazakhstan:
-Bozzhyra, Kolsai Lakes, Charyn Canyon, Kaindy Lake, the Singing Dune,
-Burabay — Zhumbaktas and Big Almaty Lake. Sourced guides, licensed photography,
-a schematic map and a browser-only "saved" list. No bookings, accounts or API keys.
+An English-language editorial guide to nine natural destinations in Kazakhstan:
+Bozzhyra and the Aktolagay Plateau in the west, Kolsai Lakes, Charyn Canyon,
+Kaindy Lake, the Singing Dune and Big Almaty Lake in the south-east,
+Burabay — Zhumbaktas in the north and Markakol Lake in the Altai. Sourced guides,
+licensed photography, an interactive schematic map and a browser-only "saved"
+list. No bookings, accounts or API keys.
 
 ## Run it
 
@@ -42,9 +44,9 @@ Fonts: Cormorant Garamond (headings) and DM Sans (text) via `next/font`.
 | --- | --- |
 | `/` | Homepage with Bozzhyra hero, collection, map preview |
 | `/destinations` | Catalogue with search and filters (`?q=…&type=lakes`) |
-| `/destinations/[slug]` | Destination guide (7 static pages; unknown slugs → 404) |
+| `/destinations/[slug]` | Destination guide (one static page per destination; unknown slugs → 404) |
 | `/saved` | Saved destinations (stored in this browser only) |
-| `/map` | Schematic map and reference points |
+| `/map` | Interactive schematic map (every destination marked) and reference points |
 | `/about` | Purpose, methodology, photo credits |
 
 ## Docs

@@ -5,9 +5,11 @@ import type { Source } from "@/lib/types";
  * content was written. Add new sources here, then reference them by id.
  */
 const RESEARCH_DATE = "2026-10-27";
+/** Research for Markakol Lake and the Aktolagay Plateau. */
+const UPDATE_DATE = "2026-10-30";
 
-function source(entry: Omit<Source, "accessedOn">): Source {
-  return { ...entry, accessedOn: RESEARCH_DATE };
+function source(entry: Omit<Source, "accessedOn">, accessedOn = RESEARCH_DATE): Source {
+  return { ...entry, accessedOn };
 }
 
 export const sources = {
@@ -165,4 +167,84 @@ export const sources = {
     url: "https://en.wikipedia.org/wiki/Big_Almaty_Lake",
     kind: "reference",
   }),
+  ktMarkakolLake: source(
+    {
+      id: "kt-markakol-lake",
+      title: "Lake Markakol",
+      publisher: "Kazakhstan.travel (official tourism portal)",
+      url: "https://www.kazakhstan.travel/en/attractions/161",
+      kind: "official-tourism",
+    },
+    UPDATE_DATE,
+  ),
+  ktMarkakolReserve: source(
+    {
+      id: "kt-markakol-reserve",
+      title: "Markakol State Nature Reserve",
+      publisher: "Kazakhstan.travel (official tourism portal)",
+      url: "https://www.kazakhstan.travel/en/attractions/159",
+      kind: "official-tourism",
+    },
+    UPDATE_DATE,
+  ),
+  visitEastMarkakol: source(
+    {
+      id: "visit-east-markakol",
+      title: "Markakol",
+      publisher: "Visit East Qazaqstan (Tourist Information Centre of East Kazakhstan Region)",
+      url: "https://visiteast.kz/en/populyarnyie-turobektyi/markakol/",
+      kind: "official-tourism",
+    },
+    UPDATE_DATE,
+  ),
+  unescoMarkakol: source(
+    {
+      id: "unesco-markakol",
+      title: "Markakol Biosphere Reserve",
+      publisher: "UNESCO Man and the Biosphere Programme",
+      url: "https://www.unesco.org/en/mab/markakol",
+      kind: "international",
+    },
+    UPDATE_DATE,
+  ),
+  unescoNewReserves2022: source(
+    {
+      id: "unesco-new-reserves-2022",
+      title: "UNESCO designates 11 new biosphere reserves (14 June 2022)",
+      publisher: "UNESCO",
+      url: "https://www.unesco.org/en/articles/unesco-designates-11-new-biosphere-reserves",
+      kind: "international",
+    },
+    UPDATE_DATE,
+  ),
+  ktAktolagay: source(
+    {
+      id: "kt-aktolagay",
+      title: "Aktolagay chalk mountain (in Kazakh)",
+      publisher: "Kazakhstan.travel (official tourism portal)",
+      url: "https://kazakhstan.travel/kz/attractions/24",
+      kind: "official-tourism",
+    },
+    UPDATE_DATE,
+  ),
+  visitAktobe: source(
+    {
+      id: "visit-aktobe",
+      title: "Chalk mountains: the southern Aktolagay plateau (in Russian)",
+      publisher: "Visit Aktobe (regional tourism portal)",
+      url: "https://www.visitaktobe.kz/ru/guide/page/melovye-gory-yuzhnoe-plato-aktolagaj",
+      kind: "official-tourism",
+    },
+    UPDATE_DATE,
+  ),
+  wikiRuAktolagay: source(
+    {
+      id: "wiki-ru-aktolagay",
+      title: "Aktolagay (Russian-language article)",
+      publisher: "Wikipedia",
+      url: "https://ru.wikipedia.org/wiki/%D0%90%D0%BA%D1%82%D0%BE%D0%BB%D0%B0%D0%B3%D0%B0%D0%B9",
+      kind: "reference",
+    },
+    UPDATE_DATE,
+  ),
 } satisfies Record<string, Source>;

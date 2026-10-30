@@ -26,7 +26,7 @@ export function SiteFooter() {
         <div>
           <p className="font-display text-[1.6rem] font-semibold tracking-[0.12em] text-fg">NATURE KZ</p>
           <p className="mt-3 max-w-sm text-[0.98rem] leading-relaxed text-fg-muted">
-            Discover Kazakhstan, beyond the familiar. An independent editorial guide to seven natural destinations — not an official
+            Discover Kazakhstan, beyond the familiar. An independent editorial guide to natural destinations across Kazakhstan — not an official
             tourism service and not a booking site.
           </p>
         </div>

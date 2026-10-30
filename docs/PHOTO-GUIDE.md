@@ -25,8 +25,10 @@ public/images/destinations/<slug>/gallery-03.jpg  ← gallery photo 3
 | Singing Dune | `singing-dune` | The dune's clean ridge and the space around it — the dune itself, not a random Altyn-Emel view. |
 | Burabay — Zhumbaktas | `burabay-zhumbaktas` | The Zhumbaktas rock in the lake, not just the wider Burabay area. |
 | Big Almaty Lake | `big-almaty-lake` | The lake basin with the mountains behind. |
+| Markakol Lake | `markakol-lake` | The lake with Altai forest and ridges — not a generic green lake. |
+| Aktolagay Plateau | `aktolagay-plateau` | White chalk cliffs and figures above the steppe. Keep the chalk white. |
 
-**Required:** 7 hero photos. **Optional:** up to 3 gallery photos per destination (21 total).
+**Required:** one hero photo per destination. **Optional:** up to 3 gallery photos per destination.
 If a gallery file is missing, the gallery simply shows fewer photos. If a hero is
 missing, a calm "Photo pending" panel appears instead — never a broken image.
 
@@ -100,7 +102,13 @@ photo is used twice.
 - Production (`npm run build && npm run start`): rebuild, because the site checks
   which photos exist at build time.
 
-## 7. Before you choose a hero, check its quality
+## 7. Avoid extreme panoramas as heroes
+
+A hero also appears as a 4:5 card and as a tall phone hero, so very wide
+panoramas (2.5:1 or wider) get cropped to a narrow slice. Prefer 3:2 or 4:3
+originals for heroes; put panoramas in the gallery instead.
+
+## 8. Before you choose a hero, check its quality
 
 The first Bozzhyra hero looked hazy because the photo itself had very little
 tonal range (an overcast, low-contrast shot), and grey overlays made it worse.

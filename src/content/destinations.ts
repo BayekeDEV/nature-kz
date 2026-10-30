@@ -13,7 +13,6 @@ import { sources as s } from "@/content/sources";
 
 const CC_BY_SA_4 = { license: "CC BY-SA 4.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0/" };
 const CC_BY_SA_3 = { license: "CC BY-SA 3.0", licenseUrl: "https://creativecommons.org/licenses/by-sa/3.0/" };
-const CC_BY_3 = { license: "CC BY 3.0", licenseUrl: "https://creativecommons.org/licenses/by/3.0/" };
 const CC_BY_2 = { license: "CC BY 2.0", licenseUrl: "https://creativecommons.org/licenses/by/2.0/" };
 const CC0 = { license: "CC0 1.0 (public domain dedication)", licenseUrl: "https://creativecommons.org/publicdomain/zero/1.0/" };
 const PD = { license: "Public domain (released by the author)" };
@@ -87,7 +86,7 @@ export const destinations: Destination[] = [
       sourceId: s.ktBozzhyra.id,
     },
     mapSearchQuery: "Bozzhyra, Mangystau Region, Kazakhstan",
-    relatedSlugs: ["charyn-canyon", "singing-dune"],
+    relatedSlugs: ["aktolagay-plateau", "charyn-canyon", "singing-dune"],
     theme: {
       bg: "#1E1A15",
       surface: "#28231C",
@@ -591,7 +590,7 @@ export const destinations: Destination[] = [
       sourceId: s.wikiBurabay.id,
     },
     mapSearchQuery: "Zhumbaktas rock, Lake Burabay, Kazakhstan",
-    relatedSlugs: ["kolsai-lakes", "bozzhyra"],
+    relatedSlugs: ["markakol-lake", "kolsai-lakes", "bozzhyra"],
     theme: {
       bg: "#141B1B",
       surface: "#1C2626",
@@ -705,12 +704,12 @@ export const destinations: Destination[] = [
     media: media("big-almaty-lake", [
       {
         role: "hero",
-        alt: "Wide panorama of turquoise Big Almaty Lake below dark mountain ridges and snow-capped peaks under a blue sky",
-        caption: "Big Almaty Lake and the surrounding peaks, September 2015.",
-        width: 5600,
-        height: 1904,
-        focal: { desktop: "50% 55%", mobile: "54% 55%" },
-        credit: { author: "Igors Jefimovs", ...CC_BY_3, sourceUrl: "https://commons.wikimedia.org/wiki/File:Big_Almaty_Lake.jpg" },
+        alt: "Turquoise Big Almaty Lake below snow-dusted mountain slopes and peaks under a clear blue sky, with a brown hillside in the foreground",
+        caption: "Big Almaty Lake in early November 2021.",
+        width: 4000,
+        height: 3000,
+        focal: { desktop: "50% 62%", mobile: "54% 60%" },
+        credit: { author: "Жасминовый Дракон", ...CC_BY_SA_4, sourceUrl: "https://commons.wikimedia.org/wiki/File:%D0%91%D0%B8%D1%80%D1%8E%D0%B7%D0%BE%D0%B2%D0%BE%D0%B5_%D1%81%D0%B5%D1%80%D0%B4%D1%86%D0%B5_%D0%B3%D0%BE%D1%80%D0%BE%D0%B4%D0%B0_%D0%90%D0%BB%D0%BC%D0%B0%D1%82%D1%8B.jpg" },
       },
       {
         role: "gallery-01",
@@ -740,5 +739,208 @@ export const destinations: Destination[] = [
     sources: [s.ileAlatau, s.ileAlatauRules, s.wikiBigAlmaty],
     status: "verified",
     verifiedOn: "2026-10-27",
+  },
+  {
+    id: "dst-markakol-lake",
+    slug: "markakol-lake",
+    name: "Markakol Lake",
+    region: "East Kazakhstan Region, southern Altai",
+    category: "lakes",
+    landscape: "Mountain lake in a nature reserve",
+    summary:
+      "A large, clear mountain lake in the southern Altai near the border with China, protected within the Markakol State Nature Reserve.",
+    intro:
+      "High in the southern Altai, a long mountain lake lies between forested ridges close to the border with China. The lake and the land around it are protected as a state nature reserve.",
+    keywords: ["Markakol", "Marqakol", "Altai", "taiga", "larch", "reserve", "Urunkhaika", "uskuch", "lenok", "East Kazakhstan", "UNESCO", "biosphere"],
+    quickFacts: [
+      { label: "Landscape", value: "Mountain lake among taiga and alpine ridges" },
+      { label: "Location", value: "Markakol District, East Kazakhstan Region" },
+      { label: "Protected area", value: "Markakol State Nature Reserve (est. 1976); UNESCO biosphere reserve since 2022" },
+      { label: "Visit style", value: "Remote, self-sufficient trips; guest houses or tent camps" },
+    ],
+    special: {
+      heading: "What makes it special",
+      paragraphs: [
+        "Markakol lies in a mountain basin between the Kurchum and Azutau ridges, close to Kazakhstan’s border with China. The regional tourism centre gives its surface elevation as 1,447 m and its size as about 38 km long and up to 19 km wide, and UNESCO describes it as the second-largest lake in eastern Kazakhstan.",
+        "The official tourism portal highlights the clarity of its fresh water. Its colour follows the weather: according to the regional tourism centre, it looks blue in bright sunshine and turns grey or silvery under rain and snow. Mountain taiga reaches down towards the shore, and the ridges above rise to alpine landscapes, giving Markakol a quieter, more northern character than the lakes of the Tian Shan.",
+      ],
+      sourceIds: [s.visitEastMarkakol.id, s.ktMarkakolLake.id, s.unescoMarkakol.id],
+    },
+    history: {
+      heading: "Landscape and history",
+      paragraphs: [
+        "The lake and its surroundings were declared a state nature reserve on 4 August 1976, and the reserve has since been enlarged. The official tourism portal lists more than 700 species of higher plants and over 300 vertebrate species. The regional tourism centre names brown bear, maral, elk and snow leopard among its mammals, and black stork among its birds.",
+        "Markakol is also known for its fish. The official tourism portal describes the uskuch as endemic, and UNESCO lists endemic fish subspecies including the Markakol lenok. In 2022 UNESCO added Markakol to its World Network of Biosphere Reserves, describing it as covering the least disturbed ecosystems in the southern part of the Western Altai.",
+        "Winters are long. The regional tourism centre notes that ice begins to form around late November and reaches 60–120 cm in thickness.",
+      ],
+      sourceIds: [s.ktMarkakolReserve.id, s.visitEastMarkakol.id, s.ktMarkakolLake.id, s.unescoMarkakol.id, s.unescoNewReserves2022.id],
+    },
+    planning: {
+      heading: "Planning your visit",
+      paragraphs: [
+        "Markakol is a protected nature reserve, not an open recreation area. The official tourism portal lists the reserve near the village of Urunkhaika with office hours and a daily visitor fee. Contact the reserve administration before you travel to confirm which areas and routes are open to visitors, and which fees and permits apply.",
+        "The lake lies close to the state border with China, and the regional tourism portal flags the area as a border zone. Check well in advance whether your route requires a border-zone permit.",
+        "Getting there means long distances on mountain roads. The regional tourism centre describes the route from Oskemen (Ust-Kamenogorsk) via Kurchum, where the asphalt ends, and recommends a well-prepared vehicle for the mountain road known as the Old Austrian Road. Accommodation is limited to guest houses and tent camps, so bring supplies from larger towns. The official tourism portal lists no mobile connection at the lake.",
+      ],
+      sourceIds: [s.ktMarkakolReserve.id, s.ktMarkakolLake.id, s.visitEastMarkakol.id],
+    },
+    coordinates: {
+      lat: 48.74,
+      lon: 85.76,
+      represents: "Reference point for Lake Markakol given by Kazakhstan.travel — the lake is about 38 km long, so this is not a shoreline, village or access point",
+      sourceId: s.ktMarkakolLake.id,
+    },
+    mapSearchQuery: "Lake Markakol, East Kazakhstan Region, Kazakhstan",
+    relatedSlugs: ["kolsai-lakes", "burabay-zhumbaktas", "kaindy-lake"],
+    theme: {
+      bg: "#131A17",
+      surface: "#1B2420",
+      text: "#E8ECE4",
+      muted: "#AEB9AE",
+      accent: "#7FA58A",
+      accentText: "#B3D0B8",
+      border: "#2D3832",
+    },
+    heroPlacement: "left",
+    media: media("markakol-lake", [
+      {
+        role: "hero",
+        alt: "Calm lake water along a forested shore of birch and conifers, with low mountain ridges in the distance under a blue sky",
+        caption: "The forested shore of Lake Markakol near Urunkhaika, July 2022.",
+        width: 4000,
+        height: 3000,
+        focal: { desktop: "45% 62%", mobile: "68% 58%" },
+        credit: { author: "Dias Kabdualiev", ...CC_BY_SA_4, sourceUrl: "https://commons.wikimedia.org/wiki/File:%D0%9F%D0%BE%D0%B1%D0%B5%D1%80%D0%B5%D0%B6%D1%8C%D0%B5_%D0%BE%D0%B7%D0%B5%D1%80%D0%B0_%D0%9C%D0%B0%D1%80%D0%BA%D0%B0%D0%BA%D0%BE%D0%BB%D1%8C.jpg" },
+      },
+      {
+        role: "gallery-01",
+        alt: "Pink-tinged clouds reflected in still lake water at dusk, with a dark mountain ridge across the lake",
+        caption: "Evening reflections, seen from the southern shore, August 2023.",
+        width: 2400,
+        height: 1800,
+        credit: { author: "Y. Bekishev", ...CC_BY_SA_4, sourceUrl: "https://commons.wikimedia.org/wiki/File:%D0%9E%D0%B7%D0%B5%D1%80%D0%BE_%D0%9C%D0%B0%D1%80%D0%BA%D0%B0%D0%BA%D0%BE%D0%BB%D1%8C._%D0%92%D0%B8%D0%B4_%D1%81_%D1%8E%D0%B6%D0%BD%D0%BE%D0%B3%D0%BE_%D0%B1%D0%B5%D1%80%D0%B5%D0%B3%D0%B0.jpg" },
+      },
+      {
+        role: "gallery-02",
+        alt: "A snow-streaked, pyramid-shaped peak above forested slopes under heavy grey cloud",
+        caption: "Samovar mountain, seen from the shore of the lake, June 2023.",
+        width: 2400,
+        height: 1800,
+        credit: { author: "Avustfel", ...CC_BY_SA_4, sourceUrl: "https://commons.wikimedia.org/wiki/File:%D0%93%D0%BE%D1%80%D0%B0_%22%D0%A1%D0%B0%D0%BC%D0%BE%D0%B2%D0%B0%D1%80%22,_%D0%9C%D0%B0%D1%80%D0%BA%D0%B0%D0%BA%D0%BE%D0%BB%D1%8C%D1%81%D0%BA%D0%B8%D0%B9_%D0%93%D0%9F%D0%97.jpg" },
+      },
+      {
+        role: "gallery-03",
+        alt: "Clear shallow water over rounded stones in the foreground, with the wide lake and blue mountain ridges beyond",
+        caption: "Clear water over the stony shore, June 2022.",
+        width: 2400,
+        height: 1800,
+        credit: { author: "Vakhles", ...CC_BY_SA_4, sourceUrl: "https://commons.wikimedia.org/wiki/File:%D0%92%D0%BE%D0%B4%D0%BD%D0%B0%D1%8F_%D0%B3%D0%BB%D0%B0%D0%B4%D1%8C_%D0%BE%D0%B7%D0%B5%D1%80%D0%B0_%D0%9C%D0%B0%D1%80%D0%BA%D0%B0%D0%BA%D0%BE%D0%BB%D1%8C.jpg" },
+      },
+    ]),
+    sources: [s.ktMarkakolLake, s.ktMarkakolReserve, s.visitEastMarkakol, s.unescoMarkakol, s.unescoNewReserves2022],
+    status: "verified",
+    verifiedOn: "2026-10-30",
+  },
+  {
+    id: "dst-aktolagay-plateau",
+    slug: "aktolagay-plateau",
+    name: "Aktolagay Plateau",
+    region: "Aktobe Region, western Kazakhstan",
+    category: "canyons-rocks",
+    landscape: "Chalk plateau escarpment",
+    summary:
+      "A 90 km ridge of white chalk cliffs, gullies and free-standing figures above the steppe of Aktobe Region, where marine fossils are found in the rock.",
+    intro:
+      "In the steppe of Aktobe Region, a long chalk plateau breaks into white cliffs, terraces and free-standing figures. Its pale rock formed on an ancient sea floor and still holds the fossils of sea creatures.",
+    keywords: ["Aktolagay", "Aqtolagai", "Aktolagai", "chalk", "plateau", "Baiganin", "Aktobe", "fossils", "steppe", "Zhem", "Emba", "Nartobe", "Kulshar", "western Kazakhstan"],
+    quickFacts: [
+      { label: "Landscape", value: "Chalk plateau with eroded cliffs and figures" },
+      { label: "Location", value: "Baiganin District, Aktobe Region" },
+      { label: "Protected status", value: "Listed as a geological site in the state fund of protected natural areas" },
+      { label: "Visit style", value: "Remote steppe trips by vehicle, then walking" },
+    ],
+    special: {
+      heading: "What makes it special",
+      paragraphs: [
+        "Aktolagay is a ridge about 90 km long and 5–10 km wide in Baiganin District of Aktobe Region, in the west of Kazakhstan. On its western side the plateau ends in a steep slope cut by ravines, and erosion has worked the white chalk into cliffs, columns, niches, terraces and amphitheatre-like hollows. Its highest point, Nartobe, reaches 302 m.",
+        "Many of the free-standing forms carry names. Local residents compare them to a lion, a sphinx, a camel, a yurt and even the Titanic, and call the area an open-air museum. The regional tourism portal also describes how the colour of the chalk shifts through the day: yellowish in the early morning, white at midday and bluish in the evening.",
+      ],
+      sourceIds: [s.visitAktobe.id, s.ktAktolagay.id],
+    },
+    history: {
+      heading: "Landscape and history",
+      paragraphs: [
+        "The plateau is built of chalk. Both the official tourism portal and the regional portal describe it as the floor of an ancient ocean, and fossils are found across the area: shark teeth, the shells of molluscs, sea urchins and turtles, and even whale vertebrae. Whales did not exist when most chalk was laid down, so the fossils here span more than one geological period; this guide therefore does not give a single age for the plateau.",
+        "Aktolagay is listed in Kazakhstan’s state fund of protected natural areas as a geological and geomorphological site of national and international significance. Wormwood and other drought-tolerant plants grow on the grey soils and salt flats around it. The Terisakkan River begins on the plateau, and to the west it meets the Caspian Lowland along the Zhem River.",
+        "Local tradition attaches stories to particular landmarks. A peak called Kulshar is said to mark the grave of a hero of the Adai clan who sheltered in a cave nearby — a story told locally rather than a documented history.",
+      ],
+      sourceIds: [s.ktAktolagay.id, s.visitAktobe.id, s.wikiRuAktolagay.id],
+    },
+    planning: {
+      heading: "Planning your visit",
+      paragraphs: [
+        "Aktolagay is a remote steppe landscape rather than a managed visitor site with facilities. The regional tourism portal mentions a single road to the top of Kulshar peak and links to online maps for route planning. Plan for long distances across open steppe and travel with someone who knows the area.",
+        "The chalk is soft, steep and crumbly. Keep back from cliff edges, do not climb on the formations, and leave fossils where you find them, as the site is protected.",
+        "There is little shade or shelter. Carry water, sun protection and warm layers, and check the weather before you set out. We found no official visitor rules or opening arrangements, so ask the regional tourism office in Aktobe about current conditions.",
+      ],
+      sourceIds: [s.visitAktobe.id, s.ktAktolagay.id],
+    },
+    coordinates: {
+      lat: 47.49425,
+      lon: 55.11678,
+      represents: "Reference point for the Aktolagay chalk mountains given by Kazakhstan.travel — the ridge is about 90 km long, so this is not a specific formation or access point",
+      sourceId: s.ktAktolagay.id,
+    },
+    mapSearchQuery: "Aktolagay, Baiganin District, Aktobe Region, Kazakhstan",
+    relatedSlugs: ["bozzhyra", "charyn-canyon", "singing-dune"],
+    theme: {
+      bg: "#1B1B17",
+      surface: "#25251F",
+      text: "#F0EEE5",
+      muted: "#BCB8A9",
+      accent: "#C9BA8E",
+      accentText: "#E0D4AE",
+      border: "#3B3A31",
+    },
+    heroPlacement: "left",
+    media: media("aktolagay-plateau", [
+      {
+        role: "hero",
+        alt: "White chalk ridges and pinnacles spread across a wide, flat steppe in low evening light under a pale sky",
+        caption: "Chalk formations of Aktolagay rising from the steppe, September 2020.",
+        width: 4000,
+        height: 2250,
+        focal: { desktop: "50% 62%", mobile: "42% 62%" },
+        credit: { author: "PuzatikVu", ...CC_BY_SA_4, sourceUrl: "https://commons.wikimedia.org/wiki/File:%D0%90%D0%BA%D1%82%D0%BE%D0%BB%D0%B0%D0%B3%D0%B0%D0%B9.jpg" },
+      },
+      {
+        role: "gallery-01",
+        alt: "A tall cone of ribbed white chalk with a smaller block-shaped figure beside it, under a deep blue sky",
+        caption: "Free-standing chalk figures on the plateau, September 2020.",
+        width: 2400,
+        height: 1600,
+        focal: { desktop: "40% 50%", mobile: "35% 50%" },
+        credit: { author: "PuzatikVu", ...CC_BY_SA_4, sourceUrl: "https://commons.wikimedia.org/wiki/File:%D0%A4%D0%B8%D0%B3%D1%83%D1%80%D1%8B_%D0%90%D0%BA%D1%82%D0%BE%D0%BB%D0%B0%D0%B3%D0%B0%D0%B9.jpg" },
+      },
+      {
+        role: "gallery-02",
+        alt: "A narrow gully between steep white chalk walls, opening onto a brown valley floor",
+        caption: "A gully cut into the chalk.",
+        width: 2400,
+        height: 1600,
+        credit: { author: "PuzatikVu", ...CC_BY_SA_4, sourceUrl: "https://commons.wikimedia.org/wiki/File:%D0%A3%D1%89%D0%B5%D0%BB%D1%8C%D0%B5_%D0%9C%D0%B5%D0%BB%D0%BE%D0%B2%D1%8B%D1%85_%D0%B3%D0%BE%D1%80_%D0%90%D0%BA%D1%82%D0%BE%D0%BB%D0%B0%D0%B3%D0%B0%D0%B9.jpg" },
+      },
+      {
+        role: "gallery-03",
+        alt: "Fluted white chalk cliffs below the flat top of the plateau, lit by low sun",
+        caption: "Eroded cliffs below the flat top of the plateau.",
+        width: 2400,
+        height: 1600,
+        credit: { author: "PuzatikVu", ...CC_BY_SA_4, sourceUrl: "https://commons.wikimedia.org/wiki/File:%D0%93%D0%BE%D1%80%D1%8B_%D0%90%D0%BA%D1%82%D0%BE%D0%BB%D0%B0%D0%B3%D0%B0%D0%B9.jpg" },
+      },
+    ]),
+    sources: [s.ktAktolagay, s.visitAktobe, s.wikiRuAktolagay],
+    status: "verified",
+    verifiedOn: "2026-10-30",
   },
 ];

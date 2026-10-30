@@ -5,6 +5,7 @@ import { SiteHeader } from "@/components/layout/SiteHeader";
 import { MotionPreferences } from "@/components/motion/MotionPreferences";
 import { RouteTheme } from "@/components/layout/RouteTheme";
 import { getAllDestinations, getDestinationSlugs } from "@/lib/destinations";
+import { countWord } from "@/lib/format";
 import { BRAND_THEME } from "@/lib/theme";
 import "./globals.css";
 
@@ -27,7 +28,7 @@ export const metadata: Metadata = {
     template: "%s · NATURE KZ",
   },
   description:
-    "An editorial guide to seven natural destinations in Kazakhstan, from the chalk towers of Bozzhyra to the lakes of the Tian Shan, with sourced facts and licensed photography.",
+    `An editorial guide to ${countWord(getAllDestinations().length)} natural destinations in Kazakhstan, from the chalk plateaus of the west to the lakes of the Tian Shan and the Altai, with sourced facts and licensed photography.`,
   applicationName: "NATURE KZ",
 };
 
@@ -48,7 +49,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         </a>
         <MotionPreferences>
           <RouteTheme themes={themes}>
-            <SiteHeader guideSlugs={getDestinationSlugs()} />
+            <SiteHeader guideSlugs={getDestinationSlugs()} destinationIds={getAllDestinations().map((d) => d.id)} />
             <main id="main" className="flex-1">
               {children}
             </main>

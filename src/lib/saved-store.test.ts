@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { createSavedStore, parseSavedIds, STORAGE_KEY, type StorageLike } from "@/lib/saved-store";
+import { createSavedStore, knownSavedIds, parseSavedIds, STORAGE_KEY, type StorageLike } from "@/lib/saved-store";
 
 function memoryStorage(initial: Record<string, string> = {}): StorageLike & { data: Record<string, string> } {
   const data = { ...initial };
@@ -121,5 +121,17 @@ describe("malformed data cleanup", () => {
     const storage = memoryStorage({ [STORAGE_KEY]: '["a","a",5]' });
     createSavedStore(storage);
     expect(storage.data[STORAGE_KEY]).toBe('["a"]');
+  });
+});
+
+describe("compatibility with saves from older versions", () => {
+  it("counts only ids that still belong to a destination, keeping their order", () => {
+    const stored = ["dst-kaindy-lake", "dst-retired-place", "dst-markakol-lake"];
+    expect(knownSavedIds(stored, ["dst-markakol-lake", "dst-kaindy-lake", "dst-bozzhyra"])).toEqual(["dst-kaindy-lake", "dst-markakol-lake"]);
+  });
+
+  it("loads a seven-destination era list unchanged", () => {
+    const storage = memoryStorage({ [STORAGE_KEY]: JSON.stringify(["dst-bozzhyra", "dst-big-almaty-lake"]) });
+    expect(createSavedStore(storage).getSnapshot()).toEqual(["dst-bozzhyra", "dst-big-almaty-lake"]);
   });
 });

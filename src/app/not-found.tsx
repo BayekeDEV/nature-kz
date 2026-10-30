@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getAllDestinations } from "@/lib/destinations";
+import { countWord } from "@/lib/format";
 
 export default function NotFound() {
   const destinations = getAllDestinations();
@@ -10,7 +11,7 @@ export default function NotFound() {
         This page isn&rsquo;t part of the guide
       </h1>
       <p className="mt-6 max-w-[56ch] text-[1.05rem] leading-relaxed text-fg-soft">
-        The address may be mistyped, or the destination may not be covered yet. These are the seven destinations currently in the
+        The address may be mistyped, or the destination may not be covered yet. These are the {countWord(destinations.length)} destinations currently in the
         guide:
       </p>
       <ul className="mt-10 grid max-w-3xl gap-x-10 border-t border-line sm:grid-cols-2">

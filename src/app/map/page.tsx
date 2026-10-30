@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { MapOverview } from "@/components/map/MapOverview";
+import { DestinationMap } from "@/components/map/DestinationMap";
 import { getAllDestinations } from "@/lib/destinations";
 import { formatCoordinates, osmPointUrl, osmSearchUrl } from "@/lib/map";
 import { getMapPoints } from "@/lib/map-points";
 
 export const metadata: Metadata = {
   title: "Map overview",
-  description: "A schematic overview of where the seven NATURE KZ destinations lie within Kazakhstan.",
+  description: "A schematic overview of where the NATURE KZ destinations lie within Kazakhstan, with every destination marked individually.",
 };
 
 export default function MapPage() {
@@ -28,12 +28,7 @@ export default function MapPage() {
       </header>
 
       <section aria-label="Schematic map" className="page-container">
-        <div className="border-y border-line bg-raised/60 px-2 py-8 md:px-10 md:py-12">
-          <MapOverview points={points} />
-        </div>
-        <p className="mt-3 text-xs text-fg-muted">
-          Country outline simplified from Natural Earth (public domain). Not to be used for navigation.
-        </p>
+        <DestinationMap points={points} showList title="Map of Kazakhstan showing every destination" />
       </section>
 
       <section aria-labelledby="list-heading" className="page-container py-20">

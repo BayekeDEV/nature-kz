@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "motion/react";
 import { Bookmark, Menu, X } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { knownSavedIds } from "@/lib/saved-store";
 import { useSavedDestinations } from "@/lib/use-saved-destinations";
 
 export const NAV_ITEMS = [
@@ -16,6 +17,8 @@ export const NAV_ITEMS = [
 interface Props {
   /** Slugs of guide pages, whose photographic hero sits under the header. */
   guideSlugs: string[];
+  /** Ids of current destinations, so stale saved ids are not counted. */
+  destinationIds: string[];
 }
 
 function hasPhotoHero(pathname: string, guideSlugs: string[]) {
@@ -24,7 +27,7 @@ function hasPhotoHero(pathname: string, guideSlugs: string[]) {
   return match ? guideSlugs.includes(match[1]) : false;
 }
 
-export function SiteHeader({ guideSlugs }: Props) {
+export function SiteHeader({ guideSlugs, destinationIds }: Props) {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -33,7 +36,7 @@ export function SiteHeader({ guideSlugs }: Props) {
   const panelRef = useRef<HTMLDivElement>(null);
 
   const overlay = hasPhotoHero(pathname, guideSlugs) && !scrolled && !menuOpen;
-  const savedCount = hydrated ? ids.length : 0;
+  const savedCount = hydrated ? knownSavedIds(ids, destinationIds).length : 0;
 
   // Only update state when crossing the threshold, not on every scroll frame.
   useEffect(() => {

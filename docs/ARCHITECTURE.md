@@ -23,7 +23,7 @@ src/components/**     ← UI pieces. Only interactive ones are Client Components
   saved list, and scroll motion.
 - **Small client payload.** Client components get a `DestinationSummary` (name,
   region, category, short text, hero image) — not the full guide text and sources.
-- **One template for seven guides.** `src/app/destinations/[slug]/page.tsx` renders
+- **One template for every guide.** `src/app/destinations/[slug]/page.tsx` renders
   every destination. `generateStaticParams` lists the slugs; unknown slugs call
   `notFound()` and get a 404.
 - **Themes are tokens.** Each destination has a seven-colour theme applied as CSS
@@ -40,7 +40,9 @@ src/components/**     ← UI pieces. Only interactive ones are Client Components
 | `src/lib/media.ts` | Checks if a photo file exists; missing photos render "Photo pending". |
 | `src/components/destination/PhotoHero.tsx` | Shared full-screen hero: overscan drift, text scrim and fade into the theme background. |
 | `src/lib/theme.ts` | Brand theme, theme → CSS variables, contrast maths. |
-| `src/components/map/KazakhstanMap.tsx` | Schematic SVG map with HTML markers at published reference points. |
+| `src/components/map/DestinationMap.tsx` | Interactive schematic map: every destination as its own marker, zoom/pan, details panel. |
+| `src/lib/map-points.ts` | Projected map points and the pure view maths (zoom-to-separate, label room). Unit-tested. |
+| `src/lib/image-sizes.ts` | Builds accurate `sizes` for photos cropped into cards, heroes and galleries. Unit-tested. |
 
 ## Themes
 
@@ -69,6 +71,33 @@ page. Links stay ordinary `<Link>`s (Ctrl/Cmd-click, new tabs and back/forward
 work as normal), and changing catalogue filters does not replay the animation.
 The animation uses `backwards` fill so no stacking context lingers afterwards;
 the gallery lightbox is also portalled to `<body>` for the same reason.
+
+## Map
+
+`DestinationMap` draws the Natural Earth outline and every destination with one
+equirectangular projection (`projectToMap` in `src/lib/map.ts`). Marker positions
+come straight from published coordinates and are never nudged apart; tests check
+that every point falls inside the outline and that the outline's extremes match
+the projection of Kazakhstan's real extreme latitudes and longitudes.
+
+The five south-eastern destinations are only a few kilometres apart at country
+scale, so the map separates them by **zooming, not moving them**: selecting a
+marker or a name in the list centres the map and zooms in just enough that the
+nearest neighbour is at least 44 px away (`focusView`). Names show permanently
+only where they have room (`roomyLabels`); otherwise on hover, focus or
+selection. Zoom and reset buttons, drag-to-pan when zoomed and arrow keys move
+the view; the mouse wheel is never captured, so the page scrolls normally. A
+details panel below the map gives the name, region, what the point represents
+and an "Explore destination" link. The same component is used on the homepage,
+`/map` (with the list) and every guide (with that destination selected).
+
+## Responsive images
+
+Photos fill their frames with `object-fit: cover`. When a wide photo fills a tall
+frame (a landscape in a 4:5 card, or any photo in a phone-height hero), it is
+drawn wider than the frame, so `sizes` must say so or the browser downloads a
+file that is too small. `coverSizes()` in `src/lib/image-sizes.ts` computes this
+from each photo's real dimensions and the frame shape used by each component.
 
 ## Motion
 

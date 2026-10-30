@@ -127,3 +127,13 @@ export function createSavedStore(storage: StorageLike | null): SavedDestinations
 }
 
 export const SERVER_SNAPSHOT = EMPTY;
+
+/**
+ * Saved ids that still match a destination. Old browsers may hold ids from an
+ * earlier version of the collection; they are kept in storage (harmless) but
+ * never counted or shown.
+ */
+export function knownSavedIds(ids: readonly string[], knownIds: readonly string[]): string[] {
+  const known = new Set(knownIds);
+  return ids.filter((id) => known.has(id));
+}

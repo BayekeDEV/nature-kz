@@ -3,10 +3,10 @@ import Link from "next/link";
 import { ArrowDown, ArrowRight } from "lucide-react";
 import { DestinationCard } from "@/components/destination/DestinationCard";
 import { PhotoHero } from "@/components/destination/PhotoHero";
-import { MapOverview } from "@/components/map/MapOverview";
+import { DestinationMap } from "@/components/map/DestinationMap";
 import { Reveal } from "@/components/motion/Reveal";
 import { getAllDestinations, getDestinationSummaries, getFeaturedDestination, getMedia } from "@/lib/destinations";
-import { heroFit } from "@/lib/format";
+import { countWord, heroFit } from "@/lib/format";
 import { getMapPoints } from "@/lib/map-points";
 
 export default function HomePage() {
@@ -68,9 +68,9 @@ export default function HomePage() {
               Between them lie desert plateaus, sand country, river canyons and the granite hills of the north.
             </p>
             <p>
-              This guide follows seven places that show that range: chalk escarpments on the Ustyurt Plateau, forested lakes and a
-              drowned forest in the Tian Shan, a red-rock canyon, a singing dune, a high mountain lake above Almaty, and a lake of pine
-              and granite in the north.
+              This guide follows {countWord(summaries.length)} places that show that range: chalk escarpments on the Ustyurt and
+              Aktolagay plateaus in the west, forested lakes and a drowned forest in the Tian Shan, a red-rock canyon, a singing dune,
+              a lake of pine and granite in the north, and Markakol in the Altai of the far east.
             </p>
           </div>
         </Reveal>
@@ -82,7 +82,7 @@ export default function HomePage() {
             <div>
               <p className="eyebrow text-fg-muted">The collection</p>
               <h2 id="collection-heading" className="heading-section mt-4">
-                Seven destinations
+                {countWord(summaries.length, true)} destinations
               </h2>
             </div>
             <Link href="/destinations" className="inline-flex min-h-11 items-center gap-2 border-b border-fg/40 font-medium hover:border-fg">
@@ -97,7 +97,7 @@ export default function HomePage() {
                 <DestinationCard destination={summary} index={index} />
               </Reveal>
             ))}
-            <li className="page-glow flex flex-col justify-between gap-8 border border-line p-8 md:p-10 lg:col-span-2">
+            <li className={`page-glow flex flex-col justify-between gap-8 border border-line p-8 md:p-10 ${CTA_SPAN_MD[summaries.length % 2]} ${CTA_SPAN_LG[summaries.length % 3]}`}>
               <p className="font-display text-[clamp(1.8rem,1.4rem+1.4vw,2.75rem)] leading-tight text-fg">
                 Search by name, landscape or region, and filter lakes, canyons and dunes.
               </p>
@@ -118,11 +118,11 @@ export default function HomePage() {
           <Reveal>
             <p className="eyebrow text-fg-muted">Where they are</p>
             <h2 id="map-heading" className="heading-section mt-4">
-              Seven places across a vast country
+              {countWord(points.length, true)} places across a vast country
             </h2>
             <p className="mt-6 max-w-md text-fg-soft">
-              Most of these destinations lie in the south-east, within reach of Almaty. Bozzhyra is far to the west on the Ustyurt
-              Plateau, and Burabay is in the north.
+              Five lie in the south-east, within reach of Almaty. Bozzhyra and Aktolagay are in the west, Burabay is in the north,
+              and Markakol is in the Altai of the far east. Select a marker or a name to see where each one is.
             </p>
             <p className="mt-4 max-w-md text-sm text-fg-muted">
               Schematic overview only. Markers show published reference points, not routes, trailheads or access points.
@@ -133,7 +133,7 @@ export default function HomePage() {
             </Link>
           </Reveal>
           <Reveal>
-            <MapOverview points={points} />
+            <DestinationMap points={points} showList title="Map of Kazakhstan showing every destination" />
           </Reveal>
         </div>
       </section>
@@ -161,3 +161,7 @@ export default function HomePage() {
     </>
   );
 }
+
+/* The catalogue tile fills whatever is left of the last grid row (2 columns on tablets, 3 on desktops). */
+const CTA_SPAN_MD = ["md:col-span-2", "md:col-span-1"];
+const CTA_SPAN_LG = ["lg:col-span-3", "lg:col-span-2", "lg:col-span-1"];

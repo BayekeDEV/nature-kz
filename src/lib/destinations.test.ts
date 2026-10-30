@@ -15,11 +15,42 @@ const REQUIRED_SLUGS = [
   "singing-dune",
   "burabay-zhumbaktas",
   "big-almaty-lake",
+  "markakol-lake",
+  "aktolagay-plateau",
+];
+
+/** IDs saved in browsers before the collection grew; they must never change. */
+const ORIGINAL_IDS = [
+  "dst-bozzhyra",
+  "dst-kolsai-lakes",
+  "dst-charyn-canyon",
+  "dst-kaindy-lake",
+  "dst-singing-dune",
+  "dst-burabay-zhumbaktas",
+  "dst-big-almaty-lake",
 ];
 
 describe("destination data access", () => {
-  it("contains exactly the seven agreed slugs", () => {
+  it("contains exactly the agreed slugs, in order", () => {
     expect(getDestinationSlugs()).toEqual(REQUIRED_SLUGS);
+  });
+
+  it("uses unique ids and slugs", () => {
+    const all = getAllDestinations();
+    expect(new Set(all.map((d) => d.id)).size).toBe(all.length);
+    expect(new Set(all.map((d) => d.slug)).size).toBe(all.length);
+    for (const d of all) expect(d.slug).toMatch(/^[a-z0-9]+(-[a-z0-9]+)*$/);
+  });
+
+  it("keeps the ids of the original destinations so existing saves still resolve", () => {
+    const ids = getAllDestinations().map((d) => d.id);
+    for (const id of ORIGINAL_IDS) expect(ids).toContain(id);
+  });
+
+  it("labels Aktolagay as Aktobe Region, not West Kazakhstan Region", () => {
+    const aktolagay = getDestinationBySlug("aktolagay-plateau");
+    expect(aktolagay?.region).toMatch(/^Aktobe Region/);
+    expect(JSON.stringify(aktolagay)).not.toMatch(/West Kazakhstan Region/);
   });
 
   it("returns undefined for unknown slugs (rendered as a 404 page)", () => {

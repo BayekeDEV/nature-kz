@@ -3,6 +3,7 @@
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
 import { useRef, useSyncExternalStore, type ReactNode } from "react";
 import { DestinationImage } from "@/components/media/DestinationImage";
+import { coverSizes, HERO_FRAMES } from "@/lib/image-sizes";
 import type { ResolvedMedia } from "@/lib/types";
 
 interface Props {
@@ -53,7 +54,7 @@ export function PhotoHero({ media, placement, children, credit, aside, height = 
     >
       {/* Overscan: 8% extra above the frame, so the downward drift never exposes an edge. */}
       <motion.div className="absolute inset-x-0 -top-[8%] bottom-0 -z-20" style={{ y }}>
-        <DestinationImage media={media} sizes="100vw" priority tone="light" />
+        <DestinationImage media={media} sizes={coverSizes(media, HERO_FRAMES)} priority tone="light" />
       </motion.div>
 
       <div aria-hidden className="hero-top-shade absolute inset-x-0 top-0 -z-10 h-40" />

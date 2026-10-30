@@ -2,6 +2,7 @@ import Link from "next/link";
 import { DestinationImage } from "@/components/media/DestinationImage";
 import { SaveButton } from "@/components/destination/SaveButton";
 import { CATEGORY_LABELS } from "@/lib/filter";
+import { CARD_FRAMES, coverSizes } from "@/lib/image-sizes";
 import { accentVars } from "@/lib/theme";
 import type { DestinationSummary } from "@/lib/types";
 
@@ -27,7 +28,7 @@ export function DestinationCard({ destination: d, index, headingLevel = "h3", ea
           media={d.hero}
           crop="tall"
           priority={eager}
-          sizes="(min-width: 1024px) 30vw, (min-width: 768px) 46vw, 100vw"
+          sizes={coverSizes(d.hero, CARD_FRAMES)}
           className="transition-transform duration-[900ms] ease-[var(--ease-soft)] group-hover:scale-[1.035] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
         />
         <SaveButton id={d.id} name={d.name} variant="overlay" className="absolute top-3 right-3 z-20" />

@@ -7,13 +7,15 @@ const names = (items: { name: string }[]) => items.map((d) => d.name).sort();
 
 describe("filterDestinations", () => {
   it("returns everything with no query and the 'all' category", () => {
-    expect(filterDestinations(all, { q: "", category: "all" })).toHaveLength(7);
+    expect(filterDestinations(all, { q: "", category: "all" })).toHaveLength(all.length);
+    expect(all).toHaveLength(9);
   });
 
   it("filters by landscape category", () => {
-    expect(names(filterDestinations(all, { q: "", category: "lakes" }))).toEqual(["Big Almaty Lake", "Kaindy Lake", "Kolsai Lakes"]);
+    expect(names(filterDestinations(all, { q: "", category: "lakes" }))).toEqual(["Big Almaty Lake", "Kaindy Lake", "Kolsai Lakes", "Markakol Lake"]);
     expect(names(filterDestinations(all, { q: "", category: "dunes" }))).toEqual(["Singing Dune"]);
     expect(names(filterDestinations(all, { q: "", category: "canyons-rocks" }))).toEqual([
+      "Aktolagay Plateau",
       "Bozzhyra",
       "Burabay — Zhumbaktas",
       "Charyn Canyon",
@@ -22,8 +24,15 @@ describe("filterDestinations", () => {
 
   it("matches names and descriptive text, case-insensitively", () => {
     expect(names(filterDestinations(all, { q: "KAINDY", category: "all" }))).toEqual(["Kaindy Lake"]);
-    expect(names(filterDestinations(all, { q: "chalk", category: "all" }))).toEqual(["Bozzhyra"]);
+    expect(names(filterDestinations(all, { q: "chalk", category: "all" }))).toEqual(["Aktolagay Plateau", "Bozzhyra"]);
     expect(names(filterDestinations(all, { q: "valley of castles", category: "all" }))).toEqual(["Charyn Canyon"]);
+  });
+
+  it("finds the eastern and western additions by name, region and landscape", () => {
+    expect(names(filterDestinations(all, { q: "markakol", category: "all" }))).toEqual(["Markakol Lake"]);
+    expect(names(filterDestinations(all, { q: "altai", category: "lakes" }))).toEqual(["Markakol Lake"]);
+    expect(names(filterDestinations(all, { q: "aktobe", category: "all" }))).toEqual(["Aktolagay Plateau"]);
+    expect(names(filterDestinations(all, { q: "fossils", category: "canyons-rocks" }))).toEqual(["Aktolagay Plateau"]);
   });
 
   it("requires every word to match and combines with the category", () => {

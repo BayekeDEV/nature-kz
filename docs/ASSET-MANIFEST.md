@@ -1,7 +1,7 @@
 # Asset manifest
 
-Snapshot generated from `src/content/destinations.ts` (the source of truth); last regenerated 27 October 2026 after the Bozzhyra photo update.
-Every file was downloaded from Wikimedia Commons, where its licence and description were checked, and resized for the web (heroes max 3200 px wide, Bozzhyra 4000 px, the Big Almaty Lake panorama 5600 px; gallery photos max 2400 px). Originals remain available at each source URL.
+Snapshot generated from `src/content/destinations.ts` (the source of truth); last regenerated 30 October 2026 (Markakol Lake, Aktolagay Plateau and the new Big Almaty Lake hero).
+Every file was downloaded from Wikimedia Commons, where its licence and description were checked, and resized for the web (heroes max 3200–4000 px wide; gallery photos max 2400 px). Originals remain available at each source URL.
 
 ## Bozzhyra
 
@@ -103,17 +103,49 @@ Alt text:
 
 | Role | Local file | Size (px) | Photographer | Licence | Focal (desktop / mobile) | Source page |
 | --- | --- | --- | --- | --- | --- | --- |
-| hero | `public/images/destinations/big-almaty-lake/hero.jpg` | 5600×1904 | Igors Jefimovs | CC BY 3.0 | 50% 55% / 54% 55% | [Commons](https://commons.wikimedia.org/wiki/File:Big_Almaty_Lake.jpg) |
+| hero | `public/images/destinations/big-almaty-lake/hero.jpg` | 4000×3000 | Жасминовый Дракон | CC BY-SA 4.0 | 50% 62% / 54% 60% | [Commons](https://commons.wikimedia.org/wiki/File:%D0%91%D0%B8%D1%80%D1%8E%D0%B7%D0%BE%D0%B2%D0%BE%D0%B5_%D1%81%D0%B5%D1%80%D0%B4%D1%86%D0%B5_%D0%B3%D0%BE%D1%80%D0%BE%D0%B4%D0%B0_%D0%90%D0%BB%D0%BC%D0%B0%D1%82%D1%8B.jpg) |
 | gallery-01 | `public/images/destinations/big-almaty-lake/gallery-01.jpg` | 2400×1649 | Ilya Rudakov | CC BY-SA 3.0 | 50% 50% / 50% 50% | [Commons](https://commons.wikimedia.org/wiki/File:Above_the_Big_Almaty_Lake.jpg) |
 | gallery-02 | `public/images/destinations/big-almaty-lake/gallery-02.jpg` | 2400×1600 | BitLord (Russian Wikipedia user) | CC BY-SA 4.0 | 50% 50% / 50% 50% | [Commons](https://commons.wikimedia.org/wiki/File:Big_Almaty_Lake_from_pass.jpg) |
 | gallery-03 | `public/images/destinations/big-almaty-lake/gallery-03.jpg` | 2272×1704 | Ds02006 | Public domain (released by the author) | 50% 50% / 50% 50% | [Commons](https://commons.wikimedia.org/wiki/File:Big_Almaty_Lake_(Bolshaya_Almatinka)_in_June.jpg) |
 
 Alt text:
 
-- **hero:** Wide panorama of turquoise Big Almaty Lake below dark mountain ridges and snow-capped peaks under a blue sky
+- **hero:** Turquoise Big Almaty Lake below snow-dusted mountain slopes and peaks under a clear blue sky, with a brown hillside in the foreground
 - **gallery-01:** Big Almaty Lake seen from high above, a blue oval in a valley of reddish-brown slopes with snowy peaks behind
 - **gallery-02:** A distant turquoise lake in a broad mountain valley seen from a high rocky pass, with ranges of peaks behind
 - **gallery-03:** Pale green lake water at the foot of green slopes and a snow-capped peak, seen from a grassy hillside in early summer
+
+## Markakol Lake
+
+| Role | Local file | Size (px) | Photographer | Licence | Focal (desktop / mobile) | Source page |
+| --- | --- | --- | --- | --- | --- | --- |
+| hero | `public/images/destinations/markakol-lake/hero.jpg` | 4000×3000 | Dias Kabdualiev | CC BY-SA 4.0 | 45% 62% / 68% 58% | [Commons](https://commons.wikimedia.org/wiki/File:%D0%9F%D0%BE%D0%B1%D0%B5%D1%80%D0%B5%D0%B6%D1%8C%D0%B5_%D0%BE%D0%B7%D0%B5%D1%80%D0%B0_%D0%9C%D0%B0%D1%80%D0%BA%D0%B0%D0%BA%D0%BE%D0%BB%D1%8C.jpg) |
+| gallery-01 | `public/images/destinations/markakol-lake/gallery-01.jpg` | 2400×1800 | Y. Bekishev | CC BY-SA 4.0 | 50% 50% / 50% 50% | [Commons](https://commons.wikimedia.org/wiki/File:%D0%9E%D0%B7%D0%B5%D1%80%D0%BE_%D0%9C%D0%B0%D1%80%D0%BA%D0%B0%D0%BA%D0%BE%D0%BB%D1%8C._%D0%92%D0%B8%D0%B4_%D1%81_%D1%8E%D0%B6%D0%BD%D0%BE%D0%B3%D0%BE_%D0%B1%D0%B5%D1%80%D0%B5%D0%B3%D0%B0.jpg) |
+| gallery-02 | `public/images/destinations/markakol-lake/gallery-02.jpg` | 2400×1800 | Avustfel | CC BY-SA 4.0 | 50% 50% / 50% 50% | [Commons](https://commons.wikimedia.org/wiki/File:%D0%93%D0%BE%D1%80%D0%B0_%22%D0%A1%D0%B0%D0%BC%D0%BE%D0%B2%D0%B0%D1%80%22,_%D0%9C%D0%B0%D1%80%D0%BA%D0%B0%D0%BA%D0%BE%D0%BB%D1%8C%D1%81%D0%BA%D0%B8%D0%B9_%D0%93%D0%9F%D0%97.jpg) |
+| gallery-03 | `public/images/destinations/markakol-lake/gallery-03.jpg` | 2400×1800 | Vakhles | CC BY-SA 4.0 | 50% 50% / 50% 50% | [Commons](https://commons.wikimedia.org/wiki/File:%D0%92%D0%BE%D0%B4%D0%BD%D0%B0%D1%8F_%D0%B3%D0%BB%D0%B0%D0%B4%D1%8C_%D0%BE%D0%B7%D0%B5%D1%80%D0%B0_%D0%9C%D0%B0%D1%80%D0%BA%D0%B0%D0%BA%D0%BE%D0%BB%D1%8C.jpg) |
+
+Alt text:
+
+- **hero:** Calm lake water along a forested shore of birch and conifers, with low mountain ridges in the distance under a blue sky
+- **gallery-01:** Pink-tinged clouds reflected in still lake water at dusk, with a dark mountain ridge across the lake
+- **gallery-02:** A snow-streaked, pyramid-shaped peak above forested slopes under heavy grey cloud
+- **gallery-03:** Clear shallow water over rounded stones in the foreground, with the wide lake and blue mountain ridges beyond
+
+## Aktolagay Plateau
+
+| Role | Local file | Size (px) | Photographer | Licence | Focal (desktop / mobile) | Source page |
+| --- | --- | --- | --- | --- | --- | --- |
+| hero | `public/images/destinations/aktolagay-plateau/hero.jpg` | 4000×2250 | PuzatikVu | CC BY-SA 4.0 | 50% 62% / 42% 62% | [Commons](https://commons.wikimedia.org/wiki/File:%D0%90%D0%BA%D1%82%D0%BE%D0%BB%D0%B0%D0%B3%D0%B0%D0%B9.jpg) |
+| gallery-01 | `public/images/destinations/aktolagay-plateau/gallery-01.jpg` | 2400×1600 | PuzatikVu | CC BY-SA 4.0 | 40% 50% / 35% 50% | [Commons](https://commons.wikimedia.org/wiki/File:%D0%A4%D0%B8%D0%B3%D1%83%D1%80%D1%8B_%D0%90%D0%BA%D1%82%D0%BE%D0%BB%D0%B0%D0%B3%D0%B0%D0%B9.jpg) |
+| gallery-02 | `public/images/destinations/aktolagay-plateau/gallery-02.jpg` | 2400×1600 | PuzatikVu | CC BY-SA 4.0 | 50% 50% / 50% 50% | [Commons](https://commons.wikimedia.org/wiki/File:%D0%A3%D1%89%D0%B5%D0%BB%D1%8C%D0%B5_%D0%9C%D0%B5%D0%BB%D0%BE%D0%B2%D1%8B%D1%85_%D0%B3%D0%BE%D1%80_%D0%90%D0%BA%D1%82%D0%BE%D0%BB%D0%B0%D0%B3%D0%B0%D0%B9.jpg) |
+| gallery-03 | `public/images/destinations/aktolagay-plateau/gallery-03.jpg` | 2400×1600 | PuzatikVu | CC BY-SA 4.0 | 50% 50% / 50% 50% | [Commons](https://commons.wikimedia.org/wiki/File:%D0%93%D0%BE%D1%80%D1%8B_%D0%90%D0%BA%D1%82%D0%BE%D0%BB%D0%B0%D0%B3%D0%B0%D0%B9.jpg) |
+
+Alt text:
+
+- **hero:** White chalk ridges and pinnacles spread across a wide, flat steppe in low evening light under a pale sky
+- **gallery-01:** A tall cone of ribbed white chalk with a smaller block-shaped figure beside it, under a deep blue sky
+- **gallery-02:** A narrow gully between steep white chalk walls, opening onto a brown valley floor
+- **gallery-03:** Fluted white chalk cliffs below the flat top of the plateau, lit by low sun
 
 ## Attribution requirements
 
