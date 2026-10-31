@@ -57,8 +57,9 @@ describe("atlas projection", () => {
 });
 
 describe("destination positions", () => {
-  it("plots all nine destinations", () => {
-    expect(plotted).toHaveLength(9);
+  it("plots every destination in the collection", () => {
+    expect(plotted).toHaveLength(destinations.length);
+    expect(plotted).toHaveLength(14);
   });
 
   it.each(plotted.map((d) => [d.slug, d.coordinates!] as const))("%s lies inside Kazakhstan and the initial view", (_slug, { lat, lon }) => {

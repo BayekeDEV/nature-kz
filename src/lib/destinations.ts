@@ -10,6 +10,22 @@ import type { Destination, DestinationSummary, ImageRole, ResolvedMedia } from "
 
 export const FEATURED_SLUG = "bozzhyra";
 
+/**
+ * The homepage shows a curated selection rather than every destination, so it
+ * stays a comfortable length as the collection grows. Every destination is
+ * still in the catalogue and on the map.
+ */
+export const HOME_SELECTION = [
+  "kolsai-lakes",
+  "charyn-canyon",
+  "big-almaty-lake",
+  "katon-karagay",
+  "torysh-valley-of-balls",
+  "lake-balkhash",
+  "bayanaul-jasybay",
+  "aksu-zhabagly",
+];
+
 export function getAllDestinations(): Destination[] {
   return destinations;
 }
@@ -70,9 +86,15 @@ export function getDestinationSummaries(): DestinationSummary[] {
   return destinations.map(toSummary);
 }
 
-/** Every photo credit across the site, for the About page. */
-export function getAllPhotoCredits() {
-  return destinations.flatMap((d) =>
-    d.media.map(resolveMedia).filter((m) => m.available).map((m) => ({ destination: d.name, slug: d.slug, ...m })),
-  );
+export function getHomeSelection(): DestinationSummary[] {
+  return HOME_SELECTION.map(getDestinationBySlug)
+    .filter((d): d is Destination => d !== undefined)
+    .map(toSummary);
+}
+
+/** Photo credits grouped by destination, for the photo credits page. Only files actually on disk are listed. */
+export function getPhotoCreditsByDestination() {
+  return destinations
+    .map((d) => ({ name: d.name, slug: d.slug, photos: d.media.map(resolveMedia).filter((m) => m.available) }))
+    .filter((group) => group.photos.length > 0);
 }

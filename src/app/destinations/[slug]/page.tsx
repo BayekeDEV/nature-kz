@@ -54,23 +54,28 @@ export default async function DestinationPage({ params }: PageProps<"/destinatio
       <PhotoHero
         media={hero}
         placement={destination.heroPlacement}
+        mobileTitlePlacement={destination.mobileTitlePlacement}
         height="tall"
         credit={
           <>
             Photo: {hero.credit.author}, {hero.credit.license}
           </>
         }
+        eyebrow={
+          <p className="eyebrow text-white/85">
+            {CATEGORY_LABELS[destination.category]} · {destination.region}
+          </p>
+        }
+        title={
+          <h1 className="display-hero" style={{ "--fit": heroFit(destination.name) } as CSSProperties}>
+            {destination.name}
+          </h1>
+        }
       >
-        <p className="eyebrow text-white/85">
-          {CATEGORY_LABELS[destination.category]} · {destination.region}
-        </p>
-        <h1 className="display-hero mt-5" style={{ "--fit": heroFit(destination.name) } as CSSProperties}>
-          {destination.name}
-        </h1>
-        <p className={`mt-6 max-w-[34rem] text-[1.05rem] leading-relaxed text-white/90 md:text-[1.15rem] ${destination.heroPlacement === "right" ? "md:ml-auto" : ""}`}>
+        <p className={`mt-6 max-w-[34rem] text-[1.15rem] leading-relaxed text-white/90 ${destination.heroPlacement === "right" ? "ml-auto" : ""}`}>
           {destination.intro}
         </p>
-        <div className={`mt-8 flex flex-wrap items-center gap-4 ${destination.heroPlacement === "right" ? "md:justify-end" : ""}`}>
+        <div className={`mt-8 flex flex-wrap items-center gap-4 ${destination.heroPlacement === "right" ? "justify-end" : ""}`}>
           <SaveButton id={destination.id} name={destination.name} variant="light" />
           <a href="#guide" className="inline-flex min-h-11 items-center border-b border-white/60 text-[0.98rem] hover:border-white">
             Read the guide
@@ -78,11 +83,25 @@ export default async function DestinationPage({ params }: PageProps<"/destinatio
         </div>
       </PhotoHero>
 
-      {/* Quick facts rise out of the hero's fade on a slightly raised surface. */}
-      <section aria-label="Quick facts" className="relative z-10 -mt-10 md:-mt-14">
+      {/* Phones: what the wide hero shows over the photo follows it here instead. */}
+      <section aria-label="Introduction" className="page-container pt-1 pb-8 hero-wide:hidden">
+        <p className="eyebrow text-accent-fg">
+          {CATEGORY_LABELS[destination.category]} · {destination.region}
+        </p>
+        <p className="mt-3 text-[1.0625rem] leading-relaxed text-fg-soft">{destination.intro}</p>
+        <div className="mt-5 flex flex-wrap items-center justify-between gap-x-6 gap-y-3">
+          <SaveButton id={destination.id} name={destination.name} />
+          <p className="text-xs text-fg-muted">
+            Photo: {hero.credit.author}, {hero.credit.license}
+          </p>
+        </div>
+      </section>
+
+      {/* Quick facts: in normal flow on phones; on wide screens they rise out of the hero's fade. */}
+      <section aria-label="Quick facts" className="relative z-10 hero-wide:-mt-14">
         <dl className="page-container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
           {destination.quickFacts.map((fact) => (
-            <div key={fact.label} className="border-t border-accent/50 bg-raised/80 px-5 py-5 backdrop-blur-sm sm:border-l sm:border-l-line sm:first:border-l-0 lg:py-6">
+            <div key={fact.label} className="border-t border-accent/50 bg-raised/80 px-5 py-4 backdrop-blur-sm sm:border-l sm:border-l-line sm:first:border-l-0 hero-wide:py-5 lg:py-6">
               <dt className="text-[0.8rem] font-medium tracking-[0.06em] text-accent-fg uppercase">{fact.label}</dt>
               <dd className="mt-2 text-[1rem] leading-snug text-fg">{fact.value}</dd>
             </div>

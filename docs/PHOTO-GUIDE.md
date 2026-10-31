@@ -121,3 +121,23 @@ node -e "require('sharp')('public/images/destinations/bozzhyra/hero.jpg').stats(
 Standard deviations around 20–30 mean a flat, washed-out image; 45 or more
 usually means good natural contrast. Also zoom in to 100% to check detail,
 and avoid photos with watermarks.
+
+## 9. Title placement on phones
+
+Each destination has `mobileTitlePlacement` (`"top"`, `"center"` or
+`"bottom"`). On phones only the name sits on the photo, so choose the area with
+open sky or quiet ground, never the main subject. Check the result at about
+360 × 740, 390 × 844 and 430 × 932, and adjust `focal.mobile` so the defining
+feature stays in the tall crop.
+
+## 10. Missing photographs
+
+These destinations do not yet have a full set of four verified photos:
+
+| Destination | Have | Needed | Notes |
+| --- | --- | --- | --- |
+| Torysh — Valley of Balls | 1 (hero, 2000 × 1201 px) | 3 gallery photos, and ideally a larger hero (3000 px+) | Only one Commons file is verifiably from Torysh (its recorded coordinates fall in the tract). Use only photos you took yourself or whose licence and location you can verify. |
+
+After adding files, update the dataset, run `node scripts/build-asset-manifest.mjs`
+and `npm run test`.
+

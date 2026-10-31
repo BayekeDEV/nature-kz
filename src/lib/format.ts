@@ -9,7 +9,10 @@ export function formatDate(iso: string) {
   });
 }
 
-const NUMBER_WORDS = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve"];
+const NUMBER_WORDS = [
+  "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten",
+  "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen", "twenty",
+];
 
 /** Spells out small counts for running text ("nine destinations"); larger ones stay as digits. */
 export function countWord(n: number, capitalise = false) {

@@ -37,6 +37,17 @@ items below before publishing, and at least once a season.
 | Aktolagay Plateau | Age of the rocks | Official sources call it Cretaceous chalk but also list whale vertebrae, which are younger; the guide gives no single age. |
 | Aktolagay Plateau | Photo identification | All four photos are by one Commons contributor (PuzatikVu) and are identified by their titles and descriptions; none carries GPS data. |
 | Big Almaty Lake | Hero photo (changed 30 Oct 2026) | Replaced the 8000 × 2720 px panorama by Igors Jefimovs, which could not fill tall cards or phone heroes without heavy cropping, with a 4000 × 3000 px geotagged photo by Жасминовый Дракон (CC BY-SA 4.0). |
+| Katon-Karagay | Map reference point | Uses Wikipedia's approximate park point (49.3, 86.6). Kazakhstan.travel gives 49.1825, 85.5963, near the park's listed address in Katonkaragay village, which is not a sightseeing point. |
+| Katon-Karagay | Border-zone rules | Not confirmed from an official source; the guide tells readers to ask the park. Rakhmanov Springs is named only in a photo caption, from the photographer's file title. |
+| Torysh | Coordinates | Wikipedia (44.361, 51.561) and OpenStreetMap (44.367, 51.571) agree; Kazakhstan.travel lists 44.373, 51.978, about 33 km east, which looks like an error. The guide uses Wikipedia's point and says the sources differ. |
+| Torysh | Age of the concretions | English Wikipedia says 120–180 million years, Russian Wikipedia 40–60 million; no age is given. |
+| Torysh | Photographs | Only one verified photo (see PHOTO-GUIDE.md, "Missing photographs"). |
+| Lake Balkhash | Regions on the southern shore | The northern shore (city of Balkhash) is in Karaganda Region. Sources disagree on which regions share the rest of the shore after the 2022 reorganisation (Almaty, Zhetisu and Zhambyl are all mentioned), so the guide says "shared by several regions". |
+| Bayanaul & Jasybay | Rock type | Commonly called granite, but none of the sources consulted says so; the guide describes "weathered rock outcrops" instead. |
+| Bayanaul & Jasybay | Map anchor | Uses the centre of Jasybay Lake from OpenStreetMap (50.818, 75.592; Russian Wikipedia agrees). Kazakhstan.travel's point (50.807, 75.442) is about 10 km west of the lake. |
+| Aksu-Zhabagly | Official visitor rules | No official reserve website was reachable (aksu-jabagly.kz redirects to a ticketing blog). Permit and route information comes from Kazinform (May 2023). Confirm with the reserve administration. |
+| Aksu-Zhabagly | World Heritage status | UNESCO's Western Tien-Shan listing names the Aksu-Zhabagly biosphere reserve as linked; the guide does not claim the whole reserve is a World Heritage component. |
+| Photo credits page | Source summary | The `/photo-credits` page lists the platforms actually used (Wikimedia Commons, including files from Flickr and Panoramio). |
 | All | Fees and online tickets | Not published on the site by design. |
 
 ## How to mark something as draft

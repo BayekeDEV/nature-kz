@@ -2,10 +2,12 @@
 
 *Discover Kazakhstan, beyond the familiar.*
 
-An English-language editorial guide to nine natural destinations in Kazakhstan:
-Bozzhyra and the Aktolagay Plateau in the west, Kolsai Lakes, Charyn Canyon,
-Kaindy Lake, the Singing Dune and Big Almaty Lake in the south-east,
-Burabay — Zhumbaktas in the north and Markakol Lake in the Altai. Sourced guides,
+An English-language editorial guide to fourteen natural destinations in Kazakhstan:
+Bozzhyra, the Aktolagay Plateau and Torysh — Valley of Balls in the west; Kolsai
+Lakes, Charyn Canyon, Kaindy Lake, the Singing Dune, Big Almaty Lake and
+Aksu-Zhabagly in the south and south-east; Lake Balkhash in the central steppe;
+Burabay — Zhumbaktas and Bayanaul & Jasybay Lake in the north; and Markakol Lake
+and Katon-Karagay in the Altai. Sourced guides,
 licensed photography, an interactive relief atlas and a browser-only "saved"
 list. No bookings, accounts or API keys.
 
@@ -47,7 +49,8 @@ Fonts: Cormorant Garamond (headings) and DM Sans (text) via `next/font`.
 | `/destinations/[slug]` | Destination guide (one static page per destination; unknown slugs → 404) |
 | `/saved` | Saved destinations (stored in this browser only) |
 | `/map` | Interactive relief atlas (every destination marked), destination list and reference points |
-| `/about` | Purpose, methodology, photo credits |
+| `/about` | Purpose and editorial methodology |
+| `/photo-credits` | Author, licence and source of every photo, grouped by destination |
 
 ## Docs
 
@@ -56,6 +59,7 @@ Fonts: Cormorant Garamond (headings) and DM Sans (text) via `next/font`.
 - [docs/ASSET-MANIFEST.md](docs/ASSET-MANIFEST.md) — every photo, its author and licence
 - [docs/CONTENT-CHECKLIST.md](docs/CONTENT-CHECKLIST.md) — what to re-verify before publishing
 
-Photographs: Wikimedia Commons contributors, under the licences listed in the
-asset manifest. Map relief, land cover and vectors: Natural Earth (public domain);
+Photographs: Wikimedia Commons contributors (some files originally from Flickr
+or Panoramio), under the licences listed in the asset manifest and on
+`/photo-credits`. Regenerate the manifest with `node scripts/build-asset-manifest.mjs`. Map relief, land cover and vectors: Natural Earth (public domain);
 finer relief when zoomed in: Terrain Tiles on AWS Open Data (see docs/ARCHITECTURE.md).

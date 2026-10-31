@@ -9,12 +9,14 @@ export const CATEGORY_OPTIONS: { value: CategoryFilter; label: string }[] = [
   { value: "lakes", label: "Lakes" },
   { value: "canyons-rocks", label: "Canyons & Rock Formations" },
   { value: "dunes", label: "Dunes" },
+  { value: "mountains-forests", label: "Mountains & Forests" },
 ];
 
 export const CATEGORY_LABELS: Record<LandscapeCategory, string> = {
   lakes: "Lakes",
   "canyons-rocks": "Canyons & Rock Formations",
   dunes: "Dunes",
+  "mountains-forests": "Mountains & Forests",
 };
 
 export interface CatalogueQuery {

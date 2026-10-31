@@ -5,7 +5,13 @@
  * `docs/ARCHITECTURE.md` (destinations, destination_images, sources).
  */
 
-export type LandscapeCategory = "lakes" | "canyons-rocks" | "dunes";
+export type LandscapeCategory = "lakes" | "canyons-rocks" | "dunes" | "mountains-forests";
+
+/**
+ * Where the destination name sits in the photo on phones, chosen per photo so
+ * the title uses open sky or ground instead of covering the main subject.
+ */
+export type MobileTitlePlacement = "top" | "center" | "bottom";
 
 export type ContentStatus =
   /** Written from sources that were actually consulted on `verifiedOn`. */
@@ -45,6 +51,8 @@ export interface MediaRecord {
     sourceUrl: string;
     /** Where the file came from, e.g. "Wikimedia Commons". */
     via: string;
+    /** Edits beyond resizing for the web, e.g. "Cropped from a panorama". */
+    changes?: string;
   };
 }
 
@@ -120,6 +128,8 @@ export interface Destination {
   relatedSlugs: string[];
   theme: DestinationTheme;
   heroPlacement: "left" | "right";
+  /** Title position in the phone-sized hero (see MobileTitlePlacement). */
+  mobileTitlePlacement: MobileTitlePlacement;
   media: MediaRecord[];
   sources: Source[];
   status: ContentStatus;

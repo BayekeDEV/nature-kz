@@ -7,6 +7,8 @@ import type { Source } from "@/lib/types";
 const RESEARCH_DATE = "2026-10-27";
 /** Research for Markakol Lake and the Aktolagay Plateau. */
 const UPDATE_DATE = "2026-10-30";
+/** Research for Katon-Karagay, Torysh, Lake Balkhash, Bayanaul & Jasybay and Aksu-Zhabagly. */
+const EXPANSION_DATE = "2026-10-30";
 
 function source(entry: Omit<Source, "accessedOn">, accessedOn = RESEARCH_DATE): Source {
   return { ...entry, accessedOn };
@@ -246,5 +248,135 @@ export const sources = {
       kind: "reference",
     },
     UPDATE_DATE,
+  ),
+  ktKaton: source(
+    {
+      id: "kt-katon",
+      title: "Katon-Karagay State National Nature Park",
+      publisher: "Kazakhstan.travel (official tourism portal)",
+      url: "https://kazakhstan.travel/en/attractions/158",
+      kind: "official-tourism",
+    },
+    EXPANSION_DATE,
+  ),
+  wikiKaton: source(
+    {
+      id: "wiki-katon",
+      title: "Katon-Karagay National Park",
+      publisher: "Wikipedia",
+      url: "https://en.wikipedia.org/wiki/Katon-Karagay_National_Park",
+      kind: "reference",
+    },
+    EXPANSION_DATE,
+  ),
+  ktTorysh: source(
+    {
+      id: "kt-torysh",
+      title: "Valley of Balls: spherical concretions of the Torysh tract",
+      publisher: "Kazakhstan.travel (official tourism portal)",
+      url: "https://kazakhstan.travel/en/attractions/325",
+      kind: "official-tourism",
+    },
+    EXPANSION_DATE,
+  ),
+  wikiTorysh: source(
+    {
+      id: "wiki-torysh",
+      title: "Torysh",
+      publisher: "Wikipedia",
+      url: "https://en.wikipedia.org/wiki/Torysh",
+      kind: "reference",
+    },
+    EXPANSION_DATE,
+  ),
+  ktBalkhash: source(
+    {
+      id: "kt-balkhash",
+      title: "Lake Balkhash",
+      publisher: "Kazakhstan.travel (official tourism portal)",
+      url: "https://kazakhstan.travel/en/attractions/531",
+      kind: "official-tourism",
+    },
+    EXPANSION_DATE,
+  ),
+  wikiBalkhash: source(
+    {
+      id: "wiki-balkhash",
+      title: "Lake Balkhash",
+      publisher: "Wikipedia",
+      url: "https://en.wikipedia.org/wiki/Lake_Balkhash",
+      kind: "reference",
+    },
+    EXPANSION_DATE,
+  ),
+  ktBayanaul: source(
+    {
+      id: "kt-bayanaul",
+      title: "Bayanaul State National Nature Park",
+      publisher: "Kazakhstan.travel (official tourism portal)",
+      url: "https://kazakhstan.travel/en/attractions/335",
+      kind: "official-tourism",
+    },
+    EXPANSION_DATE,
+  ),
+  ktJasybay: source(
+    {
+      id: "kt-jasybay",
+      title: "Lake Jasybay",
+      publisher: "Kazakhstan.travel (official tourism portal)",
+      url: "https://kazakhstan.travel/en/attractions/342",
+      kind: "official-tourism",
+    },
+    EXPANSION_DATE,
+  ),
+  wikiBayanaul: source(
+    {
+      id: "wiki-bayanaul",
+      title: "Bayanaul National Park",
+      publisher: "Wikipedia",
+      url: "https://en.wikipedia.org/wiki/Bayanaul_National_Park",
+      kind: "reference",
+    },
+    EXPANSION_DATE,
+  ),
+  osmJasybay: source(
+    {
+      id: "osm-jasybay",
+      title: "Lake Jasybay (mapped lake outline)",
+      publisher: "OpenStreetMap",
+      url: "https://www.openstreetmap.org/relation/5992637",
+      kind: "reference",
+    },
+    EXPANSION_DATE,
+  ),
+  kazinformAksu: source(
+    {
+      id: "kazinform-aksu",
+      title: "Aksu-Zhabagly reserve: how to get there and what to see (31 May 2023, in Russian)",
+      publisher: "Kazinform (national news agency)",
+      url: "https://www.inform.kz/ru/aksu-zhabaglinskiy-zapovednik-kak-doehat-i-chto-posmotret_a4073315",
+      kind: "news",
+    },
+    EXPANSION_DATE,
+  ),
+  unescoWesternTienShan: source(
+    {
+      id: "unesco-western-tien-shan",
+      title: "Western Tien-Shan (World Heritage property, inscribed 2016)",
+      publisher: "UNESCO World Heritage Centre",
+      url: "https://whc.unesco.org/en/list/1490/",
+      kind: "international",
+    },
+    EXPANSION_DATE,
+  ),
+  wikiAksu: source(
+    {
+      id: "wiki-aksu",
+      title: "Aksu-Zhabagly Nature Reserve",
+      publisher: "Wikipedia",
+      url: "https://en.wikipedia.org/wiki/Aksu-Zhabagly_Nature_Reserve",
+      kind: "reference",
+    },
+    EXPANSION_DATE,
   ),
 } satisfies Record<string, Source>;

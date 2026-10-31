@@ -5,7 +5,7 @@ const COLUMNS = [
     title: "Explore",
     links: [
       { href: "/destinations", label: "All destinations" },
-      { href: "/map", label: "Map overview" },
+      { href: "/map", label: "Atlas" },
       { href: "/saved", label: "Saved destinations" },
     ],
   },
@@ -14,7 +14,7 @@ const COLUMNS = [
     links: [
       { href: "/about", label: "About this guide" },
       { href: "/about#methodology", label: "Sources & methodology" },
-      { href: "/about#photo-credits", label: "Photo credits" },
+      { href: "/photo-credits", label: "Photo credits" },
     ],
   },
 ];

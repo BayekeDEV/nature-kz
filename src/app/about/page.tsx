@@ -1,16 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { getAllDestinations, getAllPhotoCredits } from "@/lib/destinations";
+import { getAllDestinations } from "@/lib/destinations";
 import { countWord, formatDate } from "@/lib/format";
 
 export const metadata: Metadata = {
   title: "About & methodology",
-  description: "Why NATURE KZ exists, how the guides are researched, and credits for every photograph.",
+  description: "Why NATURE KZ exists and how its guides to Kazakhstan's natural landscapes are researched.",
 };
 
 export default function AboutPage() {
   const destinations = getAllDestinations();
-  const credits = getAllPhotoCredits();
 
   return (
     <div className="page-glow pt-[var(--header-height)]">
@@ -73,38 +72,17 @@ export default function AboutPage() {
           </div>
         </section>
 
-        <section id="photo-credits" aria-labelledby="credits-heading" className="grid gap-6 md:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] md:gap-12">
-          <div>
-            <h2 id="credits-heading" className="heading-section">
-              Photo credits
-            </h2>
-            <p className="mt-4 max-w-sm text-[0.95rem] text-fg-muted">
-              All photographs come from Wikimedia Commons, where each file&rsquo;s licence and description were checked. Files were
-              resized for the web; no other edits were made.
-            </p>
-          </div>
-          <ul className="divide-y divide-line border-y border-line">
-            {credits.map((credit) => (
-              <li key={credit.src} className="grid gap-1 py-4 text-[0.95rem] sm:grid-cols-[10rem_1fr] sm:gap-6">
-                <span className="font-medium text-fg">{credit.destination}</span>
-                <span className="text-fg-soft">
-                  {credit.caption} Photo by {credit.credit.author},{" "}
-                  {credit.credit.licenseUrl ? (
-                    <a href={credit.credit.licenseUrl} target="_blank" rel="license noopener" className="underline">
-                      {credit.credit.license}
-                    </a>
-                  ) : (
-                    credit.credit.license
-                  )}
-                  , via{" "}
-                  <a href={credit.credit.sourceUrl} target="_blank" rel="noopener" className="underline">
-                    {credit.credit.via}
-                  </a>
-                  .
-                </span>
-              </li>
-            ))}
-          </ul>
+        <section aria-labelledby="credits-heading" className="grid gap-6 md:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] md:gap-12">
+          <h2 id="credits-heading" className="heading-section">
+            Photographs
+          </h2>
+          <p className="prose-guide">
+            Every photograph is used under its own licence, credited to its author. The full list is on the{" "}
+            <Link href="/photo-credits" className="underline">
+              photo credits
+            </Link>{" "}
+            page.
+          </p>
         </section>
 
         <section aria-labelledby="map-credit-heading" className="grid gap-6 md:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] md:gap-12">

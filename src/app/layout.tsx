@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     template: "%s · NATURE KZ",
   },
   description:
-    `An editorial guide to ${countWord(getAllDestinations().length)} natural destinations in Kazakhstan, from the chalk plateaus of the west to the lakes of the Tian Shan and the Altai, with sourced facts and licensed photography.`,
+    `An editorial guide to ${countWord(getAllDestinations().length)} natural destinations in Kazakhstan, from the chalk plateaus of the west to the Tian Shan, the steppe and the Altai, with sourced facts and licensed photography.`,
   applicationName: "NATURE KZ",
 };
 

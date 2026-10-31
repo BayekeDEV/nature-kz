@@ -17,6 +17,11 @@ const REQUIRED_SLUGS = [
   "big-almaty-lake",
   "markakol-lake",
   "aktolagay-plateau",
+  "katon-karagay",
+  "torysh-valley-of-balls",
+  "lake-balkhash",
+  "bayanaul-jasybay",
+  "aksu-zhabagly",
 ];
 
 /** IDs saved in browsers before the collection grew; they must never change. */
@@ -45,6 +50,16 @@ describe("destination data access", () => {
   it("keeps the ids of the original destinations so existing saves still resolve", () => {
     const ids = getAllDestinations().map((d) => d.id);
     for (const id of ORIGINAL_IDS) expect(ids).toContain(id);
+  });
+
+  it("keeps Torysh in Mangystau Region, not West Kazakhstan Region", () => {
+    const torysh = getDestinationBySlug("torysh-valley-of-balls")!;
+    expect(torysh.region).toContain("Mangystau Region");
+    expect(torysh.region).not.toContain("West Kazakhstan Region");
+  });
+
+  it("does not place Bayanaul in southern Kazakhstan", () => {
+    expect(getDestinationBySlug("bayanaul-jasybay")!.region).not.toMatch(/south/i);
   });
 
   it("labels Aktolagay as Aktobe Region, not West Kazakhstan Region", () => {

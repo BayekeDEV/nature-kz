@@ -38,7 +38,9 @@ src/components/**     ← UI pieces. Only interactive ones are Client Components
 | `src/lib/saved-store.ts` | Saved destinations behind a `SavedDestinationsStore` interface (localStorage today). Unit-tested. |
 | `src/lib/use-saved-destinations.ts` | React hook using `useSyncExternalStore` (no hydration mismatch). |
 | `src/lib/media.ts` | Checks if a photo file exists; missing photos render "Photo pending". |
-| `src/components/destination/PhotoHero.tsx` | Shared full-screen hero: overscan drift, text scrim and fade into the theme background. |
+| `src/components/destination/PhotoHero.tsx` | Shared full-screen hero: title-only on phones (per-destination `mobileTitlePlacement`), full editorial composition on wide screens, overscan drift, local scrims and fade into the theme background. |
+| `src/app/photo-credits/page.tsx` | Photo credits grouped by destination, generated from the dataset (linked from the footer). |
+| `scripts/build-asset-manifest.mjs` | Regenerates `docs/ASSET-MANIFEST.md` from the dataset. |
 | `src/lib/theme.ts` | Brand theme, theme → CSS variables, contrast maths. |
 | `src/content/atlas.ts` | Map provider configuration: atlas extent, files, terrain tiles, credits. The one place to change map sources. |
 | `src/components/map/AtlasMap.tsx` | Interactive atlas (MapLibre, loaded on demand) with linked markers, previews and a "Locate on map" list. |
@@ -66,6 +68,28 @@ Every page uses the same components; only colours change.
   variable where it is set, not a value frozen at `:root`.
 - `src/lib/theme.test.ts` checks WCAG contrast for every theme (body text ≥ 7:1,
   secondary and accent text ≥ 4.5:1 on both surfaces).
+
+## Photographic heroes on phones and wide screens
+
+`PhotoHero` has two compositions, switched by the `hero-wide` custom variant in
+`globals.css`: at least 768 px wide **and** 600 px tall. The height condition
+means phones in landscape also get the phone layout.
+
+- **Phones:** the photo fills about one screen (`100svh`, with a `100vh`
+  fallback and a 22 rem minimum) and only the destination name sits on it, at
+  `mobileTitlePlacement` (`top`, `center` or `bottom`) from the dataset, chosen
+  per photo so the title uses open sky or ground. A local scrim sits only
+  behind the title. The title is 32–44 px with balanced line breaks. The
+  category, region, introduction, Save button and photo credit follow the hero
+  in normal flow, then the quick facts.
+- **Wide screens:** the full composition: eyebrow, large title, intro and
+  actions over the photo, with quick facts overlapping the hero's fade.
+
+Both arrangements are rendered on the server and switched with CSS only, so
+there is no wrong crop or layout while the page hydrates. The copy that is not
+shown is `display: none`, which removes it from the accessibility tree, so
+screen readers never hear it twice. The crop comes from each photo's
+`focal.mobile` / `focal.desktop` in the dataset.
 
 ## Page transitions
 

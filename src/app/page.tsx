@@ -5,21 +5,29 @@ import { DestinationCard } from "@/components/destination/DestinationCard";
 import { PhotoHero } from "@/components/destination/PhotoHero";
 import { StaticAtlas } from "@/components/map/StaticAtlas";
 import { Reveal } from "@/components/motion/Reveal";
-import { getAllDestinations, getDestinationSummaries, getFeaturedDestination, getMedia } from "@/lib/destinations";
+import { getAllDestinations, getFeaturedDestination, getHomeSelection, getMedia } from "@/lib/destinations";
 import { countWord, heroFit } from "@/lib/format";
 import { getAtlasPoints } from "@/lib/atlas-points";
 
 export default function HomePage() {
   const featured = getFeaturedDestination();
   const hero = getMedia(featured, "hero");
-  const summaries = getDestinationSummaries();
-  const points = getAtlasPoints(getAllDestinations());
+  const destinations = getAllDestinations();
+  const selection = getHomeSelection();
+  const points = getAtlasPoints(destinations);
 
   return (
     <>
       <PhotoHero
         media={hero}
         placement={featured.heroPlacement}
+        mobileTitlePlacement={featured.mobileTitlePlacement}
+        eyebrow={<p className="eyebrow text-white/85">Featured destination · {featured.region}</p>}
+        title={
+          <h1 className="display-hero" style={{ "--fit": heroFit(featured.name) } as CSSProperties}>
+            {featured.name}
+          </h1>
+        }
         credit={
           <>
             Photo: {hero.credit.author}, {hero.credit.license}
@@ -28,18 +36,14 @@ export default function HomePage() {
         aside={
           <a
             href="#introduction"
-            className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-xs tracking-[0.2em] text-white/75 uppercase hover:text-white lg:flex"
+            className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-xs tracking-[0.2em] text-white/75 uppercase hover:text-white lg:hero-wide:flex"
           >
             Scroll
             <ArrowDown className="size-4 motion-safe:animate-bounce" strokeWidth={1.5} aria-hidden />
           </a>
         }
       >
-        <p className="eyebrow text-white/85">Featured destination · {featured.region}</p>
-        <h1 className="display-hero mt-5" style={{ "--fit": heroFit(featured.name) } as CSSProperties}>
-          {featured.name}
-        </h1>
-        <p className="mt-6 max-w-[34rem] text-[1.05rem] leading-relaxed text-white/90 md:text-[1.15rem]">{featured.intro}</p>
+        <p className="mt-6 max-w-[34rem] text-[1.15rem] leading-relaxed text-white/90">{featured.intro}</p>
         <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4">
           <Link
             href={`/destinations/${featured.slug}`}
@@ -53,6 +57,27 @@ export default function HomePage() {
           </Link>
         </div>
       </PhotoHero>
+
+      {/* Phones: the featured destination's introduction follows the photograph. */}
+      <section aria-label="Featured destination" className="page-container pt-1 pb-4 hero-wide:hidden">
+        <p className="eyebrow text-fg-muted">Featured destination · {featured.region}</p>
+        <p className="mt-3 text-[1.0625rem] leading-relaxed text-fg-soft">{featured.intro}</p>
+        <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-3">
+          <Link
+            href={`/destinations/${featured.slug}`}
+            className="inline-flex min-h-11 items-center gap-2 rounded-full bg-fg px-6 text-[0.95rem] font-medium text-page transition hover:bg-white active:scale-[0.98]"
+          >
+            Explore {featured.name}
+            <ArrowRight className="size-4" aria-hidden />
+          </Link>
+          <Link href="/destinations" className="inline-flex min-h-11 items-center border-b border-fg/40 text-[0.95rem] hover:border-fg">
+            All destinations
+          </Link>
+        </div>
+        <p className="mt-4 text-xs text-fg-muted">
+          Photo: {hero.credit.author}, {hero.credit.license}
+        </p>
+      </section>
 
       <section id="introduction" aria-labelledby="intro-heading" className="page-container pt-12 pb-20 md:pt-16 md:pb-28">
         <Reveal className="grid gap-10 md:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] md:gap-16">
@@ -68,9 +93,9 @@ export default function HomePage() {
               Between them lie desert plateaus, sand country, river canyons and the granite hills of the north.
             </p>
             <p>
-              This guide follows {countWord(summaries.length)} places that show that range: chalk escarpments on the Ustyurt and
-              Aktolagay plateaus in the west, forested lakes and a drowned forest in the Tian Shan, a red-rock canyon, a singing dune,
-              a lake of pine and granite in the north, and Markakol in the Altai of the far east.
+              This guide follows {countWord(destinations.length)} places that show that range: chalk escarpments and a valley of stone
+              spheres in the west; mountain lakes, canyons and a singing dune in the Tian Shan; the long steppe lake of Balkhash; hills
+              of rock and pine at Burabay and Bayanaul in the north; and the Altai of Katon-Karagay and Markakol in the far east.
             </p>
           </div>
         </Reveal>
@@ -82,22 +107,23 @@ export default function HomePage() {
             <div>
               <p className="eyebrow text-fg-muted">The collection</p>
               <h2 id="collection-heading" className="heading-section mt-4">
-                {countWord(summaries.length, true)} destinations
+                {countWord(destinations.length, true)} destinations
               </h2>
+              <p className="mt-4 max-w-md text-fg-muted">A selection to start with. The catalogue and the map include every destination.</p>
             </div>
             <Link href="/destinations" className="inline-flex min-h-11 items-center gap-2 border-b border-fg/40 font-medium hover:border-fg">
-              Search the full catalogue
+              Explore all {destinations.length} destinations
               <ArrowRight className="size-4" aria-hidden />
             </Link>
           </div>
 
           <ul className="mt-14 grid gap-x-8 gap-y-16 md:grid-cols-2 lg:grid-cols-3">
-            {summaries.map((summary, index) => (
+            {selection.map((summary, index) => (
               <Reveal as="li" key={summary.id}>
                 <DestinationCard destination={summary} index={index} />
               </Reveal>
             ))}
-            <li className={`page-glow flex flex-col justify-between gap-8 border border-line p-8 md:p-10 ${CTA_SPAN_MD[summaries.length % 2]} ${CTA_SPAN_LG[summaries.length % 3]}`}>
+            <li className={`page-glow flex flex-col justify-between gap-8 border border-line p-8 md:p-10 ${CTA_SPAN_MD[selection.length % 2]} ${CTA_SPAN_LG[selection.length % 3]}`}>
               <p className="font-display text-[clamp(1.8rem,1.4rem+1.4vw,2.75rem)] leading-tight text-fg">
                 Search by name, landscape or region, and filter lakes, canyons and dunes.
               </p>
@@ -121,8 +147,9 @@ export default function HomePage() {
               {countWord(points.length, true)} places across a vast country
             </h2>
             <p className="mt-6 max-w-md text-fg-soft">
-              Five lie in the south-east, within reach of Almaty. Bozzhyra and Aktolagay are in the west, Burabay is in the north,
-              and Markakol is in the Altai of the far east. Select a marker to open its guide.
+              Six lie in the south and south-east, in the Tian Shan and its foothills. Bozzhyra, Aktolagay and Torysh are in the west,
+              Burabay and Bayanaul in the north, Balkhash in the steppe between, and Katon-Karagay and Markakol in the Altai of the far
+              east. Select a marker to open its guide.
             </p>
             <p className="mt-4 max-w-md text-sm text-fg-muted">
               Markers show published reference points, not routes, trailheads or access points.

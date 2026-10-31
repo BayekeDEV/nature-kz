@@ -8,18 +8,37 @@ const names = (items: { name: string }[]) => items.map((d) => d.name).sort();
 describe("filterDestinations", () => {
   it("returns everything with no query and the 'all' category", () => {
     expect(filterDestinations(all, { q: "", category: "all" })).toHaveLength(all.length);
-    expect(all).toHaveLength(9);
+    expect(all).toHaveLength(14);
   });
 
   it("filters by landscape category", () => {
-    expect(names(filterDestinations(all, { q: "", category: "lakes" }))).toEqual(["Big Almaty Lake", "Kaindy Lake", "Kolsai Lakes", "Markakol Lake"]);
+    expect(names(filterDestinations(all, { q: "", category: "lakes" }))).toEqual([
+      "Big Almaty Lake",
+      "Kaindy Lake",
+      "Kolsai Lakes",
+      "Lake Balkhash",
+      "Markakol Lake",
+    ]);
+    expect(names(filterDestinations(all, { q: "", category: "mountains-forests" }))).toEqual([
+      "Aksu-Zhabagly",
+      "Bayanaul & Jasybay Lake",
+      "Katon-Karagay",
+    ]);
     expect(names(filterDestinations(all, { q: "", category: "dunes" }))).toEqual(["Singing Dune"]);
     expect(names(filterDestinations(all, { q: "", category: "canyons-rocks" }))).toEqual([
       "Aktolagay Plateau",
       "Bozzhyra",
       "Burabay — Zhumbaktas",
       "Charyn Canyon",
+      "Torysh — Valley of Balls",
     ]);
+  });
+
+  it("finds the new destinations by alternative spellings and landmarks", () => {
+    expect(names(filterDestinations(all, { q: "Zhasybay", category: "all" }))).toEqual(["Bayanaul & Jasybay Lake"]);
+    expect(names(filterDestinations(all, { q: "valley of balls", category: "all" }))).toEqual(["Torysh — Valley of Balls"]);
+    expect(names(filterDestinations(all, { q: "Belukha", category: "all" }))).toEqual(["Katon-Karagay"]);
+    expect(names(filterDestinations(all, { q: "aksu canyon", category: "all" }))).toEqual(["Aksu-Zhabagly"]);
   });
 
   it("matches names and descriptive text, case-insensitively", () => {

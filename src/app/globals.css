@@ -1,6 +1,14 @@
 @import "tailwindcss";
 
 /*
+ * Wide enough AND tall enough for the full photographic hero (title, intro,
+ * actions and overlapping quick facts). Below this — phones in either
+ * orientation — the hero shows only the photo and the destination name.
+ * Must match HERO_WIDE_QUERY in src/components/destination/PhotoHero.tsx.
+ */
+@custom-variant hero-wide (@media (width >= 48rem) and (height >= 37.5rem));
+
+/*
  * NATURE KZ design tokens.
  * Layout, type and components are shared. Colours come from the active theme
  * (--t-*), set by <RouteTheme> from src/lib/theme.ts: a destination's own
@@ -94,10 +102,16 @@ body {
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.005em;
-  line-height: 0.88;
-  /* --fit is set per title from its length so long names still fit. */
-  font-size: clamp(3rem, calc(var(--fit, 8.5) * 1vw + 1.5rem), 8.25rem);
   text-wrap: balance;
+  /* Phones: a compact title that leaves the photograph in charge (about 32–44 px). */
+  line-height: 0.98;
+  font-size: clamp(2rem, 1.15rem + 4.4vw, 2.75rem);
+
+  @media (width >= 48rem) and (height >= 37.5rem) {
+    line-height: 0.88;
+    /* --fit is set per title from its length so long names still fit. */
+    font-size: clamp(3rem, calc(var(--fit, 8.5) * 1vw + 1.5rem), 8.25rem);
+  }
 }
 
 @utility heading-section {
@@ -147,11 +161,34 @@ body {
 .hero-scrim-right {
   background: radial-gradient(85% 70% at 100% 100%, var(--scrim), transparent 72%);
 }
-@media (width < 48rem) {
-  /* On phones the text spans the full width, so the scrim does too. */
-  .hero-scrim-left,
-  .hero-scrim-right {
-    background: linear-gradient(to top, var(--scrim) 10%, transparent 65%);
+/*
+ * Phone hero: only the title needs contrast, so the shading stays local to
+ * where the title sits (chosen per destination) and the rest of the photo
+ * keeps its colour.
+ */
+.hero-title-scrim-top {
+  background: linear-gradient(to bottom, rgb(0 0 0 / 0.42), rgb(0 0 0 / 0.16) 55%, transparent);
+}
+.hero-title-scrim-center {
+  background: radial-gradient(75% 55% at 35% 50%, rgb(0 0 0 / 0.3), transparent 75%);
+}
+.hero-title-scrim-bottom {
+  background: linear-gradient(to top, color-mix(in srgb, var(--t-bg) 55%, transparent), transparent);
+}
+
+/* Hero height: one screen on phones (small-viewport units, with a vh fallback). */
+.hero-height {
+  min-height: max(22rem, 100vh);
+  min-height: max(22rem, 100svh);
+}
+@media (width >= 48rem) and (height >= 37.5rem) {
+  .hero-height-full {
+    min-height: max(36rem, 100vh);
+    min-height: max(36rem, 100svh);
+  }
+  .hero-height-tall {
+    min-height: max(34rem, 92vh);
+    min-height: max(34rem, 92svh);
   }
 }
 
@@ -176,7 +213,7 @@ body {
 @keyframes rise-in {
   from {
     opacity: 0;
-    transform: translateY(16px);
+    transform: translateY(var(--rise, 16px));
   }
   to {
     opacity: 1;
@@ -195,9 +232,16 @@ body {
   }
 }
 
-/* Hero title, intro and actions arrive one after another. */
+/* Hero title, intro and actions arrive one after another (a shorter, smaller move on phones). */
 .hero-enter > * {
-  animation: rise-in 0.85s var(--ease-soft) both;
+  animation: rise-in 0.55s var(--ease-soft) both;
+  --rise: 8px;
+}
+@media (width >= 48rem) and (height >= 37.5rem) {
+  .hero-enter > * {
+    animation-duration: 0.85s;
+    --rise: 16px;
+  }
 }
 .hero-enter > *:nth-child(2) {
   animation-delay: 0.07s;
