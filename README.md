@@ -2,6 +2,8 @@
 
 *Discover Kazakhstan, beyond the familiar.*
 
+**Live site:** https://nature-kz.vercel.app
+
 An English-language editorial guide to fourteen natural destinations in Kazakhstan:
 Bozzhyra, the Aktolagay Plateau and Torysh — Valley of Balls in the west; Kolsai
 Lakes, Charyn Canyon, Kaindy Lake, the Singing Dune, Big Almaty Lake and
@@ -82,9 +84,11 @@ See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for details.
 
 ## Deployment
 
-The site deploys to Vercel as a standard Next.js project (framework preset
-"Next.js", default build command `next build`, no environment variables).
-Nothing else is required: no database, API service or map key.
+Deployed on Vercel at https://nature-kz.vercel.app as a standard Next.js project
+(framework preset "Next.js", default build command `next build`, no environment
+variables). The Vercel project is connected to this repository, so each push to
+`main` deploys to production. Nothing else is required: no database, API service
+or map key.
 
 ## Docs
 
